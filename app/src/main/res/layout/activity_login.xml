@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".Controller.LoginActivity"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:background="@color/purple"
+        app:layout_constraintBottom_toTopOf="@+id/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/purple"
+        app:navigationIcon="@drawable/ic_baseline_menu_24"
+        app:title="Welcome"
+        android:layout_marginTop="32dp"
+        app:titleTextColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:tabIndicatorColor="@color/white"
+        app:tabIndicatorHeight="2dp"
+        android:background="@color/yellow"
+        app:tabTextColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <android.support.design.widget.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="SIGN UP" />
+
+        <android.support.design.widget.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="SIGN IN" />
+
+    </android.support.design.widget.TabLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/loginViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tabLayout"
+        app:layout_constraintBottom_toTopOf="@id/frameLay"/>
+
+    <FrameLayout
+        android:id="@+id/frameLay"
+        android:layout_marginBottom="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="top|center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linearLay">
+
+            <TextView
+                android:id="@+id/byClickContinueTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:gravity="center"
+                android:text="By clicking on 'Continue', I accept the  "
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/termTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+                android:text="Terms"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="bottom|center"
+            android:layout_marginTop="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/andCondition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:gravity="center"
+                android:text="and Conditiond and the  "
+                android:textSize="12sp"
+                android:layout_marginBottom="15dp"/>
+
+            <TextView
+                android:id="@+id/privacypolicyTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="15dp"
+                android:gravity="center"
+                android:text="Privacy Policy"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="12sp"/>
+
+        </LinearLayout>
+    </FrameLayout>
+</android.support.constraint.ConstraintLayout>
+
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:background="#ffffff"-->
+<!--    tools:context=".Controller.LoginActivity">-->
+
+
+<!--    <ImageView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_alignParentRight="true"-->
+<!--        android:layout_marginRight="20dp"-->
+<!--        android:src="@mipmap/signup_bgz"/>-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/sleepeeLogo"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="135dp"-->
+<!--        android:layout_marginLeft="40dp"-->
+<!--        android:src="@mipmap/login_icon_logo"/>-->
+
+<!--    <android.support.design.widget.TabLayout-->
+<!--        android:id="@+id/tvtablayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/sleepeeLogo"-->
+<!--        android:layout_marginRight="@dimen/ListMargin"-->
+<!--        android:layout_marginLeft="@dimen/ListMargin"-->
+<!--        android:background="#00000000"-->
+<!--        app:tabIndicatorColor="@color/MainColor"-->
+<!--        app:tabIndicatorHeight="2dp"-->
+<!--        app:tabTextColor="@color/black1"-->
+<!--        app:tabSelectedTextColor="@color/MainColor"-->
+<!--        app:tabMode="fixed"></android.support.design.widget.TabLayout>-->
+
+
+
+<!--    <android.support.v4.view.ViewPager-->
+<!--        android:id="@+id/tvviewpager"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/tvtablayout"-->
+<!--        android:background="#00000000"-->
+<!--        ></android.support.v4.view.ViewPager>-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:gravity="center"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_marginBottom="20dp"-->
+<!--        android:orientation="vertical">-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/registerTv"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:text="@string/signLine"-->
+<!--            android:textSize="16sp"-->
+<!--            android:textColor="@color/gray3"/>-->
+
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="10dp"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_gravity="center">-->
+
+<!--            <CheckBox-->
+<!--                android:id="@+id/checkbox"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:button="@drawable/check_box_bg"-->
+<!--                android:layout_gravity="center_vertical"-->
+<!--                android:layout_marginRight="5dp"/>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/privacyTv"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/privacy"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textColorLink="@color/MainColor"-->
+<!--                android:layout_gravity="center_vertical"/>-->
+
+<!--        </LinearLayout>-->
+
+
+<!--    </LinearLayout>-->
+
+<!--    &lt;!&ndash;<LinearLayout&ndash;&gt;-->
+<!--        &lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+<!--        &lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+<!--        &lt;!&ndash;android:gravity="center"&ndash;&gt;-->
+<!--        &lt;!&ndash;android:layout_alignParentBottom="true"&ndash;&gt;-->
+<!--        &lt;!&ndash;android:layout_marginBottom="10dp"&ndash;&gt;-->
+<!--        &lt;!&ndash;android:orientation="horizontal">&ndash;&gt;-->
+
+<!--        &lt;!&ndash;<CheckBox&ndash;&gt;-->
+<!--            &lt;!&ndash;android:id="@+id/checkbox"&ndash;&gt;-->
+<!--            &lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+<!--            &lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+<!--            &lt;!&ndash;android:theme="@style/My_CheckBox"&ndash;&gt;-->
+<!--            &lt;!&ndash;android:layout_gravity="center_vertical"/>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;<TextView&ndash;&gt;-->
+<!--            &lt;!&ndash;android:id="@+id/privacyTv"&ndash;&gt;-->
+<!--            &lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+<!--            &lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+<!--            &lt;!&ndash;android:text="@string/privacy"&ndash;&gt;-->
+<!--            &lt;!&ndash;android:textColor="@color/white"&ndash;&gt;-->
+<!--            &lt;!&ndash;android:textColorLink="@color/blue1"&ndash;&gt;-->
+<!--            &lt;!&ndash;android:layout_gravity="center_vertical"/>&ndash;&gt;-->
+
+<!--    &lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+
+<!--</RelativeLayout>-->

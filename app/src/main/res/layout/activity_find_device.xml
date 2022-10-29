@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:padding="20dp"
+android:background="@color/white"
+tools:context=".Controller.FindDeviceActivity">
+
+    <include
+        layout="@layout/title1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/pleaseTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10sp"
+        android:layout_marginTop="50dp"
+        android:text="Looking for your SLEEP PAD"
+        android:textColor="@color/purple"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/addivv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/ic_baseline_sync_24"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="45dp"/>
+
+    <TextView
+        android:id="@+id/keepTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please keep your smart device close to your
+                        SLEEP PAD"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:layout_below="@+id/pleaseTv"
+        android:textColor="@color/black"/>
+
+    <LinearLayout
+        android:id="@+id/listll"
+        android:layout_width="match_parent"
+        android:layout_height="440dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:orientation="vertical"
+        android:layout_below="@+id/keepTv">
+
+        <ListView
+            android:id="@+id/deviceList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@color/nullColor"
+            android:dividerHeight="0dp"
+            android:layout_marginTop="@dimen/report_icon_top"></ListView>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/onceTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Once your SLEEP PAD is connected to the App , the LED light turns green"
+        android:layout_marginBottom="20dp"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:layout_below="@+id/listll"/>
+
+        <Button
+            android:id="@+id/cancelBtn"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_below="@+id/onceTv"
+            android:background="@drawable/rectangle_bg"
+            android:backgroundTint="@color/navy_blue"
+            android:text="Cancel"
+            android:textColor="@color/white"
+            android:textSize="15dp" />
+
+</RelativeLayout>
