@@ -54,8 +54,8 @@ public class PersonFragment extends BaseFragment {
     @Override
     protected void afterOnCreated(Bundle savedInstanceState) {
         mContext = getActivity().getApplicationContext();
-        initView();
-        initEvent();
+//        initView();
+//        initEvent();
     }
 
     @Override
@@ -65,33 +65,33 @@ public class PersonFragment extends BaseFragment {
                 .getUserInfo().getUserName()+"!");
     }
 
-    private void initView() {
-        nameTv = getView().findViewById(R.id.topTv);
-//        dataLl = getView().findViewById(R.id.dataLl);
-        myDeviceLl = getView().findViewById(R.id.myDeviceLl);
-        userInfoLl = getView().findViewById(R.id.userInfoLl);
-        personInfoLl = getView().findViewById(R.id.personInfoLl);
-        helpLl = getView().findViewById(R.id.helpLl);
-        adviseLl = getView().findViewById(R.id.adviseLl);
-        feedbackLl = getView().findViewById(R.id.feedbackLl);
-        aboutLl = getView().findViewById(R.id.aboutLl);
-    }
+//    private void initView() {
+//        nameTv = getView().findViewById(R.id.topTv);
+////        dataLl = getView().findViewById(R.id.dataLl);
+//        myDeviceLl = getView().findViewById(R.id.myDeviceLl);
+//        userInfoLl = getView().findViewById(R.id.userInfoLl);
+//        personInfoLl = getView().findViewById(R.id.personInfoLl);
+//        helpLl = getView().findViewById(R.id.helpLl);
+//        adviseLl = getView().findViewById(R.id.adviseLl);
+//        feedbackLl = getView().findViewById(R.id.feedbackLl);
+//        aboutLl = getView().findViewById(R.id.aboutLl);
+//    }
+//
+//    private void initEvent() {
+////        dataLl.setOnClickListener(onClickListener);
+//        myDeviceLl.setOnClickListener(onClickListener);
+//        userInfoLl.setOnClickListener(onClickListener);
+//        personInfoLl.setOnClickListener(onClickListener);
+//        helpLl.setOnClickListener(onClickListener);
+//        adviseLl.setOnClickListener(onClickListener);
+//        feedbackLl.setOnClickListener(onClickListener);
+//        aboutLl.setOnClickListener(onClickListener);
+    //}
 
-    private void initEvent() {
-//        dataLl.setOnClickListener(onClickListener);
-        myDeviceLl.setOnClickListener(onClickListener);
-        userInfoLl.setOnClickListener(onClickListener);
-        personInfoLl.setOnClickListener(onClickListener);
-        helpLl.setOnClickListener(onClickListener);
-        adviseLl.setOnClickListener(onClickListener);
-        feedbackLl.setOnClickListener(onClickListener);
-        aboutLl.setOnClickListener(onClickListener);
-    }
-
-    private View.OnClickListener onClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            switch (v.getId()){
+//    private View.OnClickListener onClickListener = new View.OnClickListener() {
+//        @Override
+//        public void onClick(View v) {
+//            switch (v.getId()){
 //                case R.id.dataLl:{
 ////                    ProgressHudModel.newInstance().show(getActivity(),getString(R.string.updown),getString(R.string.httpError),1000);
 //
@@ -105,43 +105,43 @@ public class PersonFragment extends BaseFragment {
 //
 //                }
 //                break;
-                case R.id.myDeviceLl:{
-                    startActivity(new Intent(getActivity(),MyDeviceActivity.class));
-                }
-                break;
-                case R.id.userInfoLl:{
-                    startActivity(new Intent(getActivity(),UserInfoActivity.class));
-                }
-                break;
-                case R.id.personInfoLl:{
-                    startActivity(new Intent(getActivity(),PersonInfoActivity.class));
-                }
-                break;
-                case R.id.helpLl:
-                {
-                    Intent intent = new Intent();
-                    intent.setClass(getActivity(), HelpCentreActivity.class);
-                    intent.putExtra("flag",0);
-                    startActivity(intent);
-                }
-                break;
-                case R.id.adviseLl:{
-                    Intent intent = new Intent();
-                    intent.setClass(getActivity(), HelpCentreActivity.class);
-                    intent.putExtra("flag",1);
-                    startActivity(intent);
-                }
-                break;
-
-                case R.id.feedbackLl:{
-                    startActivity(new Intent(getActivity(),FeedbackActivity.class));
-                }
-                break;
-                case R.id.aboutLl:{
-                    startActivity(new Intent(getActivity(),AboutActivity.class));
-                }
-                break;
-            }
-        }
-    };
+//                case R.id.myDeviceLl:{
+//                    startActivity(new Intent(getActivity(),MyDeviceActivity.class));
+//                }
+//                break;
+//                case R.id.userInfoLl:{
+//                    startActivity(new Intent(getActivity(),UserInfoActivity.class));
+//                }
+//                break;
+//                case R.id.personInfoLl:{
+//                    startActivity(new Intent(getActivity(),PersonInfoActivity.class));
+//                }
+//                break;
+//                case R.id.helpLl:
+//                {
+//                    Intent intent = new Intent();
+//                    intent.setClass(getActivity(), HelpCentreActivity.class);
+//                    intent.putExtra("flag",0);
+//                    startActivity(intent);
+//                }
+//                break;
+//                case R.id.adviseLl:{
+//                    Intent intent = new Intent();
+//                    intent.setClass(getActivity(), HelpCentreActivity.class);
+//                    intent.putExtra("flag",1);
+//                    startActivity(intent);
+//                }
+//                break;
+//
+//                case R.id.feedbackLl:{
+//                    startActivity(new Intent(getActivity(),FeedbackActivity.class));
+//                }
+//                break;
+//                case R.id.aboutLl:{
+//                    startActivity(new Intent(getActivity(),AboutActivity.class));
+//                }
+//                break;
+//            }
+     //   }
+   // };
 }

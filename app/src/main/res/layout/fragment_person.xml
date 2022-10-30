@@ -1,307 +1,602 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    tools:context=".Journal">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        app:title="Settings"
+        app:titleTextColor="@color/white"
+        app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+        android:background="@color/purple"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+<android.support.v4.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    app:layout_constraintTop_toBottomOf="@id/toolbar"
+    app:layout_constraintBottom_toTopOf="@id/signOutBtn">
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+
+        <TextView
+            android:id="@+id/permissionTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Permission"
+            android:textSize="18sp"
+            android:textColor="#A4000000"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="sans-serif-medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+
+            <Switch
+                android:id="@+id/permissionSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/permissionTv"
+                app:layout_constraintBottom_toBottomOf="@id/permissionTv"/>
+
+
+        <TextView
+            android:id="@+id/notificationTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Push Notification"
+            android:textSize="18sp"
+            android:textColor="#A4000000"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="sans-serif-medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/permissionTv"/>
+
+
+        <Switch
+            android:id="@+id/notificationSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:checked="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/notificationTv"
+            app:layout_constraintBottom_toBottomOf="@id/notificationTv"/>
+
+
+        <TextView
+            android:id="@+id/locationTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Location Services"
+            android:textSize="18sp"
+            android:textColor="#A4000000"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="sans-serif-medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/notificationTv"/>
+
+
+        <Switch
+            android:id="@+id/locationSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/locationTv"
+            app:layout_constraintBottom_toBottomOf="@id/locationTv"/>
+
+
+        <TextView
+            android:id="@+id/soundTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sounds"
+            android:textSize="18sp"
+            android:textColor="#A4000000"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="sans-serif-medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/locationTv"/>
+
+
+        <Switch
+            android:id="@+id/soundSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/soundTv"
+            app:layout_constraintBottom_toBottomOf="@id/soundTv"/>
+
+
+        <TextView
+            android:id="@+id/alarmTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Setr an Alarm"
+            android:textSize="18sp"
+            android:textColor="#A4000000"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="sans-serif-medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/soundTv"/>
+
+
+        <Switch
+            android:id="@+id/alarmSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/alarmTv"
+            app:layout_constraintBottom_toBottomOf="@id/alarmTv"/>
+
+
+        <TextView
+            android:id="@+id/updatesTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Look for Updates"
+            android:textSize="18sp"
+            android:textColor="#A4000000"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="sans-serif-medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/alarmTv"/>
+
+        <TextView
+            android:id="@+id/helpTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Help"
+            android:textSize="18sp"
+            android:textColor="#A4000000"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="sans-serif-medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/updatesTv"/>
+
+
+
+        <TextView
+            android:id="@+id/consulationTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Get a Sleep Consulation"
+            android:textSize="18sp"
+            android:textColor="#A4000000"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="sans-serif-medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/helpTv"/>
+
+
+        <TextView
+            android:id="@+id/deviceTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Device ID"
+            android:textSize="18sp"
+            android:textColor="#A4000000"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="sans-serif-medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/consulationTv"/>
+
+
+
+        <TextView
+            android:id="@+id/versionTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="App Version"
+            android:textSize="18sp"
+            android:textColor="#A4000000"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="sans-serif-medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/deviceTv"/>
+
+
+
+        <TextView
+            android:id="@+id/unpairSleepadTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Unpair SleepPad"
+            android:textSize="18sp"
+            android:textColor="#A4000000"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="sans-serif-medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/versionTv"/>
+
+        <TextView
+            android:id="@+id/resetSleepPadTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reset your SleepPad"
+            android:textSize="18sp"
+            android:textColor="#A4000000"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="sans-serif-medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/unpairSleepadTv"/>
+
+
+
+    </android.support.constraint.ConstraintLayout>
+</android.support.v4.widget.NestedScrollView>
+
+
 
     <TextView
-        android:id="@+id/topTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/ListMargin"
-        android:textColor="@color/MainColor1"
-        android:layout_marginTop="50dp"
-        android:textSize="29sp"
-        android:textStyle="bold"
-        android:text="hi anna!"/>
-
-
-    <ScrollView
+        android:id="@+id/signOutBtn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/topTv"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="100dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <!--<View-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="0.5dp"-->
-                <!--android:background="@color/black1"-->
-                <!--android:layout_marginLeft="@dimen/ListMargin"-->
-                <!--android:layout_marginRight="@dimen/ListMargin"/>-->
-
-            <!--<LinearLayout-->
-                <!--android:id="@+id/dataLl"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="@dimen/clock_layout_height"-->
-                <!--android:orientation="horizontal">-->
-
-                <!--<TextView-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_marginLeft="@dimen/ListMargin"-->
-                    <!--android:layout_gravity="center_vertical"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:textColor="@color/black1"-->
-                    <!--android:text="@string/data"/>-->
+        android:layout_height="55dp"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginBottom="20dp"
+        android:text="Sign Out"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:background="@drawable/rectangle_bg"
+        android:backgroundTint="@color/navy_blue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 
-            <!--</LinearLayout>-->
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/black1"
-                android:layout_marginLeft="@dimen/ListMargin"
-                android:layout_marginRight="@dimen/ListMargin"/>
-
-            <LinearLayout
-                android:id="@+id/myDeviceLl"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/clock_layout_height"
-                android:orientation="horizontal"
-                android:background="@color/white">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/ListMargin"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
-                    android:textColor="@color/black1"
-                    android:text="@string/myDevice"/>
+</android.support.constraint.ConstraintLayout>
 
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/ListMargin"
-                    android:layout_gravity="center_vertical|end"
-                    android:src="@mipmap/me_arrow_right"/>
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/black1"
-                android:layout_marginLeft="@dimen/ListMargin"
-                android:layout_marginRight="@dimen/ListMargin"/>
-
-            <LinearLayout
-                android:id="@+id/userInfoLl"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/clock_layout_height"
-                android:orientation="horizontal"
-                >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/ListMargin"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
-                    android:textColor="@color/black1"
-                    android:text="@string/userInfo"/>
 
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/ListMargin"
-                    android:layout_gravity="center_vertical|end"
-                    android:src="@mipmap/me_arrow_right"/>
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/black1"
-                android:layout_marginLeft="@dimen/ListMargin"
-                android:layout_marginRight="@dimen/ListMargin"/>
-
-            <LinearLayout
-                android:id="@+id/personInfoLl"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/clock_layout_height"
-                android:orientation="horizontal"
-                >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/ListMargin"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
-                    android:textColor="@color/black1"
-                    android:text="@string/personInfo"/>
 
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/ListMargin"
-                    android:layout_gravity="center_vertical|end"
-                    android:src="@mipmap/me_arrow_right"/>
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/black1"
-                android:layout_marginLeft="@dimen/ListMargin"
-                android:layout_marginRight="@dimen/ListMargin"/>
-
-            <LinearLayout
-                android:id="@+id/helpLl"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/clock_layout_height"
-                android:orientation="horizontal"
-                >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/ListMargin"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
-                    android:textColor="@color/black1"
-                    android:text="@string/help"/>
 
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/ListMargin"
-                    android:layout_gravity="center_vertical|end"
-                    android:src="@mipmap/me_arrow_right"/>
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/black1"
-                android:layout_marginLeft="@dimen/ListMargin"
-                android:layout_marginRight="@dimen/ListMargin"/>
-
-            <LinearLayout
-                android:id="@+id/adviseLl"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/clock_layout_height"
-                android:orientation="horizontal"
-                >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/ListMargin"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
-                    android:textColor="@color/black1"
-                    android:text="@string/advise"/>
 
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/ListMargin"
-                    android:layout_gravity="center_vertical|end"
-                    android:src="@mipmap/me_arrow_right"/>
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/black1"
-                android:layout_marginLeft="@dimen/ListMargin"
-                android:layout_marginRight="@dimen/ListMargin"/>
 
 
-            <LinearLayout
-                android:id="@+id/feedbackLl"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/clock_layout_height"
-                android:orientation="horizontal"
-                >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/ListMargin"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
-                    android:textColor="@color/black1"
-                    android:text="@string/feedback"/>
 
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/ListMargin"
-                    android:layout_gravity="center_vertical|end"
-                    android:src="@mipmap/me_arrow_right"/>
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/black1"
-                android:layout_marginLeft="@dimen/ListMargin"
-                android:layout_marginRight="@dimen/ListMargin"/>
-
-            <LinearLayout
-                android:id="@+id/aboutLl"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/clock_layout_height"
-                android:orientation="horizontal"
-                >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/ListMargin"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
-                    android:textColor="@color/black1"
-                    android:text="@string/about"/>
 
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/ListMargin"
-                    android:layout_gravity="center_vertical|end"
-                    android:src="@mipmap/me_arrow_right"/>
 
-            </LinearLayout>
+<!--<RelativeLayout -->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:visibility="gone"-->
+<!--    android:background="@color/white">-->
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/black1"
-                android:layout_marginLeft="@dimen/ListMargin"
-                android:layout_marginRight="@dimen/ListMargin"/>
+<!--    <TextView-->
+<!--        android:id="@+id/topTv"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginLeft="@dimen/ListMargin"-->
+<!--        android:textColor="@color/MainColor1"-->
+<!--        android:layout_marginTop="50dp"-->
+<!--        android:textSize="29sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:text="hi anna!"/>-->
 
 
-        </LinearLayout>
+<!--    <ScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/topTv"-->
+<!--        android:layout_marginTop="30dp"-->
+<!--        android:layout_marginBottom="100dp">-->
 
-    </ScrollView>
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical">-->
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/search_bg_bottom"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"/>
+<!--            &lt;!&ndash;<View&ndash;&gt;-->
+<!--                &lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+<!--                &lt;!&ndash;android:layout_height="0.5dp"&ndash;&gt;-->
+<!--                &lt;!&ndash;android:background="@color/black1"&ndash;&gt;-->
+<!--                &lt;!&ndash;android:layout_marginLeft="@dimen/ListMargin"&ndash;&gt;-->
+<!--                &lt;!&ndash;android:layout_marginRight="@dimen/ListMargin"/>&ndash;&gt;-->
 
-</RelativeLayout>
+<!--            &lt;!&ndash;<LinearLayout&ndash;&gt;-->
+<!--                &lt;!&ndash;android:id="@+id/dataLl"&ndash;&gt;-->
+<!--                &lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+<!--                &lt;!&ndash;android:layout_height="@dimen/clock_layout_height"&ndash;&gt;-->
+<!--                &lt;!&ndash;android:orientation="horizontal">&ndash;&gt;-->
+
+<!--                &lt;!&ndash;<TextView&ndash;&gt;-->
+<!--                    &lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+<!--                    &lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+<!--                    &lt;!&ndash;android:layout_marginLeft="@dimen/ListMargin"&ndash;&gt;-->
+<!--                    &lt;!&ndash;android:layout_gravity="center_vertical"&ndash;&gt;-->
+<!--                    &lt;!&ndash;android:layout_weight="1"&ndash;&gt;-->
+<!--                    &lt;!&ndash;android:textColor="@color/black1"&ndash;&gt;-->
+<!--                    &lt;!&ndash;android:text="@string/data"/>&ndash;&gt;-->
+
+
+<!--            &lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="0.5dp"-->
+<!--                android:background="@color/black1"-->
+<!--                android:layout_marginLeft="@dimen/ListMargin"-->
+<!--                android:layout_marginRight="@dimen/ListMargin"/>-->
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/myDeviceLl"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="@dimen/clock_layout_height"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:background="@color/white">-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginLeft="@dimen/ListMargin"-->
+<!--                    android:layout_gravity="center_vertical"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:textColor="@color/black1"-->
+<!--                    android:text="@string/myDevice"/>-->
+
+
+<!--                <ImageView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginRight="@dimen/ListMargin"-->
+<!--                    android:layout_gravity="center_vertical|end"-->
+<!--                    android:src="@mipmap/me_arrow_right"/>-->
+
+<!--            </LinearLayout>-->
+
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="0.5dp"-->
+<!--                android:background="@color/black1"-->
+<!--                android:layout_marginLeft="@dimen/ListMargin"-->
+<!--                android:layout_marginRight="@dimen/ListMargin"/>-->
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/userInfoLl"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="@dimen/clock_layout_height"-->
+<!--                android:orientation="horizontal"-->
+<!--                >-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginLeft="@dimen/ListMargin"-->
+<!--                    android:layout_gravity="center_vertical"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:textColor="@color/black1"-->
+<!--                    android:text="@string/userInfo"/>-->
+
+
+<!--                <ImageView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginRight="@dimen/ListMargin"-->
+<!--                    android:layout_gravity="center_vertical|end"-->
+<!--                    android:src="@mipmap/me_arrow_right"/>-->
+
+<!--            </LinearLayout>-->
+
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="0.5dp"-->
+<!--                android:background="@color/black1"-->
+<!--                android:layout_marginLeft="@dimen/ListMargin"-->
+<!--                android:layout_marginRight="@dimen/ListMargin"/>-->
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/personInfoLl"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="@dimen/clock_layout_height"-->
+<!--                android:orientation="horizontal"-->
+<!--                >-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginLeft="@dimen/ListMargin"-->
+<!--                    android:layout_gravity="center_vertical"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:textColor="@color/black1"-->
+<!--                    android:text="@string/personInfo"/>-->
+
+
+<!--                <ImageView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginRight="@dimen/ListMargin"-->
+<!--                    android:layout_gravity="center_vertical|end"-->
+<!--                    android:src="@mipmap/me_arrow_right"/>-->
+
+<!--            </LinearLayout>-->
+
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="0.5dp"-->
+<!--                android:background="@color/black1"-->
+<!--                android:layout_marginLeft="@dimen/ListMargin"-->
+<!--                android:layout_marginRight="@dimen/ListMargin"/>-->
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/helpLl"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="@dimen/clock_layout_height"-->
+<!--                android:orientation="horizontal"-->
+<!--                >-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginLeft="@dimen/ListMargin"-->
+<!--                    android:layout_gravity="center_vertical"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:textColor="@color/black1"-->
+<!--                    android:text="@string/help"/>-->
+
+
+<!--                <ImageView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginRight="@dimen/ListMargin"-->
+<!--                    android:layout_gravity="center_vertical|end"-->
+<!--                    android:src="@mipmap/me_arrow_right"/>-->
+
+<!--            </LinearLayout>-->
+
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="0.5dp"-->
+<!--                android:background="@color/black1"-->
+<!--                android:layout_marginLeft="@dimen/ListMargin"-->
+<!--                android:layout_marginRight="@dimen/ListMargin"/>-->
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/adviseLl"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="@dimen/clock_layout_height"-->
+<!--                android:orientation="horizontal"-->
+<!--                >-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginLeft="@dimen/ListMargin"-->
+<!--                    android:layout_gravity="center_vertical"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:textColor="@color/black1"-->
+<!--                    android:text="@string/advise"/>-->
+
+
+<!--                <ImageView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginRight="@dimen/ListMargin"-->
+<!--                    android:layout_gravity="center_vertical|end"-->
+<!--                    android:src="@mipmap/me_arrow_right"/>-->
+
+<!--            </LinearLayout>-->
+
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="0.5dp"-->
+<!--                android:background="@color/black1"-->
+<!--                android:layout_marginLeft="@dimen/ListMargin"-->
+<!--                android:layout_marginRight="@dimen/ListMargin"/>-->
+
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/feedbackLl"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="@dimen/clock_layout_height"-->
+<!--                android:orientation="horizontal"-->
+<!--                >-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginLeft="@dimen/ListMargin"-->
+<!--                    android:layout_gravity="center_vertical"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:textColor="@color/black1"-->
+<!--                    android:text="@string/feedback"/>-->
+
+
+<!--                <ImageView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginRight="@dimen/ListMargin"-->
+<!--                    android:layout_gravity="center_vertical|end"-->
+<!--                    android:src="@mipmap/me_arrow_right"/>-->
+
+<!--            </LinearLayout>-->
+
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="0.5dp"-->
+<!--                android:background="@color/black1"-->
+<!--                android:layout_marginLeft="@dimen/ListMargin"-->
+<!--                android:layout_marginRight="@dimen/ListMargin"/>-->
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/aboutLl"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="@dimen/clock_layout_height"-->
+<!--                android:orientation="horizontal"-->
+<!--                >-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginLeft="@dimen/ListMargin"-->
+<!--                    android:layout_gravity="center_vertical"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:textColor="@color/black1"-->
+<!--                    android:text="@string/about"/>-->
+
+
+<!--                <ImageView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginRight="@dimen/ListMargin"-->
+<!--                    android:layout_gravity="center_vertical|end"-->
+<!--                    android:src="@mipmap/me_arrow_right"/>-->
+
+<!--            </LinearLayout>-->
+
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="0.5dp"-->
+<!--                android:background="@color/black1"-->
+<!--                android:layout_marginLeft="@dimen/ListMargin"-->
+<!--                android:layout_marginRight="@dimen/ListMargin"/>-->
+
+
+<!--        </LinearLayout>-->
+
+<!--    </ScrollView>-->
+
+<!--    <ImageView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:src="@mipmap/search_bg_bottom"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_centerHorizontal="true"/>-->
+
+<!--</RelativeLayout>-->
