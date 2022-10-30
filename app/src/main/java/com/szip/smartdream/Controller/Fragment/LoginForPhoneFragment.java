@@ -1,32 +1,23 @@
 package com.szip.smartdream.Controller.Fragment;
 
+import static com.szip.smartdream.MyApplication.FILE;
+
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.szip.smartdream.Controller.FindDeviceActivity;
-import com.szip.smartdream.Controller.ForgetPasswordActivity;
-import com.szip.smartdream.Controller.OTP;
+import com.szip.smartdream.Controller.OTPScreen;
 import com.szip.smartdream.Interface.OnClickForLogin;
 import com.szip.smartdream.R;
 import com.zaaach.citypicker.CityPicker;
 import com.zaaach.citypicker.adapter.OnPickListener;
 import com.zaaach.citypicker.model.City;
-
-import static com.szip.smartdream.MyApplication.FILE;
 
 public class LoginForPhoneFragment extends BaseFragment {
 
@@ -34,146 +25,54 @@ public class LoginForPhoneFragment extends BaseFragment {
     private OnClickForLogin clickForLogin;
     /**
      * 忘记密码
-     * */
+     */
     private TextView forgetTv;
 
     /**
      * 选择国家
-     * */
+     */
     private LinearLayout layout;
     private TextView countryTv;
     /**
-     *国家代码
-     * */
+     * 国家代码
+     */
     private TextView codeTv;
     /**
-     *手机输入框以及相关控件
-     * */
+     * 手机输入框以及相关控件
+     */
     private EditText phoneEt;
     private ImageView phoneClearIv;
     /**
-     *密码输入框以及相关控件
-     * */
+     * 密码输入框以及相关控件
+     */
     private EditText passwordEt;
     private ImageView passwordClearIv;
     private CheckBox rememberCb;
     private CheckBox lawsCb;
     /**
-     *登录按钮
-     * */
+     * 登录按钮
+     */
     private TextView loginLl;
 
     /**
      * 轻量级文件
-     * */
+     */
     private SharedPreferences sharedPreferencesp;
     ;
 
     /**
-     *用于确定下一步按键是否可点击
-     * */
+     * 用于确定下一步按键是否可点击
+     */
     private int flagForEt;
 
     private String mobiletv;
-
-
     /**
-     * 返回一个fragment实例，Activity中调用
-     * */
-    public static LoginForPhoneFragment newInstance(String param){
-        Bundle bundle = new Bundle();
-        bundle.putString("param",param);
-        LoginForPhoneFragment fragment = new LoginForPhoneFragment();
-        fragment.setArguments(bundle);
-        return fragment;
-    }
-
-    public void setClickForLogin(OnClickForLogin clickForLogin){
-        this.clickForLogin = clickForLogin;
-    }
-
-    @Override
-    protected int getLayoutId() {
-        return R.layout.fragment_login_for_phone;
-    }
-
-    @Override
-    protected void afterOnCreated(Bundle savedInstanceState) {
-        initView();
-        initEvent();
-    }
-
-    /**
-     *初始化界面
-     * */
-    private void initView() {
-       // lawsCb = getView().findViewById(R.id.lawsCb);
-       //forgetTv = getView().findViewById(R.id.forgetTv);
-        //layout = getView().findViewById(R.id.layout);
-       // countryTv = getView().findViewById(R.id.countryTv);
-       // codeTv = getView().findViewById(R.id.codeTv);
-        phoneEt = getView().findViewById(R.id.phoneNumberEt);
-        mobiletv = phoneEt.getText().toString();
-       // phoneClearIv = getView().findViewById(R.id.phoneClearIv);
-       // passwordEt = getView().findViewById(R.id.passwordEt);
-       // passwordClearIv = getView().findViewById(R.id.passwordClearIv);
-       // rememberCb = getView().findViewById(R.id.rememberCb);
-        loginLl = getView().findViewById(R.id.continueBtn);
-
-
-        if (sharedPreferencesp==null)
-            sharedPreferencesp = getActivity().getSharedPreferences(FILE,Context.MODE_PRIVATE);
-        phoneEt.setText(sharedPreferencesp.getString("phone",""));
-        //passwordEt.setText(sharedPreferencesp.getString("password",""));
-
-    }
-
-    /**
-     *初始化监听
-     * */
-    private void initEvent() {
-       // forgetTv.setOnClickListener(onClickListener);
-        // layout.setOnClickListener(onClickListener);
-       // phoneClearIv.setOnClickListener(onClickListener);
-        //passwordClearIv.setOnClickListener(onClickListener);
-        loginLl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (phoneEt.getText().toString().equals("")){
-                    showToast(getString(R.string.inputNum));
-                    return;
-                }else{ Intent intent = new Intent(getContext(), FindDeviceActivity.class);
-                    //intent.putExtra("mobileNumber" , mobileTv.toString());
-                    startActivity(intent);}
-
-            }
-        });
-//        lawsCb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                String psd = passwordEt.getText().toString();
-//                if (isChecked){
-//                    passwordEt.setInputType(0x90);
-//                }else {
-//                    passwordEt.setInputType(0x81);
-//                }
-//                passwordEt.setSelection(psd.length());
-//            }
-//        });
-
-        //phoneEt.addTextChangedListener(watcher);
-       // passwordEt.addTextChangedListener(watcher);
-        //phoneEt.setOnFocusChangeListener(focusChangeListener);
-       // passwordEt.setOnFocusChangeListener(focusChangeListener);
-    }
-
-    /**
-     *事件监听
-     * */
+     * 事件监听
+     */
     private View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            switch (v.getId()){
+            switch (v.getId()) {
                 case R.id.layout:
                     CityPicker.getInstance()
                             .setFragmentManager(getActivity().getSupportFragmentManager())
@@ -184,7 +83,7 @@ public class LoginForPhoneFragment extends BaseFragment {
                             .setOnPickListener(new OnPickListener() {
                                 @Override
                                 public void onPick(int position, City data) {
-                                    countryTv.setText(data == null ? "" :  data.getName());
+                                    countryTv.setText(data == null ? "" : data.getName());
                                     codeTv.setText(data.getCode());
                                 }
 
@@ -202,17 +101,19 @@ public class LoginForPhoneFragment extends BaseFragment {
                     passwordEt.setText("");
                     break;
 
-                    //Set on Click Listener On Continue Button That is user Enter Mobile Number or Not
+                //Set on Click Listener On Continue Button That is user Enter Mobile Number or Not
                 case R.id.continueBtn:
-                    if (phoneEt.getText().toString().equals("")){
+                    if (phoneEt.getText().toString().equals("")) {
                         showToast(getString(R.string.inputNum));
+                    } else {
+                        clickForLogin.onLogin("001", phoneEt.getText().toString(), "", true);
                     }
 //                    else if (passwordEt.getText().toString().equals("")){
 //                        showToast(getString(R.string.password));
 //                    }else if (clickForLogin!=null)
 //                        clickForLogin.onLogin(codeTv.getText().toString(),phoneEt.getText().toString(),passwordEt.getText().toString(),rememberCb.isChecked());
                     break;
-               // case R.id.forgetTv:
+                // case R.id.forgetTv:
 //                    Intent intent = new Intent();
 //                    intent.setClass(getActivity(),ForgetPasswordActivity.class);
 //                    intent.putExtra("flag",0);
@@ -221,6 +122,100 @@ public class LoginForPhoneFragment extends BaseFragment {
             }
         }
     };
+
+    /**
+     * 返回一个fragment实例，Activity中调用
+     */
+    public static LoginForPhoneFragment newInstance(String param) {
+        Bundle bundle = new Bundle();
+        bundle.putString("param", param);
+        LoginForPhoneFragment fragment = new LoginForPhoneFragment();
+        fragment.setArguments(bundle);
+        return fragment;
+    }
+
+    public void setClickForLogin(OnClickForLogin clickForLogin) {
+        this.clickForLogin = clickForLogin;
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.fragment_login_for_phone;
+    }
+
+    @Override
+    protected void afterOnCreated(Bundle savedInstanceState) {
+        initView();
+        initEvent();
+    }
+
+    /**
+     * 初始化界面
+     */
+    private void initView() {
+        // lawsCb = getView().findViewById(R.id.lawsCb);
+        //forgetTv = getView().findViewById(R.id.forgetTv);
+        //layout = getView().findViewById(R.id.layout);
+        // countryTv = getView().findViewById(R.id.countryTv);
+        // codeTv = getView().findViewById(R.id.codeTv);
+        phoneEt = getView().findViewById(R.id.phoneNumberEt);
+        mobiletv = phoneEt.getText().toString();
+        // phoneClearIv = getView().findViewById(R.id.phoneClearIv);
+        // passwordEt = getView().findViewById(R.id.passwordEt);
+        // passwordClearIv = getView().findViewById(R.id.passwordClearIv);
+        // rememberCb = getView().findViewById(R.id.rememberCb);
+        loginLl = getView().findViewById(R.id.continueBtn);
+
+
+        if (sharedPreferencesp == null)
+            sharedPreferencesp = getActivity().getSharedPreferences(FILE, Context.MODE_PRIVATE);
+        phoneEt.setText(sharedPreferencesp.getString("phone", ""));
+        //passwordEt.setText(sharedPreferencesp.getString("password",""));
+
+    }
+
+    /**
+     * 初始化监听
+     */
+    private void initEvent() {
+        // forgetTv.setOnClickListener(onClickListener);
+        // layout.setOnClickListener(onClickListener);
+        // phoneClearIv.setOnClickListener(onClickListener);
+        //passwordClearIv.setOnClickListener(onClickListener);
+        loginLl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (phoneEt.getText().toString().equals("")) {
+                    showToast(getString(R.string.inputNum));
+                    return;
+                } else {
+                    OTPScreen otp=new OTPScreen(clickForLogin,"001", phoneEt.getText().toString(), "", true);
+                    otp.showNow(requireFragmentManager(),"SANJAY");
+//                    Intent intent = new Intent(getContext(), OTP.class);
+//                    //intent.putExtra("mobileNumber" , mobileTv.toString());
+//                    startActivity(intent);
+                }
+
+            }
+        });
+//        lawsCb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                String psd = passwordEt.getText().toString();
+//                if (isChecked){
+//                    passwordEt.setInputType(0x90);
+//                }else {
+//                    passwordEt.setInputType(0x81);
+//                }
+//                passwordEt.setSelection(psd.length());
+//            }
+//        });
+
+        //phoneEt.addTextChangedListener(watcher);
+        // passwordEt.addTextChangedListener(watcher);
+        //phoneEt.setOnFocusChangeListener(focusChangeListener);
+        // passwordEt.setOnFocusChangeListener(focusChangeListener);
+    }
 
     /**
      * 输入框键入监听器
@@ -257,7 +252,7 @@ public class LoginForPhoneFragment extends BaseFragment {
 //                    break;
 //            }
 //        }
-   // };
+    // };
 
     /**
      * 输入框焦点监听

@@ -13,6 +13,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -45,8 +46,9 @@ import static com.szip.smartdream.MyApplication.FILE;
 import static com.szip.smartdream.Util.HttpMessgeUtil.BINDDEVICE_FLAG;
 import static com.szip.smartdream.Util.HttpMessgeUtil.DOWNLOADDATA_FLAG;
 import static com.szip.smartdream.Util.HttpMessgeUtil.GETALARM_FLAG;
+import static com.szip.smartdream.Util.mutils.mToast;
 
-public class FindDeviceActivity extends BaseActivity implements HttpCallbackWithBase,HttpCallbackWithReport,HttpCallbackWithClockData {
+public class FindDeviceActivity extends BaseActivity implements HttpCallbackWithBase, HttpCallbackWithReport, HttpCallbackWithClockData, View.OnClickListener {
 
     private Context mContext;
 
@@ -56,11 +58,15 @@ public class FindDeviceActivity extends BaseActivity implements HttpCallbackWith
 
     private ImageView animIv1,animIv2;
 
+
+
     private ListView listView;
+    private ImageView refresh;
     private DeviceListAdapter adapter;
     private List<SearchResult> mDevices;
 
     private ImageView backIv;
+    private Button cancelBtn;
     private TextView titleTv;
     private int pos;
     private boolean isSearch = false;
@@ -141,13 +147,15 @@ public class FindDeviceActivity extends BaseActivity implements HttpCallbackWith
 
     private void initView() {
 
+        cancelBtn = findViewById(R.id.cancelBtn);
         titleTv = findViewById(R.id.titleTv);
         titleTv.setVisibility(View.GONE);
         ((TextView)findViewById(R.id.titleTv)).setText(getString(R.string.find));
 
         backIv = findViewById(R.id.backIv);
+        refresh = findViewById(R.id.refresh);
         backIv.setVisibility(View.GONE);
-        findViewById(R.id.addivv).setVisibility(View.VISIBLE);
+
         //((ImageView)findViewById(R.id.addivv)).setImageResource(R.mipmap.searchdevice_refresh_new);
 
         animIv1 = findViewById(R.id.animIv1);
@@ -158,6 +166,8 @@ public class FindDeviceActivity extends BaseActivity implements HttpCallbackWith
         listView.setAdapter(adapter);
         initAnimator();
         searchDevice();
+        cancelBtn.setOnClickListener(this);
+        refresh.setOnClickListener(this);
 
         /**
          * 获取蓝牙客户端单例，监听手机蓝牙开关状态
@@ -347,5 +357,18 @@ public class FindDeviceActivity extends BaseActivity implements HttpCallbackWith
             finish();
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.cancelBtn:
+                onBackPressed();
+                break;
+            case R.id.refresh:
+                mToast(FindDeviceActivity.this,"Refreshing !!");
+                searchDevice();
+                break;
+        }
     }
 }
