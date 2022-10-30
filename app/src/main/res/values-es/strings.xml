@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">sleepee</string>
+    <string name="app_name">Sleep Pad</string>
     <string name="company">Shenzhen Intelligent Age Technology Co., LTD\nwww.znsdkj.com</string>
 
     <!--登录界面-->
