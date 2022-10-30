@@ -310,7 +310,7 @@ public class FindDeviceActivity extends BaseActivity implements HttpCallbackWith
 
         @Override
         public void onDeviceFounded(SearchResult device) {
-            if (!mDevices.contains(device)) {
+            if (!mDevices.contains(device) && device.getName().contains("sleep")) {
                 mDevices.add(device);
                 adapter.setDataList(mDevices);
             }

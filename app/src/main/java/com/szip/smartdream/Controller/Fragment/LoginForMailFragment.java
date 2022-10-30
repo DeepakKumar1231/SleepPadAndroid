@@ -118,7 +118,7 @@ public class LoginForMailFragment extends BaseFragment {
 
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(requireActivity() , OTP.class);
+                Intent myIntent = new Intent(requireActivity() , FindDeviceActivity.class);
                 startActivity(myIntent);
             }
         });

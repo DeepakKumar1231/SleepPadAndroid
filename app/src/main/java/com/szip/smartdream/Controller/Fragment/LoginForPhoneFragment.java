@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.szip.smartdream.Controller.FindDeviceActivity;
 import com.szip.smartdream.Controller.ForgetPasswordActivity;
 import com.szip.smartdream.Controller.OTP;
 import com.szip.smartdream.Interface.OnClickForLogin;
@@ -141,7 +142,7 @@ public class LoginForPhoneFragment extends BaseFragment {
                 if (phoneEt.getText().toString().equals("")){
                     showToast(getString(R.string.inputNum));
                     return;
-                }else{ Intent intent = new Intent(getContext(), OTP.class);
+                }else{ Intent intent = new Intent(getContext(), FindDeviceActivity.class);
                     //intent.putExtra("mobileNumber" , mobileTv.toString());
                     startActivity(intent);}
 

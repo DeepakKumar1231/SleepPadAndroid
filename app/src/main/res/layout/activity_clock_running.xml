@@ -25,7 +25,7 @@
                 android:layout_marginTop="130dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/launch_icon"/>
+                android:src="@drawable/whitelogo"/>
 
             <TextView
                 android:id="@+id/timeTv"
@@ -54,7 +54,6 @@
                 android:textSize="20sp"
                 android:layout_gravity="center"
                 android:text="@string/cencelClock" />
-
         </LinearLayout>
 
 

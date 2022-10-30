@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">sleepee</string>
+    <string name="app_name">Sleep Pad</string>
     <string name="company">深圳市智能时代科技有限公司\nwww.znsdkj.com</string>
 
     <!--登录界面-->
@@ -30,9 +30,9 @@
     <string name="privacy1">《用户隐私协议》</string>
     <string name="privacy2">详情可阅读《<u>用户隐私协议</u>》进行了解</string>
     <string name="confirmPasswordError">两次密码输入不一致</string>
-    <string name="privacyTip">感谢您信任并使用SleepEE。
+    <string name="privacyTip">感谢您信任并使用sleep pad。
 \n\n我们讲依据《用户隐私协议》来帮助您了解我们在收集、使用、存储您个人信息的情况以及您享有的相关权利。
-\n\n在您使用SleepEE应用程序时，我们将收集您的设备信息、个人资料(头像、昵称、身高、体重、运动数据)等信息:
+\n\n在您使用sleep pad应用程序时，我们将收集您的设备信息、个人资料(头像、昵称、身高、体重、运动数据)等信息:
 \n\n您可以在相关页面访问、修改、删除您的个人信息或者管理您的授权。
 \n\n我们会采用行业领先的安全技术来保护您的个人信息。
 \n\n当您点击"确定"即表示你已经同意该协议的条款。</string>
@@ -237,7 +237,7 @@
 
     <string name="question">常见问题</string>
     <string name="problem1">新手操作指南</string>
-    <string name="problem2">sleepee的监测原理是什么？</string>
+    <string name="problem2">sleep pad的监测原理是什么？</string>
     <string name="problem3">设备工作时，可以将手机关机吗？</string>
     <string name="problem4">能否远程控制SP18？</string>
     <string name="problem5">我的睡眠数据可以存储多久？</string>
@@ -255,7 +255,7 @@
     <string name="answer6">1.确认设备与手机app是否处于连接状态\n2.确认设备配对是否正确\n3.在APP里面进行蓝牙设备搜索绑定，而不是手机系统设置里进行蓝牙搜索</string>
     <string name="answer7">\t\t\t\t可以。虽然旁边人的信号会有所干扰，但对监测准确度的影响很小。设备默认监测躺在其上的用户。</string>
     <string name="answer8">\t\t\t\t确保手机与设备连接成功，请点击报告页右上角的”同步”按钮进行同步。</string>
-    <string name="answer9">以下几种情况，可能会导致智能闹钟无法响铃：\n1.检查是否正确配置了智能闹钟模式\n2.Sleep Pad APP没有后台运行APP(sleepee)\n3.Sleep Pad APP被手机系统列入黑名单APP(sleepee)\n4.Sleep Pad APP的后台被安全类软件误清理APP(sleepee )\n5.Sleep Pad APP安装在手机SD卡，手机重启后软件无法自启\n6.使用耳机时无法外放响铃\n7.闹钟铃声被调至最小 </string>
+    <string name="answer9">以下几种情况，可能会导致智能闹钟无法响铃：\n1.检查是否正确配置了智能闹钟模式\n2.Sleep Pad APP没有后台运行APP(sleep pad)\n3.Sleep Pad APP被手机系统列入黑名单APP(sleep pad)\n4.Sleep Pad APP的后台被安全类软件误清理APP(sleep pad )\n5.Sleep Pad APP安装在手机SD卡，手机重启后软件无法自启\n6.使用耳机时无法外放响铃\n7.闹钟铃声被调至最小 </string>
     <string name="answer10">1.长按设备开关至蓝色灯开始闪烁\n2.开启手机蓝牙开关\n3.打开手机APP完成注册/登录操作\n4.连接搜索到的设备ID，看到设备指示灯由闪烁变为常亮即配置成功。</string>
     <string name="answer11">1.打开APP，完成登录操作\n2.点击页面中右上角连接按钮重新连接设备</string>
 
