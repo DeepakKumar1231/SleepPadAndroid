@@ -18,7 +18,10 @@ tools:context=".Controller.FindDeviceActivity">
         android:id="@+id/pleaseTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10sp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
         android:layout_marginTop="50dp"
         android:text="Looking for your SLEEP PAD"
         android:textColor="@color/purple"
@@ -29,16 +32,15 @@ tools:context=".Controller.FindDeviceActivity">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:src="@drawable/ic_baseline_sync_24"
         android:layout_marginTop="50dp"
-        android:layout_marginStart="45dp"/>
+        android:src="@drawable/ic_baseline_sync_24"
+        android:visibility="visible" />
 
     <TextView
         android:id="@+id/keepTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Please keep your smart device close to your
-                        SLEEP PAD"
+        android:text="Please keep your smart device close to your SLEEP PAD"
         android:layout_marginTop="20dp"
         android:gravity="center"
         android:layout_below="@+id/pleaseTv"
@@ -70,13 +72,13 @@ tools:context=".Controller.FindDeviceActivity">
         android:layout_marginBottom="20dp"
         android:textColor="@color/black"
         android:gravity="center"
-        android:layout_below="@+id/listll"/>
+       android:layout_above="@id/cancelBtn"/>
 
         <Button
             android:id="@+id/cancelBtn"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:layout_below="@+id/onceTv"
+            android:layout_alignParentBottom="true"
             android:background="@drawable/rectangle_bg"
             android:backgroundTint="@color/navy_blue"
             android:text="Cancel"

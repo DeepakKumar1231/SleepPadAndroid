@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+
+    android:background="@drawable/gradient_background"
+tools:context=".Journal"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/dayTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Saturday"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/calenderIv"
+        app:layout_constraintBottom_toBottomOf="@id/calenderIv"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="17th Sep-18th Sep"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="@color/white"
+        android:layout_marginRight="20dp"
+        app:layout_constraintEnd_toStartOf="@id/calenderIv"
+        app:layout_constraintBottom_toBottomOf="@id/calenderIv"/>
+
+    <ImageView
+        android:id="@+id/calenderIv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_baseline_calendar_month_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/white"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/calenderIv"/>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/monConsLay"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tuesConsLay"
+        app:layout_constraintTop_toBottomOf="@id/view"
+        android:layout_marginTop="20dp">
+
+        <antonkozyriatskyi.circularprogressindicator.CircularProgressIndicator
+            android:id="@+id/circular_progressMonday"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            app:progressColor="@color/purple"
+            app:textColor="@color/white"
+            app:textSize="0sp"
+            app:direction="clockwise"
+            app:progressCap="round"
+            app:progressBackgroundColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/mTv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="M"
+            android:gravity="center"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/tuesConsLay"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        app:layout_constraintStart_toEndOf="@id/monConsLay"
+        app:layout_constraintEnd_toStartOf="@id/wedConsLay"
+        app:layout_constraintTop_toBottomOf="@id/view"
+        android:layout_marginTop="20dp">
+
+        <antonkozyriatskyi.circularprogressindicator.CircularProgressIndicator
+            android:id="@+id/circular_progressTuesday"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            app:progressColor="@color/purple"
+            app:textColor="@color/white"
+            app:textSize="0sp"
+            app:direction="clockwise"
+            app:progressCap="round"
+            app:progressBackgroundColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/tuesTv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="Tu"
+            android:gravity="center"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/wedConsLay"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        app:layout_constraintStart_toEndOf="@id/tuesConsLay"
+        app:layout_constraintTop_toBottomOf="@id/view"
+        app:layout_constraintEnd_toStartOf="@id/thursConsLay"
+        android:layout_marginTop="20dp">
+
+        <antonkozyriatskyi.circularprogressindicator.CircularProgressIndicator
+            android:id="@+id/circular_progressWednesday"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            app:progressColor="@color/purple"
+            app:textColor="@color/white"
+            app:textSize="0sp"
+            app:direction="clockwise"
+            app:progressCap="round"
+            app:progressBackgroundColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/wedTv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="W"
+            android:gravity="center"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/thursConsLay"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        app:layout_constraintStart_toEndOf="@id/fridayConsLay"
+        app:layout_constraintEnd_toStartOf="@id/wedConsLay"
+        app:layout_constraintTop_toBottomOf="@id/view"
+        android:layout_marginTop="20dp">
+
+        <antonkozyriatskyi.circularprogressindicator.CircularProgressIndicator
+            android:id="@+id/circular_progressThursday"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            app:progressColor="@color/purple"
+            app:textColor="@color/white"
+            app:textSize="0sp"
+            app:direction="clockwise"
+            app:progressCap="round"
+            app:progressBackgroundColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/thursTv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="T"
+            android:gravity="center"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/fridayConsLay"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        app:layout_constraintStart_toEndOf="@id/thursConsLay"
+        app:layout_constraintEnd_toStartOf="@id/saturdayConsLay"
+        app:layout_constraintTop_toBottomOf="@id/view"
+        android:layout_marginTop="20dp">
+
+        <antonkozyriatskyi.circularprogressindicator.CircularProgressIndicator
+            android:id="@+id/circular_progressFriday"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            app:progressColor="@color/purple"
+            app:textColor="@color/white"
+            app:textSize="0sp"
+            app:direction="clockwise"
+            app:progressCap="round"
+            app:progressBackgroundColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/fridayTv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="F"
+            android:gravity="center"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/saturdayConsLay"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        app:layout_constraintStart_toEndOf="@id/fridayConsLay"
+        app:layout_constraintEnd_toStartOf="@id/sundayConsLay"
+        app:layout_constraintTop_toBottomOf="@id/view"
+        android:layout_marginTop="20dp">
+
+        <antonkozyriatskyi.circularprogressindicator.CircularProgressIndicator
+            android:id="@+id/circular_progressSaturday"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            app:progressColor="@color/purple"
+            app:textColor="@color/white"
+            app:textSize="0sp"
+            app:direction="clockwise"
+            app:progressCap="round"
+            app:progressBackgroundColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/saturdayTv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="S"
+            android:gravity="center"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/sundayConsLay"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/saturdayConsLay"
+        app:layout_constraintTop_toBottomOf="@id/view"
+        android:layout_marginTop="20dp">
+
+        <antonkozyriatskyi.circularprogressindicator.CircularProgressIndicator
+            android:id="@+id/circular_progressSunday"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            app:progressColor="@color/purple"
+            app:textColor="@color/white"
+            app:textSize="0sp"
+            app:direction="clockwise"
+            app:progressCap="round"
+            app:progressBackgroundColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/sundayTv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="Su"
+            android:gravity="center"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/white"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sundayConsLay"/>
+
+
+    <TextView
+        android:id="@+id/sleepScoreTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sleep Score"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view2"/>
+
+
+    <antonkozyriatskyi.circularprogressindicator.CircularProgressIndicator
+        android:id="@+id/circular_progressCurrentDay"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        app:progressColor="@color/purple"
+        app:textColor="@color/white"
+        app:textSize="15sp"
+        app:direction="clockwise"
+        app:progressCap="round"
+        android:layout_marginTop="20dp"
+        app:progressStrokeWidth="14dp"
+        app:progressBackgroundColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sleepScoreTv"/>
+
+    <TextView
+        android:id="@+id/timeinBedTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="8h 28min"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@id/shareIv"
+        app:layout_constraintStart_toEndOf="@id/circular_progressCurrentDay"
+        app:layout_constraintTop_toTopOf="@id/circular_progressCurrentDay"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="in Bed >"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@id/timeinBedTv"
+        app:layout_constraintTop_toBottomOf="@id/timeinBedTv"/>
+
+
+
+    <TextView
+        android:id="@+id/timeinAsleepTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="7h 28min"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@id/timeinBedTv"
+        app:layout_constraintBottom_toTopOf="@id/sleep"/>
+
+    <TextView
+        android:id="@+id/sleep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Asleep >"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@id/timeinBedTv"
+        app:layout_constraintBottom_toBottomOf="@id/circular_progressCurrentDay"/>
+
+
+
+    <ImageView
+        android:id="@+id/shareIv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_baseline_share_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/circular_progressCurrentDay"
+        app:layout_constraintBottom_toBottomOf="@id/circular_progressCurrentDay"/>
+
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/white"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/circular_progressCurrentDay"/>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/heartRateConlay"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toStartOf="@id/respirationRateConLay"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view3">
+
+
+        <ImageView
+            android:id="@+id/heartBeatIv"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/heart_beat"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white" />
+
+
+        <TextView
+            android:id="@+id/heartBeatTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="65 BPM"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:layout_marginLeft="10dp"
+            app:layout_constraintStart_toEndOf="@id/heartBeatIv"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Heart Rate >"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="@id/heartBeatTv"
+            app:layout_constraintTop_toBottomOf="@id/heartBeatTv"/>
+
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/respirationRateConLay"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toEndOf="@id/heartRateConlay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view3">
+
+
+
+        <ImageView
+            android:id="@+id/respirationRateIv"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/respiratory_system"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white" />
+
+
+        <TextView
+            android:id="@+id/respirationRateTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="14 BPM"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:layout_marginLeft="10dp"
+            app:layout_constraintStart_toEndOf="@id/respirationRateIv"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Respiration Rate >"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="@id/respirationRateTv"
+            app:layout_constraintTop_toBottomOf="@id/respirationRateTv"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/timeConlay"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toStartOf="@id/respirationRateConLay"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/heartRateConlay">
+
+        <ImageView
+            android:id="@+id/timeIv"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/night_mode"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white" />
+
+        <TextView
+            android:id="@+id/timeTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="09:35 PM"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:layout_marginLeft="10dp"
+            app:layout_constraintStart_toEndOf="@id/timeIv"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Went to Bed >"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="@id/timeTv"
+            app:layout_constraintTop_toBottomOf="@id/timeTv"/>
+
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/alarmConLay"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toEndOf="@id/heartRateConlay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/respirationRateConLay">
+
+        <ImageView
+            android:id="@+id/alarmIv"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/alarm"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white" />
+
+
+        <TextView
+            android:id="@+id/alarmTimeTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="14 BPM"
+            android:textSize="20sp"
+
+            android:textColor="@color/white"
+            android:layout_marginLeft="10dp"
+            app:layout_constraintStart_toEndOf="@id/alarmIv"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Woke up >"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="@id/alarmTimeTv"
+            app:layout_constraintTop_toBottomOf="@id/alarmTimeTv"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/white"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/timeConlay"/>
+
+
+</android.support.constraint.ConstraintLayout>

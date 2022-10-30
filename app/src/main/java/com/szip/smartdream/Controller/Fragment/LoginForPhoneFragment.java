@@ -73,6 +73,8 @@ public class LoginForPhoneFragment extends BaseFragment {
      * */
     private int flagForEt;
 
+    private String mobiletv;
+
 
     /**
      * 返回一个fragment实例，Activity中调用
@@ -110,6 +112,7 @@ public class LoginForPhoneFragment extends BaseFragment {
        // countryTv = getView().findViewById(R.id.countryTv);
        // codeTv = getView().findViewById(R.id.codeTv);
         phoneEt = getView().findViewById(R.id.phoneNumberEt);
+        mobiletv = phoneEt.getText().toString();
        // phoneClearIv = getView().findViewById(R.id.phoneClearIv);
        // passwordEt = getView().findViewById(R.id.passwordEt);
        // passwordClearIv = getView().findViewById(R.id.passwordClearIv);
@@ -135,8 +138,13 @@ public class LoginForPhoneFragment extends BaseFragment {
         loginLl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), OTP.class);
-                startActivity(intent);
+                if (phoneEt.getText().toString().equals("")){
+                    showToast(getString(R.string.inputNum));
+                    return;
+                }else{ Intent intent = new Intent(getContext(), OTP.class);
+                    //intent.putExtra("mobileNumber" , mobileTv.toString());
+                    startActivity(intent);}
+
             }
         });
 //        lawsCb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -152,9 +160,9 @@ public class LoginForPhoneFragment extends BaseFragment {
 //            }
 //        });
 
-        phoneEt.addTextChangedListener(watcher);
+        //phoneEt.addTextChangedListener(watcher);
        // passwordEt.addTextChangedListener(watcher);
-        phoneEt.setOnFocusChangeListener(focusChangeListener);
+        //phoneEt.setOnFocusChangeListener(focusChangeListener);
        // passwordEt.setOnFocusChangeListener(focusChangeListener);
     }
 
@@ -192,14 +200,17 @@ public class LoginForPhoneFragment extends BaseFragment {
                 case R.id.passwordClearIv:
                     passwordEt.setText("");
                     break;
-               // case R.id.loginLl:
-//                    if (phoneEt.getText().toString().equals("")){
-//                        showToast(getString(R.string.inputNum));
-//                    }else if (passwordEt.getText().toString().equals("")){
+
+                    //Set on Click Listener On Continue Button That is user Enter Mobile Number or Not
+                case R.id.continueBtn:
+                    if (phoneEt.getText().toString().equals("")){
+                        showToast(getString(R.string.inputNum));
+                    }
+//                    else if (passwordEt.getText().toString().equals("")){
 //                        showToast(getString(R.string.password));
 //                    }else if (clickForLogin!=null)
 //                        clickForLogin.onLogin(codeTv.getText().toString(),phoneEt.getText().toString(),passwordEt.getText().toString(),rememberCb.isChecked());
-//                    break;
+                    break;
                // case R.id.forgetTv:
 //                    Intent intent = new Intent();
 //                    intent.setClass(getActivity(),ForgetPasswordActivity.class);
@@ -213,67 +224,67 @@ public class LoginForPhoneFragment extends BaseFragment {
     /**
      * 输入框键入监听器
      * */
-    private TextWatcher watcher = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//    private TextWatcher watcher = new TextWatcher() {
+//        @Override
+//        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//        }
+//
+//        @Override
+//        public void onTextChanged(CharSequence s, int start, int before, int count) {
+//
+//        }
 
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-            String data = s.toString();
-
-            switch (flagForEt){
-                case 0:
-                    if (TextUtils.isEmpty(data)){
-                        phoneClearIv.setVisibility(View.GONE);
-                    }else {
-                        phoneClearIv.setVisibility(View.VISIBLE);
-                    }
-                    break;
-                case 1:
-                    if (TextUtils.isEmpty(data)){
-                        passwordClearIv.setVisibility(View.GONE);
-                    }else {
-                        passwordClearIv.setVisibility(View.VISIBLE);
-                    }
-                    break;
-            }
-        }
-    };
+//        @Override
+//        public void afterTextChanged(Editable s) {
+//            String data = s.toString();
+//
+//            switch (flagForEt){
+//                case 0:
+//                    if (TextUtils.isEmpty(data)){
+//                        phoneClearIv.setVisibility(View.GONE);
+//                    }else {
+////                        phoneClearIv.setVisibility(View.VISIBLE);
+//                    }
+//                    break;
+//                case 1:
+//                    if (TextUtils.isEmpty(data)){
+//                        passwordClearIv.setVisibility(View.GONE);
+//                    }else {
+//                        passwordClearIv.setVisibility(View.VISIBLE);
+//                    }
+//                    break;
+//            }
+//        }
+   // };
 
     /**
      * 输入框焦点监听
      * */
-    private View.OnFocusChangeListener focusChangeListener = new View.OnFocusChangeListener() {
-        @Override
-        public void onFocusChange(View v, boolean hasFocus) {
-            switch (v.getId()){
-                case R.id.phoneEt:
-                    if (!hasFocus)
-                        phoneClearIv.setVisibility(View.GONE);
-                    else {
-                        flagForEt = 0;
-                        if (!phoneEt.getText().toString().equals(""))
-                            phoneClearIv.setVisibility(View.VISIBLE);
-                    }
-                    break;
-                case R.id.passwordEt:
-                    if (!hasFocus)
-                        passwordClearIv.setVisibility(View.GONE);
-                    else {
-                        flagForEt = 1;
-                        if (!passwordEt.getText().toString().equals(""))
-                            passwordClearIv.setVisibility(View.VISIBLE);
-                    }
-                    break;
-            }
-        }
-    };
+//    private View.OnFocusChangeListener focusChangeListener = new View.OnFocusChangeListener() {
+//        @Override
+//        public void onFocusChange(View v, boolean hasFocus) {
+//            switch (v.getId()){
+//                case R.id.phoneEt:
+//                    if (!hasFocus)
+//                        phoneClearIv.setVisibility(View.GONE);
+//                    else {
+//                        flagForEt = 0;
+//                        if (!phoneEt.getText().toString().equals(""))
+//                            phoneClearIv.setVisibility(View.VISIBLE);
+//                    }
+//                    break;
+//                case R.id.passwordEt:
+//                    if (!hasFocus)
+//                        passwordClearIv.setVisibility(View.GONE);
+//                    else {
+//                        flagForEt = 1;
+//                        if (!passwordEt.getText().toString().equals(""))
+//                            passwordClearIv.setVisibility(View.VISIBLE);
+//                    }
+//                    break;
+//            }
+//        }
+//    };
 
 }

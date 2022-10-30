@@ -255,7 +255,7 @@
     <string name="answer6">1.确认设备与手机app是否处于连接状态\n2.确认设备配对是否正确\n3.在APP里面进行蓝牙设备搜索绑定，而不是手机系统设置里进行蓝牙搜索</string>
     <string name="answer7">\t\t\t\t可以。虽然旁边人的信号会有所干扰，但对监测准确度的影响很小。设备默认监测躺在其上的用户。</string>
     <string name="answer8">\t\t\t\t确保手机与设备连接成功，请点击报告页右上角的”同步”按钮进行同步。</string>
-    <string name="answer9">以下几种情况，可能会导致智能闹钟无法响铃：\n1.检查是否正确配置了智能闹钟模式\n2. sleepee APP没有后台运行APP(sleepee)\n3. sleepee APP被手机系统列入黑名单APP(sleepee)\n4. sleepee APP的后台被安全类软件误清理APP(sleepee )\n5. sleepee APP安装在手机SD卡，手机重启后软件无法自启\n6.使用耳机时无法外放响铃\n7.闹钟铃声被调至最小 </string>
+    <string name="answer9">以下几种情况，可能会导致智能闹钟无法响铃：\n1.检查是否正确配置了智能闹钟模式\n2.Sleep Pad APP没有后台运行APP(sleepee)\n3.Sleep Pad APP被手机系统列入黑名单APP(sleepee)\n4.Sleep Pad APP的后台被安全类软件误清理APP(sleepee )\n5.Sleep Pad APP安装在手机SD卡，手机重启后软件无法自启\n6.使用耳机时无法外放响铃\n7.闹钟铃声被调至最小 </string>
     <string name="answer10">1.长按设备开关至蓝色灯开始闪烁\n2.开启手机蓝牙开关\n3.打开手机APP完成注册/登录操作\n4.连接搜索到的设备ID，看到设备指示灯由闪烁变为常亮即配置成功。</string>
     <string name="answer11">1.打开APP，完成登录操作\n2.点击页面中右上角连接按钮重新连接设备</string>
 

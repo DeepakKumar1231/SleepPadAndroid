@@ -20,6 +20,7 @@
         android:layout_margin="15dp"
         android:hint="Phone Number (+91)"
         android:textColorHint="#B7ACA8A8"
+        android:inputType="number"
         app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintBottom_toTopOf="@id/continueBtn"
         app:layout_constraintStart_toStartOf="parent"

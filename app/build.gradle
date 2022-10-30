@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 def dbflow_version = "4.2.4"
 android {
     compileSdkVersion 30
-    buildToolsVersion '30.0.2'
+    //buildToolsVersion '30.0.2'
     defaultConfig {
         applicationId "com.szip.sleepee"
         minSdkVersion 21
@@ -58,5 +58,7 @@ dependencies {
     implementation project(':protocal')
     implementation project(':slidelistview_library')
     implementation project(':DatePicker')
+
+    implementation 'com.github.antonKozyriatskyi:CircularProgressIndicator:1.3.0'
 
 }
