@@ -228,6 +228,7 @@ public class LoginActivity extends BaseActivity implements HttpCallbackWithLogin
             editor.putString("password", "");
         if (loginBean.getData().getUserInfo().getDeviceCode() == null) {//如果未绑定手环，跳到绑定页面
             startActivity(new Intent(mContext, FindDeviceActivity.class));
+            finish();
         } else {//如果已绑定睡眠带，获取闹钟列表
             BleService.getInstance().setmMac(loginBean.getData().getUserInfo().getDeviceCode());
             try {
@@ -275,7 +276,6 @@ public class LoginActivity extends BaseActivity implements HttpCallbackWithLogin
      */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // TODO Auto-generated method stub
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE && resultCode == 10) {
             final String string = data.getStringExtra("STRING");

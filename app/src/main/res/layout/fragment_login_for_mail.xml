@@ -61,6 +61,22 @@
             android:hint="Phone Number (+91)"/>
 
 
+        <EditText
+            android:id="@+id/passwordET"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@drawable/rectangle_bg"
+            android:backgroundTint="#88E8E4E4"
+            android:paddingLeft="10dp"
+            android:maxLines="1"
+            android:maxLength="10"
+            android:inputType="phone"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="50dp"
+            android:textColorHint="#B7ACA8A8"
+            android:hint="Password"/>
+
+
         <TextView
             android:id="@+id/continueBtn"
             android:layout_width="match_parent"

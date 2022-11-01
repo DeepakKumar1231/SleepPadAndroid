@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.szip.smartdream.Controller.OTPScreen;
 import com.szip.smartdream.Interface.OnClickForLogin;
@@ -19,7 +20,7 @@ import com.zaaach.citypicker.CityPicker;
 import com.zaaach.citypicker.adapter.OnPickListener;
 import com.zaaach.citypicker.model.City;
 
-public class LoginForPhoneFragment extends BaseFragment {
+public class LoginForPhoneFragment extends BaseFragment implements View.OnClickListener {
 
 
     private OnClickForLogin clickForLogin;
@@ -103,11 +104,22 @@ public class LoginForPhoneFragment extends BaseFragment {
 
                 //Set on Click Listener On Continue Button That is user Enter Mobile Number or Not
                 case R.id.continueBtn:
-                    if (phoneEt.getText().toString().equals("")) {
+                    if (phoneEt.getText().toString().equals("")){
                         showToast(getString(R.string.inputNum));
-                    } else {
-                        clickForLogin.onLogin("001", phoneEt.getText().toString(), "", true);
+                    }else if (passwordEt.getText().toString().equals("")){
+                        showToast(getString(R.string.password));
+                    }else {
+
                     }
+
+
+//                    if (phoneEt.getText().toString().equals("")) {
+//                        showToast(getString(R.string.inputNum));
+//                    } else {
+//                        clickForLogin.onLogin("+91", phoneEt.getText().toString(), "", true);
+//                    }
+
+                    //-----------------------------------------------------
 //                    else if (passwordEt.getText().toString().equals("")){
 //                        showToast(getString(R.string.password));
 //                    }else if (clickForLogin!=null)
@@ -145,8 +157,11 @@ public class LoginForPhoneFragment extends BaseFragment {
 
     @Override
     protected void afterOnCreated(Bundle savedInstanceState) {
+
         initView();
         initEvent();
+
+        loginLl.setOnClickListener(this);
     }
 
     /**
@@ -161,7 +176,7 @@ public class LoginForPhoneFragment extends BaseFragment {
         phoneEt = getView().findViewById(R.id.phoneNumberEt);
         mobiletv = phoneEt.getText().toString();
         // phoneClearIv = getView().findViewById(R.id.phoneClearIv);
-        // passwordEt = getView().findViewById(R.id.passwordEt);
+        passwordEt = getView().findViewById(R.id.passwordEt);
         // passwordClearIv = getView().findViewById(R.id.passwordClearIv);
         // rememberCb = getView().findViewById(R.id.rememberCb);
         loginLl = getView().findViewById(R.id.continueBtn);
@@ -170,7 +185,7 @@ public class LoginForPhoneFragment extends BaseFragment {
         if (sharedPreferencesp == null)
             sharedPreferencesp = getActivity().getSharedPreferences(FILE, Context.MODE_PRIVATE);
         phoneEt.setText(sharedPreferencesp.getString("phone", ""));
-        //passwordEt.setText(sharedPreferencesp.getString("password",""));
+        passwordEt.setText(sharedPreferencesp.getString("password",""));
 
     }
 
@@ -178,26 +193,29 @@ public class LoginForPhoneFragment extends BaseFragment {
      * 初始化监听
      */
     private void initEvent() {
+
+
+
         // forgetTv.setOnClickListener(onClickListener);
         // layout.setOnClickListener(onClickListener);
         // phoneClearIv.setOnClickListener(onClickListener);
         //passwordClearIv.setOnClickListener(onClickListener);
-        loginLl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (phoneEt.getText().toString().equals("")) {
-                    showToast(getString(R.string.inputNum));
-                    return;
-                } else {
-                    OTPScreen otp=new OTPScreen(clickForLogin,"001", phoneEt.getText().toString(), "", true);
-                    otp.showNow(requireFragmentManager(),"SANJAY");
-//                    Intent intent = new Intent(getContext(), OTP.class);
-//                    //intent.putExtra("mobileNumber" , mobileTv.toString());
-//                    startActivity(intent);
-                }
-
-            }
-        });
+//        loginLl.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if (phoneEt.getText().toString().equals("")) {
+//                    showToast(getString(R.string.inputNum));
+//                    return;
+//                } else {
+//                    OTPScreen otp=new OTPScreen(clickForLogin,"+91", phoneEt.getText().toString(), "", true);
+//                    otp.showNow(requireFragmentManager(),"SANJAY");
+////                    Intent intent = new Intent(getContext(), OTP.class);
+////                    //intent.putExtra("mobileNumber" , mobileTv.toString());
+////                    startActivity(intent);
+//                }
+//
+//            }
+//        });
 //        lawsCb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 //            @Override
 //            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -215,6 +233,20 @@ public class LoginForPhoneFragment extends BaseFragment {
         // passwordEt.addTextChangedListener(watcher);
         //phoneEt.setOnFocusChangeListener(focusChangeListener);
         // passwordEt.setOnFocusChangeListener(focusChangeListener);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.continueBtn:
+                if (phoneEt.getText().toString().equals("")){
+                    showToast(getString(R.string.inputNum));
+                }else if (passwordEt.getText().toString().equals("")){
+                    showToast("Enter Password");
+                }else if (clickForLogin!=null)
+                    clickForLogin.onLogin("001",phoneEt.getText().toString(),passwordEt.getText().toString(),true);
+                break;
+        }
     }
 
     /**
