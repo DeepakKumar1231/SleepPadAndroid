@@ -24,6 +24,7 @@ import com.szip.smartdream.Bean.HttpBean.ClockDataBean;
 import com.szip.smartdream.Bean.HttpBean.LoginBean;
 import com.szip.smartdream.Controller.Fragment.LoginForMailFragment;
 import com.szip.smartdream.Controller.Fragment.LoginForPhoneFragment;
+import com.szip.smartdream.Dashboard;
 import com.szip.smartdream.Interface.HttpCallbackWithClockData;
 import com.szip.smartdream.Interface.HttpCallbackWithLogin;
 import com.szip.smartdream.Interface.HttpCallbackWithReport;
@@ -130,6 +131,7 @@ public class LoginActivity extends BaseActivity implements HttpCallbackWithLogin
         }
     };
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -141,6 +143,9 @@ public class LoginActivity extends BaseActivity implements HttpCallbackWithLogin
         initView();
         initEvent();
         initPager();
+
+//        Intent intent = new Intent(this , Dashboard.class);
+//        startActivity(intent);
     }
 
     @Override

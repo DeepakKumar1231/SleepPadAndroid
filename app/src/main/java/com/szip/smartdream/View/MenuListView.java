@@ -15,6 +15,7 @@ import com.szip.smartdream.R;
  */
 
 public class MenuListView extends ViewGroup {
+
     private Context context;
     int width,height;
     private Bitmap sectorBit;

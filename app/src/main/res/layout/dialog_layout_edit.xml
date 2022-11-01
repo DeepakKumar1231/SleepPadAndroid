@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@mipmap/me_box_bg"
+    android:background="@drawable/br_alarm_uncheck"
     android:layout_marginLeft="15dp"
     android:layout_marginRight="15dp">
 
@@ -30,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="8dp"
-        android:background="@drawable/main_color_corner"
+        android:background="@drawable/rectangle_bg"
         android:layout_marginTop="18dp"
         android:layout_marginRight="45dp"
         android:layout_marginLeft="45dp"
@@ -100,7 +100,7 @@
             android:layout_weight="1"
             android:background="#00000000"
             android:text="@string/confirm"
-            android:textColor="@color/MainColor"
+            android:textColor="@color/purple"
             android:textSize="17sp"/>
     </LinearLayout>
 

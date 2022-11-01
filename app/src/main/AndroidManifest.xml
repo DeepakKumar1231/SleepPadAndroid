@@ -31,6 +31,14 @@
         <!--         android:roundIcon="@mipmap/icon_sleepee_c"
                 android:icon="@mipmap/icon_sleepee"-->
         <activity
+            android:name=".Dashboard"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".Journal"
             android:exported="false"
             android:theme="@style/AppTheme.NoActionBar">

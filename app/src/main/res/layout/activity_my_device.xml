@@ -15,8 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_marginTop="85dp"
-        android:layout_marginBottom="100dp">
+        android:layout_marginTop="85dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,6 +29,7 @@
                 android:layout_marginLeft="@dimen/ListMargin"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
+                android:textSize="16sp"
                 android:textColor="@color/black1"
                 android:text="@string/power"/>
 
@@ -41,13 +41,14 @@
                 android:layout_marginRight="@dimen/ListMargin"
                 android:layout_gravity="center_vertical|end"
                 android:textColor="@color/black1"
+                android:textSize="16sp"
                 android:text="@string/checking"/>
 
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="0.5dp"
+            android:layout_height="1dp"
             android:background="@color/black1"
             android:layout_marginRight="@dimen/ListMargin"
             android:layout_marginLeft="@dimen/ListMargin"/>
@@ -84,6 +85,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/ListMargin"
+                android:tint="@color/black"
                 android:layout_gravity="center_vertical"
                 android:src="@mipmap/me_arrow_right"/>
 
@@ -167,38 +169,62 @@
             android:layout_marginRight="@dimen/ListMargin"
             android:layout_marginLeft="@dimen/ListMargin"/>
 
+
+
+
+            />
+
         <LinearLayout
             android:id="@+id/unbindLl"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_marginTop="12dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="350dp"
+            android:layout_alignParentBottom="true"
             android:layout_gravity="center_horizontal"
             android:gravity="center|bottom"
-            android:enabled="false">
+            android:enabled="false"
+            android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/me_btn_unbounddevice"/>
+<!--            <ImageView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:src="@mipmap/me_btn_unbounddevice"/>-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black1"
-                android:text="@string/unBindDevice"
-                android:textSize="15sp"/>
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textColor="@color/black1"-->
+<!--                android:text="@string/unBindDevice"-->
+<!--                android:textSize="15sp"/>-->
+
 
         </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="false"
+            android:layout_gravity="bottom|center"
+            android:background="@drawable/rectangle_bg"
+            android:backgroundTint="@color/purple"
+            android:gravity="center"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="10dp"
+            android:text="Unbound Device"
+            android:textColor="@color/white" />
 
 
     </LinearLayout>
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:src="@mipmap/search_bg_bottom"
-        android:layout_centerHorizontal="true"/>
+    <!--    <ImageView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:src="@mipmap/search_bg_bottom"-->
+<!--        android:layout_centerHorizontal="true"/>-->
+
+
+
+
 
 </RelativeLayout>

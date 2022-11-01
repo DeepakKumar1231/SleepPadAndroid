@@ -1,188 +1,872 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/gradient_background">
 
 
-    <ImageView
-        android:id="@+id/animIv1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:src="@mipmap/sleep_animation_1"
-        android:layout_marginTop="80dp"
-        android:visibility="gone"/>
-
-    <ImageView
-        android:id="@+id/animIv2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/animIv1"
-        android:layout_marginTop="70dp"
-        android:layout_marginLeft="5dp"
-        android:src="@mipmap/sleep_animation_2"
-        android:visibility="gone"/>
-
-    <ImageView
-        android:id="@+id/animIv3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="130dp"
-        android:layout_marginTop="27dp"
-        android:src="@mipmap/sleep_animation_3"
-        android:visibility="gone"/>
+<!--    <android.support.v7.widget.Toolbar-->
+<!--        android:id="@+id/toolBar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="45dp"-->
+<!--        android:background="@color/purple"-->
+<!--        app:navigationIcon="@drawable/ic_baseline_menu_24"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"/>-->
 
 
-
-    <RelativeLayout
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/toolBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-       >
+        android:layout_height="45dp"
+        android:background="@color/purple"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/menuIv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/sleep_bg_heartbreath"
-            android:layout_centerHorizontal="true"/>
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/ic_baseline_menu_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
-        <LinearLayout
-            android:id="@+id/breathLl"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="130dp"
-            android:layout_marginLeft="35dp">
+    </android.support.constraint.ConstraintLayout>
 
-            <TextView
-                android:id="@+id/breathTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="--"
-                android:textColor="@color/MainColor"
-                android:layout_gravity="center"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:text="Br/min"
-                android:textColor="@color/MainColor"
-                android:textSize="11sp"
-                android:layout_gravity="center"/>
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/sleep_icon_breath"
-                android:layout_marginLeft="8dp"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/heartLl"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="130dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="35dp">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/sleep_icon_heartrate"
-                android:layout_marginRight="8dp"/>
-
-            <TextView
-                android:id="@+id/heartTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="--"
-                android:textColor="@color/MainColor"
-                android:layout_gravity="center"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:text="B/min"
-                android:textColor="@color/MainColor"
-                android:textSize="11sp"
-                android:layout_gravity="center"/>
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolBar"
+        app:layout_constraintBottom_toTopOf="@id/sleepRl">
 
 
-
-        </LinearLayout>
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/clockRl"
+    <TextView
+        android:id="@+id/dayTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true">
+        android:text="Saturday"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/calenderIv"
+        app:layout_constraintBottom_toBottomOf="@id/calenderIv"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="17th Sep-18th Sep"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="@color/white"
+        android:layout_marginRight="20dp"
+        app:layout_constraintEnd_toStartOf="@id/calenderIv"
+        app:layout_constraintBottom_toBottomOf="@id/calenderIv"/>
+
+    <ImageView
+        android:id="@+id/calenderIv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_baseline_calendar_month_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/white"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/calenderIv"/>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/monConsLay"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tuesConsLay"
+        app:layout_constraintTop_toBottomOf="@id/view"
+        android:layout_marginTop="20dp">
+
+        <antonkozyriatskyi.circularprogressindicator.CircularProgressIndicator
+            android:id="@+id/circular_progressMonday"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            app:progressColor="@color/purple"
+            app:textColor="@color/white"
+            app:textSize="0sp"
+            app:direction="clockwise"
+            app:progressCap="round"
+            app:progressBackgroundColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/mTv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="M"
+            android:gravity="center"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/tuesConsLay"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        app:layout_constraintStart_toEndOf="@id/monConsLay"
+        app:layout_constraintEnd_toStartOf="@id/wedConsLay"
+        app:layout_constraintTop_toBottomOf="@id/view"
+        android:layout_marginTop="20dp">
+
+        <antonkozyriatskyi.circularprogressindicator.CircularProgressIndicator
+            android:id="@+id/circular_progressTuesday"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            app:progressColor="@color/purple"
+            app:textColor="@color/white"
+            app:textSize="0sp"
+            app:direction="clockwise"
+            app:progressCap="round"
+            app:progressBackgroundColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/tuesTv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="Tu"
+            android:gravity="center"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/wedConsLay"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        app:layout_constraintStart_toEndOf="@id/tuesConsLay"
+        app:layout_constraintTop_toBottomOf="@id/view"
+        app:layout_constraintEnd_toStartOf="@id/thursConsLay"
+        android:layout_marginTop="20dp">
+
+        <antonkozyriatskyi.circularprogressindicator.CircularProgressIndicator
+            android:id="@+id/circular_progressWednesday"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            app:progressColor="@color/purple"
+            app:textColor="@color/white"
+            app:textSize="0sp"
+            app:direction="clockwise"
+            app:progressCap="round"
+            app:progressBackgroundColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/wedTv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="W"
+            android:gravity="center"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/thursConsLay"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        app:layout_constraintStart_toEndOf="@id/fridayConsLay"
+        app:layout_constraintEnd_toStartOf="@id/wedConsLay"
+        app:layout_constraintTop_toBottomOf="@id/view"
+        android:layout_marginTop="20dp">
+
+        <antonkozyriatskyi.circularprogressindicator.CircularProgressIndicator
+            android:id="@+id/circular_progressThursday"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            app:progressColor="@color/purple"
+            app:textColor="@color/white"
+            app:textSize="0sp"
+            app:direction="clockwise"
+            app:progressCap="round"
+            app:progressBackgroundColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/thursTv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="T"
+            android:gravity="center"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/fridayConsLay"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        app:layout_constraintStart_toEndOf="@id/thursConsLay"
+        app:layout_constraintEnd_toStartOf="@id/saturdayConsLay"
+        app:layout_constraintTop_toBottomOf="@id/view"
+        android:layout_marginTop="20dp">
+
+        <antonkozyriatskyi.circularprogressindicator.CircularProgressIndicator
+            android:id="@+id/circular_progressFriday"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            app:progressColor="@color/purple"
+            app:textColor="@color/white"
+            app:textSize="0sp"
+            app:direction="clockwise"
+            app:progressCap="round"
+            app:progressBackgroundColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/fridayTv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="F"
+            android:gravity="center"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/saturdayConsLay"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        app:layout_constraintStart_toEndOf="@id/fridayConsLay"
+        app:layout_constraintEnd_toStartOf="@id/sundayConsLay"
+        app:layout_constraintTop_toBottomOf="@id/view"
+        android:layout_marginTop="20dp">
+
+        <antonkozyriatskyi.circularprogressindicator.CircularProgressIndicator
+            android:id="@+id/circular_progressSaturday"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            app:progressColor="@color/purple"
+            app:textColor="@color/white"
+            app:textSize="0sp"
+            app:direction="clockwise"
+            app:progressCap="round"
+            app:progressBackgroundColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/saturdayTv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="S"
+            android:gravity="center"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/sundayConsLay"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/saturdayConsLay"
+        app:layout_constraintTop_toBottomOf="@id/view"
+        android:layout_marginTop="20dp">
+
+        <antonkozyriatskyi.circularprogressindicator.CircularProgressIndicator
+            android:id="@+id/circular_progressSunday"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            app:progressColor="@color/purple"
+            app:textColor="@color/white"
+            app:textSize="0sp"
+            app:direction="clockwise"
+            app:progressCap="round"
+            app:progressBackgroundColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/sundayTv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="Su"
+            android:gravity="center"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/white"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sundayConsLay"/>
+
+
+    <TextView
+        android:id="@+id/sleepScoreTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sleep Score"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view2"/>
+
+
+    <antonkozyriatskyi.circularprogressindicator.CircularProgressIndicator
+        android:id="@+id/circular_progressCurrentDay"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        app:progressColor="@color/purple"
+        app:textColor="@color/white"
+        app:textSize="15sp"
+        app:direction="clockwise"
+        app:progressCap="round"
+        android:layout_marginTop="20dp"
+        app:progressStrokeWidth="14dp"
+        app:progressBackgroundColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sleepScoreTv"/>
+
+    <TextView
+        android:id="@+id/timeinBedTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="8h 28min"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@id/shareIv"
+        app:layout_constraintStart_toEndOf="@id/circular_progressCurrentDay"
+        app:layout_constraintTop_toTopOf="@id/circular_progressCurrentDay"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="in Bed >"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@id/timeinBedTv"
+        app:layout_constraintTop_toBottomOf="@id/timeinBedTv"/>
+
+
+
+    <TextView
+        android:id="@+id/timeinAsleepTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="7h 28min"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@id/timeinBedTv"
+        app:layout_constraintBottom_toTopOf="@id/sleep"/>
+
+    <TextView
+        android:id="@+id/sleep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Asleep >"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@id/timeinBedTv"
+        app:layout_constraintBottom_toBottomOf="@id/circular_progressCurrentDay"/>
+
+
+
+    <ImageView
+        android:id="@+id/shareIv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_baseline_share_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/circular_progressCurrentDay"
+        app:layout_constraintBottom_toBottomOf="@id/circular_progressCurrentDay"/>
+
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/white"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/circular_progressCurrentDay"/>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/heartLl"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toStartOf="@id/breathLl"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view3">
+
+
+        <ImageView
+            android:id="@+id/heartBeatIv"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/heart_beat"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white" />
+
+
+        <TextView
+            android:id="@+id/heartTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-/- Br/Min"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:layout_marginLeft="10dp"
+            app:layout_constraintStart_toEndOf="@id/heartBeatIv"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Heart Rate >"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="@id/heartTv"
+            app:layout_constraintTop_toBottomOf="@id/heartTv"/>
+
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/breathLl"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toEndOf="@id/heartLl"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view3">
+
+
+
+        <ImageView
+            android:id="@+id/respirationRateIv"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/respiratory_system"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white" />
+
+
+        <TextView
+            android:id="@+id/breathTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-/- Br/Min"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:layout_marginLeft="10dp"
+            app:layout_constraintStart_toEndOf="@id/respirationRateIv"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Respiration Rate >"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="@id/breathTv"
+            app:layout_constraintTop_toBottomOf="@id/breathTv"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/timeConlay"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toStartOf="@id/clockRl"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/heartLl">
+
+        <ImageView
+            android:id="@+id/timeIv"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/night_mode"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white" />
+
+        <TextView
+            android:id="@+id/timeTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="09:35 PM"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:layout_marginLeft="10dp"
+            app:layout_constraintStart_toEndOf="@id/timeIv"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Went to Bed >"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="@id/timeTv"
+            app:layout_constraintTop_toBottomOf="@id/timeTv"/>
+
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/clockRl"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toEndOf="@id/timeConlay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/breathLl">
 
         <ImageView
             android:id="@+id/clockIv"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/alarm"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white" />
+
+
+        <TextView
+            android:id="@+id/clockTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/sleep_bg_alarm" />
+            android:text="14 BPM"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:layout_marginLeft="10dp"
+            app:layout_constraintStart_toEndOf="@id/clockIv"
+            app:layout_constraintTop_toTopOf="parent"/>
 
-        <LinearLayout
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp">
+            android:text="Woke up >"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="@id/clockTv"
+            app:layout_constraintTop_toBottomOf="@id/clockTv"/>
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/sleep_icon_alarm"/>
+    </android.support.constraint.ConstraintLayout>
 
-            <TextView
-                android:id="@+id/clockTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:layout_gravity="center_vertical"
-                android:textColor="@color/MainColor"
-                android:layout_marginLeft="10dp"/>
-
-        </LinearLayout>
+    <View
+        android:id="@+id/view4"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/white"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/timeConlay"/>
 
 
 
-    </RelativeLayout>
+
+<!--    <ImageView-->
+<!--        android:id="@+id/animIv1"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:src="@mipmap/sleep_animation_1"-->
+<!--        android:layout_marginTop="80dp"-->
+<!--        android:visibility="gone"/>-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/animIv2"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_toRightOf="@id/animIv1"-->
+<!--        android:layout_marginTop="70dp"-->
+<!--        android:layout_marginLeft="5dp"-->
+<!--        android:src="@mipmap/sleep_animation_2"-->
+<!--        android:visibility="gone"/>-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/animIv3"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:layout_marginEnd="130dp"-->
+<!--        android:layout_marginTop="27dp"-->
+<!--        android:src="@mipmap/sleep_animation_3"-->
+<!--        android:visibility="gone"/>-->
 
 
 
-    <RelativeLayout
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerVertical="true"-->
+<!--       >-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@mipmap/sleep_bg_heartbreath"-->
+<!--            android:layout_centerHorizontal="true"/>-->
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/breathLl"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="130dp"-->
+<!--            android:layout_marginLeft="35dp">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/breathTv"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="&#45;&#45;"-->
+<!--                android:textColor="@color/MainColor"-->
+<!--                android:layout_gravity="center"/>-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="5dp"-->
+<!--                android:text="Br/min"-->
+<!--                android:textColor="@color/MainColor"-->
+<!--                android:textSize="11sp"-->
+<!--                android:layout_gravity="center"/>-->
+
+<!--            <ImageView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:src="@mipmap/sleep_icon_breath"-->
+<!--                android:layout_marginLeft="8dp"/>-->
+
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/heartLl"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="130dp"-->
+<!--            android:layout_alignParentRight="true"-->
+<!--            android:layout_marginRight="35dp">-->
+
+<!--            <ImageView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:src="@mipmap/sleep_icon_heartrate"-->
+<!--                android:layout_marginRight="8dp"/>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/heartTv"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="&#45;&#45;"-->
+<!--                android:textColor="@color/MainColor"-->
+<!--                android:layout_gravity="center"/>-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="5dp"-->
+<!--                android:text="B/min"-->
+<!--                android:textColor="@color/MainColor"-->
+<!--                android:textSize="11sp"-->
+<!--                android:layout_gravity="center"/>-->
+
+
+
+<!--        </LinearLayout>-->
+
+<!--    </RelativeLayout>-->
+
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/clockRl"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_alignParentBottom="true">-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/clockIv"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@mipmap/sleep_bg_alarm" />-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:layout_marginTop="30dp">-->
+
+<!--            <ImageView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:src="@mipmap/sleep_icon_alarm"/>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/clockTv"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textSize="14sp"-->
+<!--                android:layout_gravity="center_vertical"-->
+<!--                android:textColor="@color/MainColor"-->
+<!--                android:layout_marginLeft="10dp"/>-->
+
+<!--        </LinearLayout>-->
+
+
+
+<!--    </RelativeLayout>-->
+
+
+
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/sleepRl"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_centerHorizontal="true">-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@mipmap/sleep_btn_sleep" />-->
+<!--        <TextView-->
+<!--            android:id="@+id/sleepTv"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/startSleep"-->
+<!--            android:textSize="20sp"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:layout_marginTop="40dp"/>-->
+<!--    </RelativeLayout>-->
+
+</android.support.constraint.ConstraintLayout>
+
+
+
+<android.support.constraint.ConstraintLayout
         android:id="@+id/sleepRl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true">
+        android:background="@drawable/rectangle_bg"
+        android:backgroundTint="@color/purple"
+        android:paddingVertical="20dp"
+        android:paddingHorizontal="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/sleep_btn_sleep" />
         <TextView
             android:id="@+id/sleepTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/startSleep"
-            android:textSize="20sp"
-            android:textColor="@color/white"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="40dp"/>
-    </RelativeLayout>
+            android:text="Start Monitoring"
+            android:background="@drawable/rectangle_bg"
+            android:backgroundTint="@color/purple"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </android.support.constraint.ConstraintLayout>
 
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

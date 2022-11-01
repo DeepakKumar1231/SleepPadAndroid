@@ -18,11 +18,11 @@
             android:id="@+id/button1"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="#FFFFFF"
             android:layout_gravity="center"
+            android:background="#FFFFFF"
             android:text="xxx"
             android:textColor="@drawable/dialog_button_bg"
-            android:textSize="@dimen/simple_text_size"/>
+            android:textSize="@dimen/simple_text_size" />
 
         <View
             android:layout_width="match_parent"

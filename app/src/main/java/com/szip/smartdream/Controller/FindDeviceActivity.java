@@ -158,8 +158,8 @@ public class FindDeviceActivity extends BaseActivity implements HttpCallbackWith
 
         //((ImageView)findViewById(R.id.addivv)).setImageResource(R.mipmap.searchdevice_refresh_new);
 
-        animIv1 = findViewById(R.id.animIv1);
-        animIv2 = findViewById(R.id.animIv2);
+//        animIv1 = findViewById(R.id.animIv1);
+//        animIv2 = findViewById(R.id.animIv2);
         mDevices = new ArrayList<SearchResult>();
         listView = findViewById(R.id.deviceList);
         adapter = new DeviceListAdapter(this);
@@ -183,31 +183,31 @@ public class FindDeviceActivity extends BaseActivity implements HttpCallbackWith
     }
 
     private void initAnimator() {
-        anim1 = ObjectAnimator.ofFloat(animIv1,"alpha",0f,1f,0f);
-        anim2 = ObjectAnimator.ofFloat(animIv1,"scaleX",0.5f,2f);
-        anim3 = ObjectAnimator.ofFloat(animIv1,"scaleY",0.5f,2f);
-        anim1.setInterpolator(new LinearInterpolator());
-        anim1.setRepeatCount(-1);
-        anim2.setInterpolator(new LinearInterpolator());
-        anim2.setRepeatCount(-1);
-        anim3.setInterpolator(new LinearInterpolator());
-        anim3.setRepeatCount(-1);
-
-        set.setDuration(4000);
-        set.play(anim1).with(anim2).with(anim3);
-
-        anim4 = ObjectAnimator.ofFloat(animIv2,"alpha",0f,1f,0f);
-        anim5 = ObjectAnimator.ofFloat(animIv2,"scaleX",0.5f,2f);
-        anim6= ObjectAnimator.ofFloat(animIv2,"scaleY",0.5f,2f);
-        anim4.setInterpolator(new LinearInterpolator());
-        anim4.setRepeatCount(-1);
-        anim5.setInterpolator(new LinearInterpolator());
-        anim5.setRepeatCount(-1);
-        anim6.setInterpolator(new LinearInterpolator());
-        anim6.setRepeatCount(-1);
-
-        set1.setDuration(4000);
-        set1.play(anim4).with(anim5).with(anim6);
+//        anim1 = ObjectAnimator.ofFloat(animIv1,"alpha",0f,1f,0f);
+//        anim2 = ObjectAnimator.ofFloat(animIv1,"scaleX",0.5f,2f);
+//        anim3 = ObjectAnimator.ofFloat(animIv1,"scaleY",0.5f,2f);
+//        anim1.setInterpolator(new LinearInterpolator());
+//        anim1.setRepeatCount(-1);
+//        anim2.setInterpolator(new LinearInterpolator());
+//        anim2.setRepeatCount(-1);
+//        anim3.setInterpolator(new LinearInterpolator());
+//        anim3.setRepeatCount(-1);
+//
+//        set.setDuration(4000);
+//        set.play(anim1).with(anim2).with(anim3);
+//
+//        anim4 = ObjectAnimator.ofFloat(animIv2,"alpha",0f,1f,0f);
+//        anim5 = ObjectAnimator.ofFloat(animIv2,"scaleX",0.5f,2f);
+//        anim6= ObjectAnimator.ofFloat(animIv2,"scaleY",0.5f,2f);
+//        anim4.setInterpolator(new LinearInterpolator());
+//        anim4.setRepeatCount(-1);
+//        anim5.setInterpolator(new LinearInterpolator());
+//        anim5.setRepeatCount(-1);
+//        anim6.setInterpolator(new LinearInterpolator());
+//        anim6.setRepeatCount(-1);
+//
+//        set1.setDuration(4000);
+//        set1.play(anim4).with(anim5).with(anim6);
     }
 
     /**
