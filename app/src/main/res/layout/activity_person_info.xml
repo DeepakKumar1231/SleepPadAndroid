@@ -8,8 +8,24 @@
     android:background="@color/white"
     tools:context=".Controller.PersonInfoActivity">
 
-    <include layout="@layout/title1"/>
+<!--    <include layout="@layout/title1"/>-->
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/purple"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"/>
+
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -260,11 +276,11 @@
 
     </LinearLayout>
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:src="@mipmap/search_bg_bottom"
-        android:layout_centerHorizontal="true"/>
+<!--    <ImageView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:src="@mipmap/search_bg_bottom"-->
+<!--        android:layout_centerHorizontal="true"/>-->
 
 </RelativeLayout>

@@ -58,12 +58,12 @@ public class PersonFragment extends BaseFragment {
 //        initEvent();
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        nameTv.setText(getString(R.string.hi)+((MyApplication)getActivity().getApplicationContext())
-                .getUserInfo().getUserName()+"!");
-    }
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+////        nameTv.setText(getString(R.string.hi)+((MyApplication)getActivity().getApplicationContext())
+////                .getUserInfo().getUserName()+"!");
+//    }
 
 //    private void initView() {
 //        nameTv = getView().findViewById(R.id.topTv);

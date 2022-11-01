@@ -21,37 +21,42 @@
 
 
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:src="@mipmap/search_bg_bottom"
-        android:layout_centerHorizontal="true"/>
+<!--    <ImageView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:src="@mipmap/search_bg_bottom"-->
+<!--        android:layout_centerHorizontal="true"/>-->
 
     <LinearLayout
         android:id="@+id/addLl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:orientation="horizontal"
+        android:background="@drawable/rectangle_bg"
+        android:backgroundTint="@color/purple"
+        android:paddingVertical="10dp"
+        android:paddingHorizontal="15dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="80dp"
         android:layout_gravity="center_horizontal"
         >
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/alarm_btn_add"/>
+<!--        <ImageView-->
+<!--            android:layout_width="24dp"-->
+<!--            android:layout_height="24dp"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:src="@drawable/alarm"/>-->
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textColor="@color/gray3"
-            android:text="@string/add"
+            android:textColor="@color/white"
+            android:text="Set Alarm"
             android:textSize="15sp"
-            android:layout_gravity="center_horizontal" />
+            android:gravity="center"
+            />
 
     </LinearLayout>
 

@@ -4,19 +4,23 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
-import android.view.animation.LinearInterpolator;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.szip.smartdream.Bean.DeviceClockIsUpdataBean;
 import com.szip.smartdream.Bean.HealthBean;
+import com.szip.smartdream.Controller.MainActivity;
 import com.szip.smartdream.Controller.RealTimeActivity;
 import com.szip.smartdream.MyApplication;
 import com.szip.smartdream.R;
@@ -35,26 +39,29 @@ import org.greenrobot.eventbus.ThreadMode;
 public class SleepFragment extends BaseFragment {
 
     private ObjectAnimator anim1,anim2,anim3;
-    private ImageView animatorIv1,animatorIv2,animatorIv3;
+     //private ImageView animatorIv1,animatorIv2,animatorIv3;
     private AnimatorSet set = new AnimatorSet();
 
     /**
      * 开始睡眠/闹钟控件
      * */
-    private RelativeLayout sleepRl;
+    private ConstraintLayout sleepRl;
     private TextView sleepTv;
-    private RelativeLayout clockRl;
+    private ConstraintLayout clockRl;
     private TextView clockTv;
     /**
      *实时健康数据以及连接状态
      * */
-    private LinearLayout breathLl,heartLl;
+    private ConstraintLayout breathLl,heartLl;
     private TextView heartTv;
     private TextView breathTv;
 
     private MyApplication app;
 
     private boolean isDisconnect;
+
+    private ImageView menuIv;
+
 
     /**
      * 按钮出现的动画
@@ -75,6 +82,11 @@ public class SleepFragment extends BaseFragment {
         fragment.setArguments(bundle);
         return fragment;
     }
+
+//    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+//        View view = inflater.inflate(R.layout.fragment_sleep, container, false);
+//        return view;
+//    }
 
     @Override
     protected int getLayoutId() {
@@ -127,20 +139,37 @@ public class SleepFragment extends BaseFragment {
         heartLl = getView().findViewById(R.id.heartLl);
         breathTv = getView().findViewById(R.id.breathTv);
         heartTv = getView().findViewById(R.id.heartTv);
+        menuIv=getView().findViewById(R.id.menuIv);
+        menuIv.setClickable(true);
 
-        animatorIv1 = getView().findViewById(R.id.animIv1);
-        animatorIv2 = getView().findViewById(R.id.animIv2);
-        animatorIv3 = getView().findViewById(R.id.animIv3);
+//        animatorIv1 = getView().findViewById(R.id.animIv1);
+//        animatorIv2 = getView().findViewById(R.id.animIv2);
+//        animatorIv3 = getView().findViewById(R.id.animIv3);
 
     }
 
     /**
      *初始化事件监听
-     * */
+     *
+     * @return*/
+    private View.OnClickListener functionOne(){
+        ((MainActivity) getActivity()).functionOne();
+        return null;
+    }
+
+
+
     private void initEvent() {
         sleepRl.setOnClickListener(onClickListener);
         breathLl.setOnClickListener(onClickListener);
         heartLl.setOnClickListener(onClickListener);
+
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+       // menuIv.setOnClickListener(functionOne());
     }
 
     /**
@@ -148,26 +177,26 @@ public class SleepFragment extends BaseFragment {
      * */
     private void initAnimator() {
 
-        anim1 = ObjectAnimator.ofFloat(animatorIv1,"alpha",0,1,1,1,0,0,0);
-        anim2 = ObjectAnimator.ofFloat(animatorIv2,"alpha",0,0,1,1,1,0,0);
-        anim3 = ObjectAnimator.ofFloat(animatorIv3,"alpha",0,0,0,1,1,1,0);
-        anim1.setInterpolator(new LinearInterpolator());
-        anim1.setRepeatCount(-1);
-        anim2.setInterpolator(new LinearInterpolator());
-        anim2.setRepeatCount(-1);
-        anim3.setInterpolator(new LinearInterpolator());
-        anim3.setRepeatCount(-1);
-
-        set.setDuration(6000);
-        set.play(anim1).with(anim2).with(anim3);
-
-        scaleAnimation.setDuration(1000);//设置动画持续时间
-        scaleAnimation.setRepeatCount(0);//设置重复次数
-        scaleAnimation.setFillAfter(true);//动画执行完后是否停留在执行完的状态
-
-        scaleAnimation1.setDuration(1500);//设置动画持续时间
-        scaleAnimation1.setRepeatCount(0);//设置重复次数
-        scaleAnimation1.setFillAfter(true);//动画执行完后是否停留在执行完的状态
+//        anim1 = ObjectAnimator.ofFloat(animatorIv1,"alpha",0,1,1,1,0,0,0);
+//        anim2 = ObjectAnimator.ofFloat(animatorIv2,"alpha",0,0,1,1,1,0,0);
+//        anim3 = ObjectAnimator.ofFloat(animatorIv3,"alpha",0,0,0,1,1,1,0);
+//        anim1.setInterpolator(new LinearInterpolator());
+//        anim1.setRepeatCount(-1);
+//        anim2.setInterpolator(new LinearInterpolator());
+//        anim2.setRepeatCount(-1);
+//        anim3.setInterpolator(new LinearInterpolator());
+//        anim3.setRepeatCount(-1);
+//
+//        set.setDuration(6000);
+//        set.play(anim1).with(anim2).with(anim3);
+//
+//        scaleAnimation.setDuration(1000);//设置动画持续时间
+//        scaleAnimation.setRepeatCount(0);//设置重复次数
+//        scaleAnimation.setFillAfter(true);//动画执行完后是否停留在执行完的状态
+//
+//        scaleAnimation1.setDuration(1500);//设置动画持续时间
+//        scaleAnimation1.setRepeatCount(0);//设置重复次数
+//        scaleAnimation1.setFillAfter(true);//动画执行完后是否停留在执行完的状态
     }
 
 
@@ -176,23 +205,23 @@ public class SleepFragment extends BaseFragment {
      * */
     private void startAnimator() {
 
-        animatorIv1.setVisibility(View.VISIBLE);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                animatorIv2.setVisibility(View.VISIBLE);
-            }
-        },500);
-
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                animatorIv3.setVisibility(View.VISIBLE);
-            }
-        },1000);
-
-        sleepRl.startAnimation(scaleAnimation);
-        clockRl.startAnimation(scaleAnimation1);
+//        animatorIv1.setVisibility(View.VISIBLE);
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                animatorIv2.setVisibility(View.VISIBLE);
+//            }
+//        },500);
+//
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                animatorIv3.setVisibility(View.VISIBLE);
+//            }
+//        },1000);
+//
+//        sleepRl.startAnimation(scaleAnimation);
+//        clockRl.startAnimation(scaleAnimation1);
     }
 
     /**
