@@ -1,18 +1,11 @@
 package com.szip.smartdream.Controller.Fragment;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.util.Log;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.szip.smartdream.Controller.AboutActivity;
-import com.szip.smartdream.Controller.FeedbackActivity;
-import com.szip.smartdream.Controller.HelpCentreActivity;
-import com.szip.smartdream.Controller.MyDeviceActivity;
-import com.szip.smartdream.Controller.PersonInfoActivity;
-import com.szip.smartdream.Controller.UserInfoActivity;
 import com.szip.smartdream.MyApplication;
 import com.szip.smartdream.R;
 
@@ -25,7 +18,7 @@ public class PersonFragment extends BaseFragment {
     private Context mContext;
 
     private TextView nameTv;
-//    private LinearLayout dataLl;
+    //    private LinearLayout dataLl;
     private LinearLayout myDeviceLl;
     private LinearLayout userInfoLl;
     private LinearLayout personInfoLl;
@@ -37,10 +30,10 @@ public class PersonFragment extends BaseFragment {
 
     /**
      * 返回一个fragment实例，Activity中调用
-     * */
-    public static PersonFragment newInstance(String param){
+     */
+    public static PersonFragment newInstance(String param) {
         Bundle bundle = new Bundle();
-        bundle.putString("param",param);
+        bundle.putString("param", param);
         PersonFragment fragment = new PersonFragment();
         fragment.setArguments(bundle);
         return fragment;
@@ -61,8 +54,12 @@ public class PersonFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        nameTv.setText(getString(R.string.hi)+((MyApplication)getActivity().getApplicationContext())
-                .getUserInfo().getUserName()+"!");
+        try {
+            nameTv.setText(getString(R.string.hi) + ((MyApplication) getActivity().getApplicationContext())
+                    .getUserInfo().getUserName() + "!");
+        } catch (Exception e) {
+            Log.e("SANJAY", "onResume: ", e);
+        }
     }
 
 //    private void initView() {
@@ -142,6 +139,6 @@ public class PersonFragment extends BaseFragment {
 //                }
 //                break;
 //            }
-     //   }
-   // };
+    //   }
+    // };
 }
