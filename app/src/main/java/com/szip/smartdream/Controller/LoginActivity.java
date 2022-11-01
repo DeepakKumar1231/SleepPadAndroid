@@ -1,12 +1,19 @@
 package com.szip.smartdream.Controller;
 
+import static com.szip.smartdream.MyApplication.FILE;
+import static com.szip.smartdream.Util.HttpMessgeUtil.DOWNLOADDATA_FLAG;
+import static com.szip.smartdream.Util.HttpMessgeUtil.GETALARM_FLAG;
+import static com.szip.smartdream.Util.HttpMessgeUtil.LOGIN_FLAG;
+import static com.szip.smartdream.Util.mutils.mLog;
+import static com.szip.smartdream.Util.mutils.mToast;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.CheckBox;
@@ -33,38 +40,96 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import static com.szip.smartdream.MyApplication.FILE;
-import static com.szip.smartdream.Util.HttpMessgeUtil.DOWNLOADDATA_FLAG;
-import static com.szip.smartdream.Util.HttpMessgeUtil.GETALARM_FLAG;
-import static com.szip.smartdream.Util.HttpMessgeUtil.LOGIN_FLAG;
-
-public class LoginActivity extends BaseActivity implements HttpCallbackWithLogin,HttpCallbackWithReport,HttpCallbackWithClockData{
-
-    private Context mContext;
-
-    private TabLayout mTab;
-    private ViewPager mPager;
-
-    private TextView registerTv;
-
-    private boolean rememberPassword;
-    private String passwordL;
-
-    /**
-     * 轻量级文件
-     * */
-    private SharedPreferences sharedPreferencesp;
+public class LoginActivity extends BaseActivity implements HttpCallbackWithLogin, HttpCallbackWithReport, HttpCallbackWithClockData {
 
     /**
      * 回调标识
-     * */
+     */
     private final static int REQUEST_CODE = 10;
-
+    private Context mContext;
+    private TabLayout mTab;
+    private ViewPager mPager;
+    private TextView registerTv;
+    private boolean rememberPassword;
+    private String passwordL;
+    /**
+     * 轻量级文件
+     */
+    private SharedPreferences sharedPreferencesp;
     /**
      * 隐私条款
-     * */
+     */
     private CheckBox checkBox;
     private TextView privacyTv;
+    /**
+     * 点击事件监听
+     */
+    private View.OnClickListener onClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+//                case R.id.registerTv:{
+//                    Intent intent = new Intent();
+//                    intent.setClass(LoginActivity.this,RegisterActivity.class);
+//                    startActivityForResult(intent,REQUEST_CODE);
+//                }
+//                break;
+                case R.id.privacyTv: {
+                    Intent intent = new Intent();
+                    intent.setClass(LoginActivity.this, PrivacyActivity.class);
+                    startActivity(intent);
+                }
+                break;
+            }
+        }
+    };
+    /**
+     * 登录
+     */
+    private OnClickForLogin clickForLogin = new OnClickForLogin() {
+        @Override
+        public void onLogin(String code, String user, String password, boolean remember) {
+            mLog("Code :: " + code);
+            mLog("user :: " + user);
+            mLog("password :: " + password);
+            mLog("LOGIN_FLAG :: " + LOGIN_FLAG);
+
+            try {
+                HttpMessgeUtil.getInstance(mContext).postLogin("1", code, user, "", password, LOGIN_FLAG);//手机}
+            } catch (Exception e) {
+                e.printStackTrace();
+                mToast(LoginActivity.this, e.getLocalizedMessage());
+            }
+//            if (!checkBox.isChecked()){
+//                showToast(getString(R.string.checkPrivacy));
+//                return;
+//            }
+//            passwordL = password;
+//            rememberPassword = remember;
+//            ProgressHudModel.newInstance().show(LoginActivity.this,getString(R.string.logging),getString(R.string.httpError),10000);
+//            try {
+//                if (code.equals(""))
+//                    HttpMessgeUtil.getInstance(mContext).postLogin("2","","",user,password,LOGIN_FLAG);//邮箱
+//                else
+//                    HttpMessgeUtil.getInstance(mContext).postLogin("1",code,user,"",password,LOGIN_FLAG);//手机
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+
+            /*  mLog: ------------------------------
+ I  mLog: Code :: 0086
+ I  mLog: ------------------------------
+ I  mLog: ------------------------------
+ I  mLog: user :: 1000000000
+ I  mLog: ------------------------------
+ I  mLog: ------------------------------
+ I  mLog: password :: 123456
+ I  mLog: ------------------------------
+ I  mLog: ------------------------------
+ I  mLog: LOGIN_FLAG :: 102
+ I  mLog: ------------------------------*/
+        }
+    };
 
 
     @Override
@@ -101,12 +166,12 @@ public class LoginActivity extends BaseActivity implements HttpCallbackWithLogin
 
     /**
      * 初始化界面
-     * */
+     */
     private void initView() {
-        StatusBarCompat.translucentStatusBar(LoginActivity.this,true);
+        StatusBarCompat.translucentStatusBar(LoginActivity.this, true);
 
         mTab = findViewById(R.id.tabLayout);
-        checkBox = findViewById(R.id.checkbox);
+        //checkBox = findViewById(R.id.checkbox);
         privacyTv = findViewById(R.id.privacyTv);
         mPager = findViewById(R.id.loginViewPager);
         //registerTv = findViewById(R.id.registerTv);
@@ -114,15 +179,15 @@ public class LoginActivity extends BaseActivity implements HttpCallbackWithLogin
 
     /**
      * 初始化滑动页面
-     * */
+     */
     private void initPager() {
         // 创建一个集合,装填Fragment
         ArrayList<Fragment> fragments = new ArrayList<>();
         // 装填
         fragments.add(LoginForPhoneFragment.newInstance("szip"));
         fragments.add(LoginForMailFragment.newInstance("szip"));
-        ((LoginForPhoneFragment)fragments.get(0)).setClickForLogin(clickForLogin);
-        ((LoginForMailFragment)fragments.get(1)).setClickForLogin(clickForLogin);
+        ((LoginForPhoneFragment) fragments.get(0)).setClickForLogin(clickForLogin);
+        ((LoginForMailFragment) fragments.get(1)).setClickForLogin(clickForLogin);
         // 创建ViewPager适配器
         MyPagerAdapter myPagerAdapter = new MyPagerAdapter(getSupportFragmentManager());
         myPagerAdapter.setFragmentArrayList(fragments);
@@ -131,7 +196,7 @@ public class LoginActivity extends BaseActivity implements HttpCallbackWithLogin
         // TabLayout 指示器 (记得自己手动创建4个Fragment,注意是 app包下的Fragment 还是 V4包下的 Fragment)
         mTab.addTab(mTab.newTab());
         mTab.addTab(mTab.newTab());
-        mTab.setTabTextColors(getResources().getColor(R.color.white),getResources().getColor(R.color.white));
+        mTab.setTabTextColors(getResources().getColor(R.color.white), getResources().getColor(R.color.white));
         // 使用 TabLayout 和 ViewPager 相关联
         mTab.setupWithViewPager(mPager);
         // TabLayout指示器添加文本
@@ -141,83 +206,34 @@ public class LoginActivity extends BaseActivity implements HttpCallbackWithLogin
 
     /**
      * 初始化事件监听
-     * */
+     */
     private void initEvent() {
-       // registerTv.setOnClickListener(onClickListener);
-       // privacyTv.setOnClickListener(onClickListener);
+        // registerTv.setOnClickListener(onClickListener);
+        // privacyTv.setOnClickListener(onClickListener);
         //forgetTv.setOnClickListener(onClickListener);
     }
 
     /**
-     * 点击事件监听
-     * */
-    private View.OnClickListener onClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            switch (v.getId()){
-//                case R.id.registerTv:{
-//                    Intent intent = new Intent();
-//                    intent.setClass(LoginActivity.this,RegisterActivity.class);
-//                    startActivityForResult(intent,REQUEST_CODE);
-//                }
-//                break;
-                case R.id.privacyTv:{
-                    Intent intent = new Intent();
-                    intent.setClass(LoginActivity.this, PrivacyActivity.class);
-                    startActivity(intent);
-                }
-                break;
-            }
-        }
-    };
-
-    /**
-     * 登录
-     * */
-    private OnClickForLogin clickForLogin = new OnClickForLogin() {
-        @Override
-        public void onLogin(String code,String user, String password,boolean remember) {
-            if (!checkBox.isChecked()){
-                showToast(getString(R.string.checkPrivacy));
-                return;
-            }
-            passwordL = password;
-            rememberPassword = remember;
-            ProgressHudModel.newInstance().show(LoginActivity.this,getString(R.string.logging),getString(R.string.httpError),10000);
-            try {
-                if (code.equals(""))
-                    HttpMessgeUtil.getInstance(mContext).postLogin("2","","",user,password,LOGIN_FLAG);//邮箱
-                else
-                    HttpMessgeUtil.getInstance(mContext).postLogin("1",code,user,"",password,LOGIN_FLAG);//手机
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        }
-    };
-
-
-    /**
      * 登录接口回调
-     * */
+     */
     @Override
     public void onLogin(LoginBean loginBean) {
         ProgressHudModel.newInstance().diss();
         HttpMessgeUtil.getInstance(mContext).setToken(loginBean.getData().getToken());
         if (sharedPreferencesp == null)
-            sharedPreferencesp = getSharedPreferences(FILE,MODE_PRIVATE);
+            sharedPreferencesp = getSharedPreferences(FILE, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferencesp.edit();
-        editor.putString("token",loginBean.getData().getToken());
-        editor.putString("phone",loginBean.getData().getUserInfo().getPhoneNumber());
-        editor.putString("mail",loginBean.getData().getUserInfo().getEmail());
-        ((MyApplication)getApplicationContext()).setUserInfo(loginBean.getData().getUserInfo());
+        editor.putString("token", loginBean.getData().getToken());
+        editor.putString("phone", loginBean.getData().getUserInfo().getPhoneNumber());
+        editor.putString("mail", loginBean.getData().getUserInfo().getEmail());
+        ((MyApplication) getApplicationContext()).setUserInfo(loginBean.getData().getUserInfo());
         if (rememberPassword)
-            editor.putString("password",passwordL);
+            editor.putString("password", passwordL);
         else
-            editor.putString("password","");
-        if (loginBean.getData().getUserInfo().getDeviceCode()== null){//如果未绑定手环，跳到绑定页面
+            editor.putString("password", "");
+        if (loginBean.getData().getUserInfo().getDeviceCode() == null) {//如果未绑定手环，跳到绑定页面
             startActivity(new Intent(mContext, FindDeviceActivity.class));
-        }else {//如果已绑定睡眠带，获取闹钟列表
+        } else {//如果已绑定睡眠带，获取闹钟列表
             BleService.getInstance().setmMac(loginBean.getData().getUserInfo().getDeviceCode());
             try {
                 HttpMessgeUtil.getInstance(mContext).getForGetClockList(GETALARM_FLAG);
@@ -230,44 +246,45 @@ public class LoginActivity extends BaseActivity implements HttpCallbackWithLogin
 
     /**
      * 获取数据接口回调
-     * */
+     */
     @Override
     public void onReport(boolean isNewData) {
         BleService.getInstance().startConnectDevice();
-        startActivity(new Intent(mContext,MainActivity.class));
+        startActivity(new Intent(mContext, MainActivity.class));
         finish();
     }
 
     /**
      * 获取闹钟接口回调
-     * */
+     */
     @Override
     public void onClockData(ClockDataBean clockDataBean) {
-        if(clockDataBean.getData().getArray()!=null){
-            ((MyApplication)getApplicationContext()).setClockList1(clockDataBean.getData().getArray());
+        if (clockDataBean.getData().getArray() != null) {
+            ((MyApplication) getApplicationContext()).setClockList1(clockDataBean.getData().getArray());
         }
         try {
             Calendar calendar = Calendar.getInstance();
-            calendar.set(Calendar.HOUR_OF_DAY,5);
-            calendar.set(Calendar.MINUTE,0);
-            calendar.set(Calendar.SECOND,0);
-            calendar.set(Calendar.MILLISECOND,0);
-            HttpMessgeUtil.getInstance(mContext).getForDownloadReportData(""+(calendar.getTimeInMillis()/1000-30*24*60*60),
-                    "30",DOWNLOADDATA_FLAG);
+            calendar.set(Calendar.HOUR_OF_DAY, 5);
+            calendar.set(Calendar.MINUTE, 0);
+            calendar.set(Calendar.SECOND, 0);
+            calendar.set(Calendar.MILLISECOND, 0);
+            HttpMessgeUtil.getInstance(mContext).getForDownloadReportData("" + (calendar.getTimeInMillis() / 1000 - 30 * 24 * 60 * 60),
+                    "30", DOWNLOADDATA_FLAG);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     /**
      * Activity回调函数
-     * */
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // TODO Auto-generated method stub
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE && resultCode == 10) {
             final String string = data.getStringExtra("STRING");
-            if (string!=null&&string.equals("exit")){
+            if (string != null && string.equals("exit")) {
                 finish();
             }
         }

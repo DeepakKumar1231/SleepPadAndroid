@@ -9,15 +9,11 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.szip.smartdream.Controller.FindDeviceActivity;
-import com.szip.smartdream.Controller.ForgetPasswordActivity;
-import com.szip.smartdream.Controller.OTP;
 import com.szip.smartdream.Interface.OnClickForLogin;
 import com.szip.smartdream.R;
 
@@ -118,7 +114,7 @@ public class LoginForMailFragment extends BaseFragment {
 
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(requireActivity() , OTP.class);
+                Intent myIntent = new Intent(requireActivity() , FindDeviceActivity.class);
                 startActivity(myIntent);
             }
         });
