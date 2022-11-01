@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.szip.smartdream.Dashboard;
 import com.szip.smartdream.Journal;
 import com.szip.smartdream.R;
 
@@ -37,7 +38,7 @@ public class OTP extends AppCompatActivity {
         Submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),Journal.class);
+                Intent intent = new Intent(getApplicationContext(), FindDeviceActivity.class);
                 startActivity(intent);
             }
         });
