@@ -62,12 +62,7 @@ public class PersonFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        try {
-            nameTv.setText(getString(R.string.hi) + ((MyApplication) getActivity().getApplicationContext())
-                    .getUserInfo().getUserName() + "!");
-        } catch (Exception e) {
-            Log.e("SANJAY", "onResume: ", e);
-        }
+
     }
 
 

@@ -3,14 +3,15 @@
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:background="@drawable/gradient_background"
     android:layout_height="match_parent">
 
     <android.support.design.widget.TabLayout
         android:id="@+id/reportTl"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="60dp"
-        android:layout_marginLeft="60dp"
+
         android:background="#00000000"
         app:tabBackground="@android:color/transparent"
         app:tabTextAppearance="@style/CustomTabTextAppearanceStyle"
@@ -18,7 +19,10 @@
         app:tabIndicatorHeight="0dp"
         app:tabTextColor="@color/reportUnSelect"
         app:tabSelectedTextColor="@color/white"
-        app:tabMode="fixed"></android.support.design.widget.TabLayout>
+
+        app:tabMode="fixed">
+
+    </android.support.design.widget.TabLayout>
 
     <com.szip.smartdream.View.NoScrollViewPager
         android:id="@+id/reportVp"

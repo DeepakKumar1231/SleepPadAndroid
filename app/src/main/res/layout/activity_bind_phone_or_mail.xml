@@ -231,10 +231,5 @@
 
     </LinearLayout>
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:src="@mipmap/search_bg_bottom"
-        android:layout_centerHorizontal="true"/>
+
 </RelativeLayout>

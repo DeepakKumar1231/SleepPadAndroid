@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:text="xxx"
             android:textSize="16sp"
-            android:textColor="@color/gray3"
+            android:textColor="@color/white"
             android:gravity="center"
             android:layout_gravity="center_horizontal"/>
 
@@ -43,12 +43,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textColor="@color/MainColor"
+            android:textColor="@color/white"
             android:textSize="18sp"
             android:text="--h--min"/>
 
 
         <LinearLayout
+
             android:id="@+id/hintLl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -69,7 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/deep"
-                android:textColor="@color/gray3"
+                android:textColor="@color/white"
                 android:layout_gravity="center_vertical"/>
 
             <View
@@ -84,7 +85,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/mid"
-                android:textColor="@color/gray3"
+                android:textColor="@color/white"
                 android:layout_gravity="center_vertical"/>
 
             <View
@@ -99,7 +100,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/light"
-                android:textColor="@color/gray3"
+                android:textColor="@color/white"
                 android:layout_gravity="center_vertical"/>
 
             <View
@@ -114,12 +115,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/awake"
-                android:textColor="@color/gray3"
+                android:textColor="@color/white"
                 android:layout_gravity="center_vertical"/>
 
         </LinearLayout>
 
         <com.jonas.jgraph.graph.JcoolGraph
+
             android:id="@+id/sug_recode_line"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
@@ -128,7 +130,7 @@
             android:paddingRight="5dp"
             android:layout_marginRight="25dp"
             android:layout_marginLeft="25dp"
-            app:normolcolor="#575756"
+            app:normolcolor="@color/white"
             app:graphstyle="line"
             app:showymsg="true"
             />
@@ -148,6 +150,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_weight="1"
+                android:visibility="gone"
                 android:layout_marginTop="@dimen/report_icon_left"
                 android:layout_marginBottom="@dimen/report_icon_left">
 
@@ -195,6 +198,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_weight="1"
+                android:visibility="gone"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="@dimen/report_icon_left"
                 android:layout_marginBottom="@dimen/report_icon_left">
@@ -241,6 +245,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_weight="1"
+                android:visibility="gone"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="@dimen/report_icon_left"
                 android:layout_marginBottom="@dimen/report_icon_left">
@@ -292,6 +297,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="3dp"
+            android:visibility="gone"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp">
 
@@ -443,7 +449,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
-            android:textColor="@color/gray3"
+            android:textColor="@color/white"
             android:layout_gravity="center_horizontal"
             android:text="@string/sleepMonitoring"/>
 
@@ -455,21 +461,24 @@
             android:orientation="horizontal"
             android:layout_gravity="center"
             >
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/realtime_icon_heartrate"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="@dimen/report_icon_left"
-                android:layout_marginRight="@dimen/report_icon_right"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/MainColor"
+                android:textColor="@color/white"
                 android:text="@string/heart"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:layout_weight="1"
                 android:layout_gravity="center_vertical"/>
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/heart_beat"
+                android:tint="@color/white"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="@dimen/report_icon_right"/>
+
         </LinearLayout>
 
         <RelativeLayout
@@ -480,6 +489,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:src="@mipmap/realtime_bg_heartrate"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true" />
@@ -488,8 +498,9 @@
                 android:id="@+id/heartForTableTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/MainColor"
+                android:textColor="@color/white"
                 android:text="--B/min"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="50dp"
                 android:layout_marginTop="20dp"/>
@@ -510,8 +521,8 @@
                     android:layout_alignParentBottom="true"
                     android:layout_marginRight="40dp"
                     android:layout_marginLeft="40dp"
-                    app:normolcolor="#d1b793"
-                    app:graphstyle="line"
+                    app:normolcolor="@color/purple"
+                    app:graphstyle="bar"
                     app:showymsg="true"
                     />
 
@@ -528,21 +539,24 @@
             android:layout_marginTop="20dp"
             >
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/realtime_icon_breath"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="@dimen/report_icon_left"
-                android:layout_marginRight="@dimen/report_icon_right"/>
+
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/MainColor"
+                android:textColor="@color/white"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:text="@string/breath"
                 android:layout_weight="1"
                 android:layout_gravity="center_vertical"/>
+            <ImageView
+                android:layout_width="50dp"
+                android:tint="@color/white"
+                android:layout_height="50dp"
+                android:src="@drawable/respiratory_system"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="@dimen/report_icon_right"/>
 
         </LinearLayout>
 
@@ -554,6 +568,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/realtime_bg_breath"
+                android:visibility="gone"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true" />
 
@@ -561,8 +576,10 @@
                 android:id="@+id/breathForTableTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/MainColor"
+                android:textColor="@color/white"
                 android:text="--B/min"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="50dp"
                 android:layout_marginTop="20dp"/>
@@ -583,7 +600,7 @@
                     android:clickable="true"
                     android:paddingRight="5dp"
                     app:normolcolor="#21a0bf"
-                    app:graphstyle="line"
+                    app:graphstyle="bar"
                     app:showymsg="true"
                     />
 
@@ -601,22 +618,28 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             >
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/report_icon_turn"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="@dimen/report_icon_left"
-                android:layout_marginRight="@dimen/report_icon_right"/>
+
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/MainColor"
+                android:textColor="@color/white"
                 android:text="@string/turnOver"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:layout_weight="1"
+
                 android:layout_gravity="center_vertical"
+
                 />
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_clock_24"
+                android:layout_gravity="center_vertical"
+                android:tint="@color/white"
+
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="@dimen/report_icon_right"/>
         </LinearLayout>
 
         <RelativeLayout
@@ -628,6 +651,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/realtime_bg_heartrate"
+                android:visibility="gone"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true" />
 
@@ -635,8 +659,9 @@
                 android:id="@+id/thirdForTableTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/MainColor"
+                android:textColor="@color/white"
                 android:text="--T"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="50dp"
                 android:layout_marginTop="20dp"/>
@@ -651,6 +676,7 @@
                     <!--android:layout_height="180dp"/>-->
 
                 <com.jonas.jgraph.graph.JcoolGraph
+
                     android:id="@+id/anotherView"
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_width="match_parent"
@@ -662,19 +688,13 @@
                     app:graphstyle="line"
                     app:showymsg="true"
                     android:layout_alignParentBottom="true"
-                    app:normolcolor="#d1b793"
+                    app:normolcolor="@color/purple"
                 />
 
             </RelativeLayout>
 
         </RelativeLayout>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/search_bg_bottom"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"/>
 
     </LinearLayout>
 

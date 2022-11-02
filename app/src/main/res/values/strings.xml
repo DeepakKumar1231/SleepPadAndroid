@@ -77,7 +77,7 @@
     <string name="heartUnit">B/min</string>
     <string name="heart">Heart Rate</string>
     <string name="breath">Breath Rate</string>
-    <string name="turnOver">times/hour</string>
+    <string name="turnOver">Body Movement</string>
 
     <!--报告界面-->
     <string name="day">Day</string>
@@ -104,7 +104,7 @@
     <string name="synError">Sync failed, please confirm the Bluetooth is connected</string>
     <string name="sleepReport">Your Sleep Report</string>
     <string name="more"><u>get more report</u></string>
-    <string name="today">today</string>
+    <string name="today">Today</string>
     <string name="yesterday">yesterday</string>
     <string name="future">No sleep data for the selected date</string>
 

@@ -45,7 +45,7 @@ public class WH_ECGView extends View {
         super(context,attrs);
 
         paint.setStyle(Paint.Style.STROKE);
-        paint.setColor(getResources().getColor(R.color.MainColor));
+        paint.setColor(getResources().getColor(R.color.white));
         paint.setStrokeWidth(6.0f);
 
     }
@@ -54,7 +54,7 @@ public class WH_ECGView extends View {
         super(context);
 
         paint.setStyle(Paint.Style.STROKE);
-        paint.setColor(getResources().getColor(R.color.MainColor));
+        paint.setColor(getResources().getColor(R.color.white));
         paint.setStrokeWidth(6.0f);
 
 

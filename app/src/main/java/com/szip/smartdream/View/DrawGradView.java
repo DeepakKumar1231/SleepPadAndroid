@@ -20,7 +20,7 @@ public class DrawGradView extends View {
     private int grid_hori,grid_ver;//横、纵线条数
     private float gap_x;//两点间横坐标间距
     private int dataNum_per_grid = 18;//每小格内的数据个数
-    private int color = R.color.MainColor;
+    private int color = R.color.white;
 
 
     public DrawGradView(Context context) {

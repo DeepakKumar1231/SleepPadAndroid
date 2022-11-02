@@ -285,10 +285,10 @@ public abstract class BaseGraph extends View  {
     public BaseGraph(Context context, AttributeSet attrs, int defStyleAttr){
         super(context, attrs, defStyleAttr);
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.AndroidJgraph);
-        mGraphStyle = a.getInt(R.styleable.AndroidJgraph_graphstyle, LINE);
+        mGraphStyle = a.getInt(R.styleable.AndroidJgraph_graphstyle, BAR);
         mScrollAble = a.getBoolean(R.styleable.AndroidJgraph_scrollable, false);
         mNeedY_abscissMasg = a.getBoolean(R.styleable.AndroidJgraph_showymsg, true);
-        mNormalColor = a.getColor(R.styleable.AndroidJgraph_normolcolor, Color.parseColor("#ffffff"));
+        mNormalColor = a.getColor(R.styleable.AndroidJgraph_normolcolor, Color.WHITE);
         mActivationColor = a.getColor(R.styleable.AndroidJgraph_activationcolor, Color.RED);
         mVisibleNums = a.getInt(R.styleable.AndroidJgraph_visiblenums, 0);
         a.recycle();
@@ -300,25 +300,25 @@ public abstract class BaseGraph extends View  {
         mTouchSlop = ViewConfiguration.get(mContext).getScaledTouchSlop();
         mCoordinatePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mCoordinatePaint.setStyle(Paint.Style.STROKE);
-        mCoordinatePaint.setColor(Color.parseColor("#1b68a4"));
+        mCoordinatePaint.setColor(Color.WHITE);
         mCoordinatePaint.setStrokeWidth(4f);
 
         mAbscissaPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mAbscissaPaint.setTextAlign(Paint.Align.CENTER);
         mAbscissaMsgSize = MathHelper.dip2px(mContext, 12);
         mAbscissaPaint.setTextSize(mAbscissaMsgSize);
-        mAbscissaPaint.setColor(Color.parseColor("#575756"));
+        mAbscissaPaint.setColor(Color.WHITE);
 
         //虚线
         mAbscisDashPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mAbscisDashPaint.setStrokeWidth(mAbscisDashLineWidth);
         mAbscisDashPaint.setStyle(Paint.Style.STROKE);
-        mAbscisDashPaint.setColor(mNormalColor);
+        mAbscisDashPaint.setColor(Color.WHITE);
         mAbscisDashPaint.setStrokeWidth(0.5f);
 
         mSelectedTextBgPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         //显示在顶部 选中的文字背景
-        mSelectedTextBgPaint.setColor(Color.GRAY);
+        mSelectedTextBgPaint.setColor(Color.WHITE);
         mBgTriangleHeight = MathHelper.dip2px(mContext, 6);
 
         mSelectedTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);

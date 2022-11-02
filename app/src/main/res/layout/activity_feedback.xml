@@ -48,11 +48,5 @@
             android:text="0/120"/>
     </RelativeLayout>
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/search_bg_bottom"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

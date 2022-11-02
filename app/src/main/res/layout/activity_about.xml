@@ -118,11 +118,5 @@
         android:layout_marginRight="@dimen/ListMargin"
         android:layout_below="@+id/deleteLl"/>
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/search_bg_bottom"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>
