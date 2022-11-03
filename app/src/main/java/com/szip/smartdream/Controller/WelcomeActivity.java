@@ -44,7 +44,7 @@ public class WelcomeActivity extends BaseActivity implements Runnable{
             sharedPreferencesp = getSharedPreferences(FILE,MODE_PRIVATE);
         }
 
-        isFirst = sharedPreferencesp.getBoolean("isFirst",false);
+        isFirst = sharedPreferencesp.getBoolean("isFirst",true);
         app.setUserInfo(MathUitl.loadInfoData(sharedPreferencesp));
 
 
@@ -53,7 +53,22 @@ public class WelcomeActivity extends BaseActivity implements Runnable{
                     getString(R.string.agree), getString(R.string.disagree), false, new MyAlerDialog.AlerDialogOnclickListener() {
                         @Override
                         public void onDialogTouch(boolean flag) {
-
+                            if (flag){
+                                sharedPreferencesp.edit().putBoolean("isFirst",false).commit();
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                                    if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_DENIED
+                                            || checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED
+                                            || checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED){
+                                        requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
+                                                Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, SleepEECode);
+                                    }
+                                    initData();
+                                }else {
+                                    initData();
+                                }
+                            }else{
+                                finish();
+                            }
                         }
                     },this);
         }else {
