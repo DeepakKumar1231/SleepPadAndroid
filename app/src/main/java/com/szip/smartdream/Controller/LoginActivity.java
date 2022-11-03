@@ -4,6 +4,7 @@ import static com.szip.smartdream.MyApplication.FILE;
 import static com.szip.smartdream.Util.HttpMessgeUtil.DOWNLOADDATA_FLAG;
 import static com.szip.smartdream.Util.HttpMessgeUtil.GETALARM_FLAG;
 import static com.szip.smartdream.Util.HttpMessgeUtil.LOGIN_FLAG;
+import static com.szip.smartdream.Util.HttpMessgeUtil.REGIST_FLAG;
 import static com.szip.smartdream.Util.mutils.mLog;
 import static com.szip.smartdream.Util.mutils.mToast;
 
@@ -18,17 +19,21 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.szip.smartdream.Adapter.MyPagerAdapter;
 import com.szip.smartdream.Bean.HttpBean.ClockDataBean;
 import com.szip.smartdream.Bean.HttpBean.LoginBean;
 import com.szip.smartdream.Controller.Fragment.LoginForMailFragment;
+import com.szip.smartdream.Controller.Fragment.LoginForMailFragmentTwo;
 import com.szip.smartdream.Controller.Fragment.LoginForPhoneFragment;
+import com.szip.smartdream.Controller.Fragment.RegisterForMailFragment;
 import com.szip.smartdream.Dashboard;
 import com.szip.smartdream.Interface.HttpCallbackWithClockData;
 import com.szip.smartdream.Interface.HttpCallbackWithLogin;
 import com.szip.smartdream.Interface.HttpCallbackWithReport;
 import com.szip.smartdream.Interface.OnClickForLogin;
+import com.szip.smartdream.Interface.OnClickForRegister;
 import com.szip.smartdream.Model.ProgressHudModel;
 import com.szip.smartdream.MyApplication;
 import com.szip.smartdream.R;
@@ -52,6 +57,7 @@ public class LoginActivity extends BaseActivity implements HttpCallbackWithLogin
     private TextView registerTv;
     private boolean rememberPassword;
     private String passwordL;
+    private String mailR,phoneR,passwordR,codeR;
     /**
      * 轻量级文件
      */
@@ -89,45 +95,22 @@ public class LoginActivity extends BaseActivity implements HttpCallbackWithLogin
     private OnClickForLogin clickForLogin = new OnClickForLogin() {
         @Override
         public void onLogin(String code, String user, String password, boolean remember) {
-            mLog("Code :: " + code);
-            mLog("user :: " + user);
-            mLog("password :: " + password);
-            mLog("LOGIN_FLAG :: " + LOGIN_FLAG);
-
-            try {
-                HttpMessgeUtil.getInstance(mContext).postLogin("1", code, user, "", password, LOGIN_FLAG);//手机}
-            } catch (Exception e) {
-                e.printStackTrace();
-                mToast(LoginActivity.this, e.getLocalizedMessage());
+            if (false){
+                showToast(getString(R.string.checkPrivacy));
+                return;
             }
-//            if (!checkBox.isChecked()){
-//                showToast(getString(R.string.checkPrivacy));
-//                return;
-//            }
-//            passwordL = password;
-//            rememberPassword = remember;
-//            ProgressHudModel.newInstance().show(LoginActivity.this,getString(R.string.logging),getString(R.string.httpError),10000);
-//            try {
-//                if (code.equals(""))
-//                    HttpMessgeUtil.getInstance(mContext).postLogin("2","","",user,password,LOGIN_FLAG);//邮箱
-//                else
-//                    HttpMessgeUtil.getInstance(mContext).postLogin("1",code,user,"",password,LOGIN_FLAG);//手机
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-
-            /*  mLog: ------------------------------
- I  mLog: Code :: 0086
- I  mLog: ------------------------------
- I  mLog: ------------------------------
- I  mLog: user :: 1000000000
- I  mLog: ------------------------------
- I  mLog: ------------------------------
- I  mLog: password :: 123456
- I  mLog: ------------------------------
- I  mLog: ------------------------------
- I  mLog: LOGIN_FLAG :: 102
- I  mLog: ------------------------------*/
+            passwordL = password;
+            rememberPassword = remember;
+            ProgressHudModel.newInstance().show(LoginActivity.this,getString(R.string.logging),getString(R.string.httpError),10000);
+            try {
+                if (code.equals("")) {
+                    HttpMessgeUtil.getInstance(mContext).postLogin("2", "", "", user, password, LOGIN_FLAG);//邮箱
+                }  else {
+                    HttpMessgeUtil.getInstance(mContext).postLogin("1", code, user, "", password, LOGIN_FLAG);//手机
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     };
 
@@ -142,10 +125,35 @@ public class LoginActivity extends BaseActivity implements HttpCallbackWithLogin
         mContext = getApplicationContext();
         initView();
         initEvent();
-        initPager();
+        //initPager();
+        initPagerTwo();
 
 //        Intent intent = new Intent(this , Dashboard.class);
 //        startActivity(intent);
+    }
+
+    private void initPagerTwo() {
+        // 创建一个集合,装填Fragment
+        ArrayList<Fragment> fragments = new ArrayList<>();
+        // 装填
+        fragments.add(LoginForMailFragmentTwo.newInstance("szip"));
+        fragments.add(RegisterForMailFragment.newInstance("szip"));
+        ((LoginForMailFragmentTwo) fragments.get(0)).setClickForLogin(clickForLogin);
+        ((RegisterForMailFragment)fragments.get(1)).setOnClickForRegister(clickForRegister);
+        // 创建ViewPager适配器
+        MyPagerAdapter myPagerAdapter = new MyPagerAdapter(getSupportFragmentManager());
+        myPagerAdapter.setFragmentArrayList(fragments);
+        // 给ViewPager设置适配器
+        mPager.setAdapter(myPagerAdapter);
+        // TabLayout 指示器 (记得自己手动创建4个Fragment,注意是 app包下的Fragment 还是 V4包下的 Fragment)
+        mTab.addTab(mTab.newTab());
+        mTab.addTab(mTab.newTab());
+        mTab.setTabTextColors(getResources().getColor(R.color.white), getResources().getColor(R.color.white));
+        // 使用 TabLayout 和 ViewPager 相关联
+        mTab.setupWithViewPager(mPager);
+        // TabLayout指示器添加文本
+        mTab.getTabAt(0).setText("SIGN IN");
+        mTab.getTabAt(1).setText("SIGN UP");
     }
 
     @Override
@@ -289,4 +297,25 @@ public class LoginActivity extends BaseActivity implements HttpCallbackWithLogin
             }
         }
     }
+    private OnClickForRegister clickForRegister = new OnClickForRegister() {
+
+        @Override
+        public void onRegisterForPhone(String country, String code, String phone, String password, String verificationCode) {
+
+        }
+
+        @Override
+        public void onRegisterForMail(String mail, String password,String verificationCode) {
+            ProgressHudModel.newInstance().show(LoginActivity.this,
+                    getString(R.string.waitting),getString(R.string.httpError),10000);
+            mailR = mail;
+            passwordR = password;
+            try {
+                HttpMessgeUtil.getInstance(mContext).postRegister("2","","",mail,verificationCode,
+                        password,REGIST_FLAG);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    };
 }
