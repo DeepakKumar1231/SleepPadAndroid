@@ -24,12 +24,10 @@
     android:layout_width="match_parent"
     android:layout_height="0dp"
     app:layout_constraintTop_toBottomOf="@id/toolbar"
-    app:layout_constraintBottom_toTopOf="@id/signOutBtn">
+   app:layout_constraintBottom_toBottomOf="parent">
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-
 
 
         <TextView
@@ -154,10 +152,10 @@
 
 
         <TextView
-            android:id="@+id/updatesTv"
+            android:id="@+id/userInfoLl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Look for Updates"
+            android:text="User Info"
             android:textSize="18sp"
             android:textColor="#A4000000"
             android:layout_marginLeft="20dp"
@@ -167,7 +165,20 @@
             app:layout_constraintTop_toBottomOf="@id/alarmTv"/>
 
         <TextView
-            android:id="@+id/helpTv"
+            android:id="@+id/personInfoLl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Personal Info"
+            android:textSize="18sp"
+            android:textColor="#A4000000"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="sans-serif-medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/userInfoLl"/>
+
+        <TextView
+            android:id="@+id/helpLl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Help"
@@ -177,12 +188,12 @@
             android:layout_marginTop="10dp"
             android:fontFamily="sans-serif-medium"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/updatesTv"/>
+            app:layout_constraintTop_toBottomOf="@id/personInfoLl"/>
 
 
 
         <TextView
-            android:id="@+id/consulationTv"
+            android:id="@+id/adviseLl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Get a Sleep Consulation"
@@ -192,64 +203,64 @@
             android:layout_marginTop="10dp"
             android:fontFamily="sans-serif-medium"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/helpTv"/>
+            app:layout_constraintTop_toBottomOf="@id/helpLl"/>
 
 
         <TextView
-            android:id="@+id/deviceTv"
+            android:id="@+id/myDeviceLl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Device ID"
+            android:text="Device"
             android:textSize="18sp"
             android:textColor="#A4000000"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:fontFamily="sans-serif-medium"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/consulationTv"/>
+            app:layout_constraintTop_toBottomOf="@id/adviseLl"/>
 
 
 
         <TextView
-            android:id="@+id/versionTv"
+            android:id="@+id/aboutLl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="App Version"
+            android:text="About"
             android:textSize="18sp"
             android:textColor="#A4000000"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:fontFamily="sans-serif-medium"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/deviceTv"/>
+            app:layout_constraintTop_toBottomOf="@id/myDeviceLl"/>
 
 
 
-        <TextView
-            android:id="@+id/unpairSleepadTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Unpair SleepPad"
-            android:textSize="18sp"
-            android:textColor="#A4000000"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:fontFamily="sans-serif-medium"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/versionTv"/>
+<!--        <TextView-->
+<!--            android:id="@+id/unpairSleepadTv"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Unpair SleepPad"-->
+<!--            android:textSize="18sp"-->
+<!--            android:textColor="#A4000000"-->
+<!--            android:layout_marginLeft="20dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:fontFamily="sans-serif-medium"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/aboutLl"/>-->
 
-        <TextView
-            android:id="@+id/resetSleepPadTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Reset your SleepPad"
-            android:textSize="18sp"
-            android:textColor="#A4000000"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:fontFamily="sans-serif-medium"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/unpairSleepadTv"/>
+<!--        <TextView-->
+<!--            android:id="@+id/resetSleepPadTv"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Reset your SleepPad"-->
+<!--            android:textSize="18sp"-->
+<!--            android:textColor="#A4000000"-->
+<!--            android:layout_marginLeft="20dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:fontFamily="sans-serif-medium"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/unpairSleepadTv"/>-->
 
 
 
@@ -258,21 +269,21 @@
 
 
 
-    <TextView
-        android:id="@+id/signOutBtn"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginHorizontal="15dp"
-        android:layout_marginBottom="20dp"
-        android:text="Sign Out"
-        android:textSize="20sp"
-        android:textColor="@color/white"
-        android:gravity="center"
-        android:background="@drawable/rectangle_bg"
-        android:backgroundTint="@color/navy_blue"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+<!--    <TextView-->
+<!--        android:id="@+id/signOutBtn"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="55dp"-->
+<!--        android:layout_marginHorizontal="15dp"-->
+<!--        android:layout_marginBottom="20dp"-->
+<!--        android:text="Sign Out"-->
+<!--        android:textSize="20sp"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:gravity="center"-->
+<!--        android:background="@drawable/rectangle_bg"-->
+<!--        android:backgroundTint="@color/navy_blue"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"/>-->
 
 
 </android.support.constraint.ConstraintLayout>

@@ -174,13 +174,13 @@ public class PersonInfoActivity extends BaseActivity implements HttpCallbackWith
      * 初始化视图
      * */
     private void initView() {
-        ((TextView)findViewById(R.id.titleTv)).setText(getString(R.string.personInfo));
+//        ((TextView)findViewById(R.id.titleTv)).setText(getString(R.string.personInfo));
         backIv = findViewById(R.id.backIv);
         backIv.setVisibility(View.VISIBLE);
 
-        saveTv = findViewById(R.id.saveTv);
-        saveTv.setText(getString(R.string.save));
-        saveTv.setVisibility(View.VISIBLE);
+//        saveTv = findViewById(R.id.saveTv);
+//        saveTv.setText(getString(R.string.save));
+//        saveTv.setVisibility(View.VISIBLE);
 
         nameLl = findViewById(R.id.nameLl);
         nameTv = findViewById(R.id.nameTv);
@@ -234,7 +234,7 @@ public class PersonInfoActivity extends BaseActivity implements HttpCallbackWith
      * */
     private void initEvent() {
         backIv.setOnClickListener(onClickListener);
-        saveTv.setOnClickListener(onClickListener);
+//        saveTv.setOnClickListener(onClickListener);
         nameLl.setOnClickListener(onClickListener);
         genderLl.setOnClickListener(onClickListener);
         ageLl.setOnClickListener(onClickListener);
@@ -444,17 +444,17 @@ public class PersonInfoActivity extends BaseActivity implements HttpCallbackWith
                     finish();
                     break;
 
-                case R.id.saveTv:
-
-                    ProgressHudModel.newInstance().show(PersonInfoActivity.this,getString(R.string.waitting),
-                            getString(R.string.httpError),10000);
-                    try {
-                        HttpMessgeUtil.getInstance(mContext).postForSetUserInfo(nameTv.getText().toString(),isMale?"1":"0",
-                                birthday,statureTv.getText().toString(),weightTv.getText().toString(),unitTv.getText().toString(),SETINFO_FLAG);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    break;
+//                case R.id.saveTv:
+//
+//                    ProgressHudModel.newInstance().show(PersonInfoActivity.this,getString(R.string.waitting),
+//                            getString(R.string.httpError),10000);
+//                    try {
+//                        HttpMessgeUtil.getInstance(mContext).postForSetUserInfo(nameTv.getText().toString(),isMale?"1":"0",
+//                                birthday,statureTv.getText().toString(),weightTv.getText().toString(),unitTv.getText().toString(),SETINFO_FLAG);
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//                    break;
 
                 case R.id.nameLl:
                     MyAlerDialog.getSingle().showAlerDialogWithEdit(getString(R.string.name),"",getString(R.string.inputName),getString(R.string.confirm),

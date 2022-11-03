@@ -1,5 +1,6 @@
 package com.szip.smartdream.Controller;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -43,7 +44,7 @@ public class UserInfoActivity extends BaseActivity{
     private LinearLayout resetPasswordLl;
     private DialogBottom dialogBottom;
 
-    private LinearLayout logoutLl;
+    private TextView logoutLl;
 
     private Dialog dialog;
     private ImageView backIv;
@@ -101,8 +102,9 @@ public class UserInfoActivity extends BaseActivity{
     /**
      * 初始化界面
      * */
+    @SuppressLint("WrongViewCast")
     private void initView() {
-        ((TextView)findViewById(R.id.titleTv)).setText(getString(R.string.userInfo));
+       // ((TextView)findViewById(R.id.titleTv)).setText(getString(R.string.userInfo));
         backIv = findViewById(R.id.backIv);
         backIv.setVisibility(View.VISIBLE);
         mailLl = findViewById(R.id.mailLl);

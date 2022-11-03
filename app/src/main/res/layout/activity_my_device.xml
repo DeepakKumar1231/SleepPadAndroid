@@ -6,9 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".Controller.MyDeviceActivity"
     android:orientation="vertical"
-    android:background="@color/white">
+    android:background="@drawable/gradient_background">
 
-    <include layout="@layout/title1"/>
+
+
+<!--    <include layout="@layout/title1"/>-->
+
+
+    <ImageView
+        android:id="@+id/backIv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_margin="20dp"
+        android:src="@drawable/ic_baseline_arrow_back_24"/>
+
 
 
     <LinearLayout
@@ -20,6 +32,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/clock_layout_height"
+            android:background="@drawable/rectangle_bg"
+            android:layout_margin="20dp"
             android:orientation="horizontal"
             >
 
@@ -30,6 +44,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:textSize="16sp"
+                android:textStyle="bold"
                 android:textColor="@color/black1"
                 android:text="@string/power"/>
 
@@ -46,18 +61,19 @@
 
         </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/black1"
-            android:layout_marginRight="@dimen/ListMargin"
-            android:layout_marginLeft="@dimen/ListMargin"/>
+<!--        <View-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="1dp"-->
+<!--            android:background="@color/black1"-->
+<!--            android:layout_marginRight="@dimen/ListMargin"-->
+<!--            android:layout_marginLeft="@dimen/ListMargin"/>-->
 
         <LinearLayout
             android:id="@+id/softLl"
             android:layout_width="match_parent"
             android:layout_height="@dimen/clock_layout_height"
-
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/rectangle_bg"
             android:orientation="horizontal"
 
             >
@@ -69,6 +85,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:textColor="@color/black1"
+                android:textStyle="bold"
                 android:text="@string/softV"/>
 
 
@@ -91,17 +108,18 @@
 
         </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@color/black1"
-            android:layout_marginRight="@dimen/ListMargin"
-            android:layout_marginLeft="@dimen/ListMargin"/>
+<!--        <View-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0.5dp"-->
+<!--            android:background="@color/black1"-->
+<!--            android:layout_marginRight="@dimen/ListMargin"-->
+<!--            android:layout_marginLeft="@dimen/ListMargin"/>-->
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/clock_layout_height"
-
+            android:background="@drawable/rectangle_bg"
+            android:layout_margin="20dp"
             android:orientation="horizontal"
 
             >
@@ -112,6 +130,7 @@
                 android:layout_marginLeft="@dimen/ListMargin"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
+                android:textStyle="bold"
                 android:textColor="@color/black1"
                 android:text="@string/deviceID"/>
 
@@ -127,18 +146,19 @@
 
         </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@color/black1"
-            android:layout_marginRight="@dimen/ListMargin"
-            android:layout_marginLeft="@dimen/ListMargin"/>
+<!--        <View-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0.5dp"-->
+<!--            android:background="@color/black1"-->
+<!--            android:layout_marginRight="@dimen/ListMargin"-->
+<!--            android:layout_marginLeft="@dimen/ListMargin"/>-->
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/clock_layout_height"
             android:orientation="horizontal"
-
+            android:background="@drawable/rectangle_bg"
+            android:layout_marginHorizontal="20dp"
             >
 
             <TextView
@@ -147,6 +167,7 @@
                 android:layout_marginLeft="@dimen/ListMargin"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
+                android:textStyle="bold"
                 android:textColor="@color/black1"
                 android:text="@string/blueMac"/>
 
@@ -174,16 +195,16 @@
 
             />
 
-        <LinearLayout
-            android:id="@+id/unbindLl"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="350dp"
-            android:layout_alignParentBottom="true"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center|bottom"
-            android:enabled="false"
-            android:orientation="horizontal">
+<!--        <LinearLayout-->
+<!--            android:id="@+id/unbindLl"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="350dp"-->
+<!--            android:layout_alignParentBottom="true"-->
+<!--            android:layout_gravity="center_horizontal"-->
+<!--            android:gravity="center|bottom"-->
+<!--            android:enabled="false"-->
+<!--            android:orientation="horizontal">-->
 
 <!--            <ImageView-->
 <!--                android:layout_width="wrap_content"-->
@@ -201,12 +222,15 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/unbindLl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="false"
+            android:layout_alignParentBottom="true"
             android:layout_gravity="bottom|center"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/rectangle_bg"
             android:backgroundTint="@color/purple"
+            android:layout_centerHorizontal="true"
             android:gravity="center"
             android:paddingHorizontal="20dp"
             android:paddingVertical="10dp"
@@ -214,7 +238,7 @@
             android:textColor="@color/white" />
 
 
-    </LinearLayout>
+<!--    </LinearLayout>-->
 
     <!--    <ImageView-->
 <!--        android:layout_width="match_parent"-->

@@ -38,7 +38,7 @@ public class AboutActivity extends BaseActivity {
     }
 
     private void initView() {
-        ((TextView)findViewById(R.id.titleTv)).setText(getString(R.string.about));
+       //((TextView)findViewById(R.id.titleTv)).setText(getString(R.string.about));
         backIv = findViewById(R.id.backIv);
         protocolLl = findViewById(R.id.protocolLl);
         versionTv = findViewById(R.id.versionTv);

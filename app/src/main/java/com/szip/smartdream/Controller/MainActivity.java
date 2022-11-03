@@ -375,6 +375,8 @@ public class MainActivity extends BaseActivity {
         listView.setAdapter(adapter);
         dateSelectView = findViewById(R.id.dateView);
         dateSelectView.setSelectListener(dateSelectListener);
+
+
     }
 
     /**

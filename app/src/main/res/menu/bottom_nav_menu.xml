@@ -4,17 +4,20 @@
 
     <item android:title="HOME"
         android:id="@+id/home"
+        android:enabled="true"
         android:iconTint="@color/white"
         android:icon="@drawable/ic_baseline_home_24"/>
 
     <item android:title="JOURNAL"
         android:id="@+id/journal"
+        android:enabled="true"
         android:iconTint="@color/white"
         android:icon="@drawable/ic_baseline_favorite_24"/>
 
 
     <item android:title="DASHBOARD"
         android:id="@+id/dashboard"
+        android:enabled="true"
         android:icon="@drawable/ic_baseline_build_24"
         android:iconTint="@color/white"
         />
@@ -23,6 +26,7 @@
     <item android:title="SETTINGS"
         android:icon="@drawable/ic_baseline_settings_24"
         android:id="@+id/settings"
+        android:enabled="true"
         android:iconTint="@color/white"
       />
 

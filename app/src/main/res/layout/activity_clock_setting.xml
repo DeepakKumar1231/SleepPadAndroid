@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
     tools:context=".Controller.ClockSettingActivity">
 
     <include
@@ -22,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:textColor="@color/gray3"
+            android:textColor="@color/white"
             android:text="@string/repeat"/>
 
         <LinearLayout
@@ -43,7 +44,7 @@
                 android:layout_marginRight="10dp"
                 android:background="@drawable/checkbox_bg"
                 android:textSize="12sp"
-                android:text="@string/sun"
+                android:text="Sun"
                 android:textColor="@drawable/select_color"
                 android:gravity="center"
                 android:button="@null"/>
@@ -55,7 +56,7 @@
                 android:layout_marginRight="10dp"
                 android:background="@drawable/checkbox_bg"
                 android:textSize="12sp"
-                android:text="@string/mon"
+                android:text="Mon"
                 android:textColor="@drawable/select_color"
                 android:gravity="center"
                 android:button="@null"/>
@@ -67,7 +68,7 @@
                 android:layout_marginRight="10dp"
                 android:background="@drawable/checkbox_bg"
                 android:textSize="12sp"
-                android:text="@string/tues"
+                android:text="Tue"
                 android:textColor="@drawable/select_color"
                 android:gravity="center"
                 android:button="@null"/>
@@ -79,7 +80,7 @@
                 android:layout_marginRight="10dp"
                 android:background="@drawable/checkbox_bg"
                 android:textSize="12sp"
-                android:text="@string/wed"
+                android:text="Wed"
                 android:textColor="@drawable/select_color"
                 android:gravity="center"
                 android:button="@null"/>
@@ -91,7 +92,7 @@
                 android:layout_marginRight="10dp"
                 android:background="@drawable/checkbox_bg"
                 android:textSize="12sp"
-                android:text="@string/thur"
+                android:text="Thu"
                 android:textColor="@drawable/select_color"
                 android:gravity="center"
                 android:button="@null"/>
@@ -103,7 +104,7 @@
                 android:layout_marginRight="10dp"
                 android:background="@drawable/checkbox_bg"
                 android:textSize="12sp"
-                android:text="@string/fri"
+                android:text="Fri"
                 android:textColor="@drawable/select_color"
                 android:gravity="center"
                 android:button="@null"/>
@@ -114,7 +115,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/checkbox_bg"
                 android:textSize="12sp"
-                android:text="@string/sat"
+                android:text="Sat"
                 android:textColor="@drawable/select_color"
                 android:gravity="center"
                 android:button="@null"/>
@@ -124,12 +125,14 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="@color/black1"/>
+            android:background="@color/white"
+            android:backgroundTint="@color/white"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/typeLl"
+        android:elevation="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/repeatLl"
@@ -141,7 +144,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:textColor="@color/gray3"
+            android:textColor="@color/white"
             android:text="@string/type"/>
 
         <LinearLayout
@@ -156,13 +159,14 @@
                 android:textStyle="italic"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:textColor="@color/alarmType"
+                android:textColor="@color/white"
                 android:text="@string/goodNight"/>
 
             <ImageView
                 android:id="@+id/typeIv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:tint="@color/white"
                 android:layout_gravity="center_vertical"
                 android:src="@mipmap/me_arrow_right"/>
 
@@ -175,7 +179,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="@color/black1"/>
+            android:background="@color/white"/>
     </LinearLayout>
 
     <!--看护闹钟-->
@@ -200,7 +204,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:textColor="@color/gray3"
+                android:textColor="@color/white"
                 android:text="@string/remark"/>
 
             <LinearLayout
@@ -217,7 +221,7 @@
                     android:textStyle="italic"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    android:textColor="@color/alarmType"
+                    android:textColor="@color/white"
                     android:text="wake up"/>
 
 
@@ -253,7 +257,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:textColor="@color/gray3"
+                android:textColor="@color/white"
                 android:text="@string/remind"/>
 
             <LinearLayout
@@ -268,12 +272,13 @@
                     android:textStyle="italic"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    android:textColor="@color/alarmType"
+                    android:textColor="@color/white"
                     android:text="@string/phoneNoty"/>
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:tint="@color/white"
                     android:layout_gravity="center_vertical"
                     android:src="@mipmap/me_arrow_right"/>
 
@@ -298,7 +303,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:textColor="@color/gray3"
+                android:textColor="@color/white"
                 android:text="@string/intelligent"/>
 
             <CheckBox
@@ -353,7 +358,8 @@
             android:layout_height="160dp"
             android:layout_marginRight="30dp"
             android:layout_marginLeft="30dp"
-            android:background="@drawable/bg_alarm_corner"
+            android:background="@drawable/rectangle_bg"
+            android:backgroundTint="#EECBFB"
             ></com.szip.smartdream.View.SelectTimeView>
 
         <!--<LinearLayout-->

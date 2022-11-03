@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -44,7 +45,7 @@ public class MyDeviceActivity extends BaseActivity implements HttpCallbackWithUp
     private TextView softTv;
     private TextView deviceIdTv;
     private TextView macTv;
-    private LinearLayout unbindLl;
+    private Button unbindLl;
     private ImageView backIv;
 
     /**
@@ -118,7 +119,7 @@ public class MyDeviceActivity extends BaseActivity implements HttpCallbackWithUp
      * 初始化界面
      * */
     private void initView() {
-        ((TextView)findViewById(R.id.titleTv)).setText(getString(R.string.myDevice));
+//        ((TextView)findViewById(R.id.titleTv)).setText(getString(R.string.myDevice));
         powerTv = findViewById(R.id.powerTv);
         softLl = findViewById(R.id.softLl);
         softTv = findViewById(R.id.softTv);

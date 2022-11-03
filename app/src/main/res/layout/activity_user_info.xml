@@ -6,9 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".Controller.UserInfoActivity"
     android:orientation="vertical"
-    android:background="@color/white">
+    android:background="@drawable/gradient_background">
 
-    <include layout="@layout/title1"/>
+<!--    <include layout="@layout/title1"/>-->
+
+    <ImageView
+        android:id="@+id/backIv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/ic_baseline_arrow_back_24" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,6 +33,8 @@
         android:id="@+id/mailLl"
         android:layout_width="match_parent"
         android:layout_height="@dimen/clock_layout_height"
+        android:background="@drawable/rectangle_bg"
+        android:layout_margin="20dp"
         android:orientation="horizontal">
 
         <TextView
@@ -29,6 +43,7 @@
             android:layout_marginLeft="@dimen/ListMargin"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
+            android:textStyle="bold"
             android:textColor="@color/black1"
             android:text="@string/mailAcount"/>
 
@@ -50,18 +65,19 @@
 
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@color/black1"
-        android:layout_marginRight="@dimen/ListMargin"
-        android:layout_marginLeft="@dimen/ListMargin"/>
+<!--    <View-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0.5dp"-->
+<!--        android:background="@color/black1"-->
+<!--        android:layout_marginRight="@dimen/ListMargin"-->
+<!--        android:layout_marginLeft="@dimen/ListMargin"/>-->
 
     <LinearLayout
         android:id="@+id/phoneLl"
         android:layout_width="match_parent"
         android:layout_height="@dimen/clock_layout_height"
-
+        android:background="@drawable/rectangle_bg"
+        android:layout_marginHorizontal="20dp"
         android:orientation="horizontal">
 
         <TextView
@@ -71,6 +87,7 @@
             android:layout_marginLeft="@dimen/ListMargin"
             android:layout_weight="1"
             android:text="@string/phone"
+            android:textStyle="bold"
             android:textColor="@color/black1" />
 
         <TextView
@@ -91,18 +108,19 @@
 
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@color/black1"
-        android:layout_marginRight="@dimen/ListMargin"
-        android:layout_marginLeft="@dimen/ListMargin"/>
+<!--    <View-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0.5dp"-->
+<!--        android:background="@color/black1"-->
+<!--        android:layout_marginRight="@dimen/ListMargin"-->
+<!--        android:layout_marginLeft="@dimen/ListMargin"/>-->
 
     <LinearLayout
         android:id="@+id/resetPasswordLl"
         android:layout_width="match_parent"
         android:layout_height="@dimen/clock_layout_height"
-
+        android:background="@drawable/rectangle_bg"
+        android:layout_margin="20dp"
         android:orientation="horizontal">
 
         <TextView
@@ -112,6 +130,7 @@
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:textColor="@color/black1"
+            android:textStyle="bold"
             android:text="@string/resetPassword"/>
 
 
@@ -125,41 +144,57 @@
 
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@color/black1"
-        android:layout_marginRight="@dimen/ListMargin"
-        android:layout_marginLeft="@dimen/ListMargin"/>
+<!--    <View-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0.5dp"-->
+<!--        android:background="@color/black1"-->
+<!--        android:layout_marginRight="@dimen/ListMargin"-->
+<!--        android:layout_marginLeft="@dimen/ListMargin"/>-->
 
-        <LinearLayout
-            android:id="@+id/logoutLl"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_marginTop="12dp"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center|bottom"
-            android:enabled="false">
+<!--        <LinearLayout-->
+<!--            android:id="@+id/logoutLl"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:orientation="vertical"-->
+<!--            android:layout_marginTop="12dp"-->
+<!--            android:layout_gravity="center_horizontal"-->
+<!--            android:gravity="center|bottom"-->
+<!--            android:enabled="false">-->
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/me_btn_logout"/>
+<!--            <ImageView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:src="@mipmap/me_btn_logout"/>-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black1"
-                android:text="@string/logout"
-                android:textSize="15sp"/>
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textColor="@color/black1"-->
+<!--                android:text="@string/logout"-->
+<!--                android:textSize="15sp"/>-->
 
-        </LinearLayout>
+<!--        </LinearLayout>-->
+
+
+
 
 
 
     </LinearLayout>
 
-
+    <TextView
+        android:id="@+id/logoutLl"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:text="Sign Out"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:paddingHorizontal="20dp"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp"
+        android:background="@drawable/rectangle_bg"
+        android:backgroundTint="@color/purple"
+        android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>
