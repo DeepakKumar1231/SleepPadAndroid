@@ -32,9 +32,9 @@ public class PrivacyActivity extends AppCompatActivity {
         });
         webView = findViewById(R.id.webview);
         if(getResources().getConfiguration().locale.getLanguage().equals("zh"))
-            webView.loadUrl("https://cloud.znsdkj.com:8443/file/contract/sleep/statement.html");
+            webView.loadUrl("https://www.sleeppad.in/terms-conditions/");
         else
-            webView.loadUrl("https://cloud.znsdkj.com:8443/file/contract/sleep/statement-eng.html");
+            webView.loadUrl("https://www.sleeppad.in/terms-conditions/");
         webView.getSettings().setJavaScriptEnabled(true);
     }
 }

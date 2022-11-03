@@ -6,60 +6,6 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:visibility="gone"
-        android:layout_marginLeft="@dimen/ListMargin"
-        android:layout_marginRight="@dimen/ListMargin"
-        android:background="@color/black1" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/ListMargin"
-        android:layout_marginRight="@dimen/ListMargin"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"
-            android:src="@mipmap/signup_icon_email"
-            android:visibility="gone" />
-
-        <EditText
-            android:id="@+id/mailEt"
-            android:layout_width="wrap_content"
-            android:layout_height="55dp"
-            android:layout_weight="1"
-            android:background="@drawable/rectangle_bg"
-            android:backgroundTint="#88E8E4E4"
-            android:hint="@string/email"
-            android:inputType="textWebEmailAddress"
-            android:lines="1"
-
-            android:paddingLeft="15dp"
-            android:textColor="@color/black"
-            android:textColorHint="#B7ACA8A8"
-            android:textCursorDrawable="@null"
-
-            android:textSize="@dimen/edit_text_size" />
-
-
-        <ImageView
-
-            android:id="@+id/mailClearIv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginRight="5dp"
-            android:src="@mipmap/me_box_btn_del"
-            android:visibility="gone" />
-
-    </LinearLayout>
-
 
     <View
         android:layout_width="match_parent"
@@ -73,6 +19,61 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/ListMargin"
+        android:layout_marginRight="@dimen/ListMargin"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/signup_icon_email"
+
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/mailEt"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/rectangle_bg"
+            android:backgroundTint="#88E8E4E4"
+            android:hint="@string/email"
+            android:inputType="textWebEmailAddress"
+            android:lines="1"
+            android:paddingLeft="15dp"
+
+            android:textColor="@color/black"
+
+            android:textColorHint="#B7ACA8A8"
+            android:textCursorDrawable="@null"
+
+            android:textSize="@dimen/edit_text_size" />
+
+        <ImageView
+            android:id="@+id/mailClearIv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginRight="5dp"
+            android:src="@mipmap/me_box_btn_del"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="@dimen/ListMargin"
+        android:layout_marginRight="@dimen/ListMargin"
+        android:background="@color/black1"
+        android:visibility="gone" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/ListMargin"
+
         android:layout_marginRight="@dimen/ListMargin"
         android:orientation="horizontal">
 
@@ -84,18 +85,19 @@
             android:src="@mipmap/signup_icon_password"
             android:visibility="gone" />
 
+
         <EditText
             android:id="@+id/passwordEt"
             android:layout_width="wrap_content"
-            android:layout_height="55dp"
-            android:layout_marginTop="25dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
             android:layout_weight="1"
             android:background="@drawable/rectangle_bg"
             android:backgroundTint="#88E8E4E4"
             android:hint="@string/password"
             android:inputType="textPassword"
             android:lines="1"
-            android:paddingLeft="@dimen/imageAndText"
+            android:paddingLeft="15dp"
             android:textColor="@color/black"
             android:textColorHint="#B7ACA8A8"
             android:textCursorDrawable="@null"
@@ -105,131 +107,31 @@
             android:id="@+id/passwordClearIv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="end|center_vertical"
             android:layout_marginRight="5dp"
             android:src="@mipmap/me_box_btn_del"
             android:visibility="gone" />
 
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:layout_marginLeft="@dimen/ListMargin"
-        android:layout_marginRight="@dimen/ListMargin"
-        android:background="@color/black1"
-        android:visibility="gone" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/ListMargin"
-        android:layout_marginRight="@dimen/ListMargin"
-        android:orientation="horizontal">
-
-        <ImageView
+        <CheckBox
+            android:id="@+id/lawsCb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"
-            android:src="@mipmap/signup_icon_email"
-            android:visibility="gone" />
-
-        <EditText
-            android:id="@+id/confirmPasswordEt"
-            android:layout_width="wrap_content"
-            android:layout_height="55dp"
-            android:layout_marginTop="25dp"
-            android:layout_weight="1"
-            android:background="@drawable/rectangle_bg"
-            android:backgroundTint="#88E8E4E4"
-            android:hint="@string/confirmPassword"
-            android:inputType="textPassword"
-            android:lines="1"
-
-            android:paddingLeft="@dimen/imageAndText"
-            android:textColor="@color/black"
-            android:textColorHint="#B7ACA8A8"
-            android:textCursorDrawable="@null"
-
-            android:textSize="@dimen/edit_text_size" />
-
-        <ImageView
-            android:id="@+id/confirmPasswordClearIv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:layout_marginRight="5dp"
-            android:src="@mipmap/me_box_btn_del"
-            android:visibility="gone" />
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:layout_marginLeft="@dimen/ListMargin"
-        android:layout_marginRight="@dimen/ListMargin"
-        android:background="@color/black1"
-        android:visibility="gone" />
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/ListMargin"
-        android:layout_marginRight="@dimen/ListMargin"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"
-            android:src="@mipmap/signup_icon_sms"
-            android:visibility="gone" />
-
-        <EditText
-            android:id="@+id/verificationCodeEt"
-            android:layout_width="wrap_content"
-            android:layout_height="55dp"
-            android:layout_marginTop="25dp"
-            android:layout_weight="1"
-            android:background="@drawable/rectangle_bg"
-            android:backgroundTint="#88E8E4E4"
-            android:hint="@string/verification"
-            android:inputType="number"
-            android:lines="1"
-            android:paddingLeft="@dimen/imageAndText"
-            android:textColor="@color/black"
-            android:textColorHint="#B7ACA8A8"
-            android:textCursorDrawable="@null"
-            android:textSize="@dimen/edit_text_size" />
-
-        <View
-
-            android:layout_width="1dp"
-            android:layout_height="55dp"
-            android:layout_gravity="bottom"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:background="@color/black1"
+            android:background="@drawable/check_box_bg1"
+            android:button="@null"
             android:visibility="gone" />
 
 
         <TextView
-            android:id="@+id/sendCodeTv"
+            android:id="@+id/forgetTv"
             android:layout_width="wrap_content"
-            android:layout_height="55dp"
-            android:layout_gravity="bottom|end"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="10dp"
-            android:background="@drawable/rectangle_bg"
-            android:backgroundTint="@color/navy_blue"
-            android:gravity="center"
-            android:padding="15dp"
-            android:text="@string/send"
-            android:textColor="@color/white" />
+            android:text="@string/forget"
+            android:textColor="@color/black1"
+            android:visibility="gone" />
 
     </LinearLayout>
 
@@ -243,14 +145,40 @@
 
 
     <LinearLayout
-
-        android:id="@+id/signLl"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_below="@id/tvviewpager"
+        android:layout_marginLeft="@dimen/ListMargin"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/rememberCb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="5dp"
+            android:button="@drawable/check_box_bg"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@string/remember"
+            android:textColor="@color/black1"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/loginLl"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="@dimen/ListMargin"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="@dimen/ListMargin"
         android:background="@drawable/rectangle_bg"
         android:backgroundTint="@color/navy_blue"
         android:enabled="false"
@@ -260,19 +188,18 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/signup_btn_signup"
+            android:src="@mipmap/login_btn_login"
             android:visibility="gone" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="55dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="@string/sign"
+            android:text="@string/login"
             android:textColor="@color/white"
             android:textSize="20sp" />
 
     </LinearLayout>
-
 
 </LinearLayout>
