@@ -187,7 +187,7 @@ public class ReportMonthFragment extends BaseFragment {
     private void initView() {
         updataDate();
         hintLl = getView().findViewById(R.id.hintLl);
-        hintLl.setVisibility(View.VISIBLE);
+        hintLl.setVisibility(View.GONE);
 
         reportTimeTv = getView().findViewById(R.id.reportTimeTv);
 
@@ -290,7 +290,7 @@ public class ReportMonthFragment extends BaseFragment {
         monthDate = app.getReportDate()-date[0];
         monthSize = date[1];
         if (reportTimeTv!=null)
-            reportTimeTv.setText(DateUtil.getDateToStringWithoutYear(monthDate)+" - "+DateUtil.getDateToStringWithoutYear(monthDate+monthSize-1));
+            reportTimeTv.setText("Sleep Score");
     }
 
     /**

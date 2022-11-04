@@ -337,9 +337,9 @@ public class ReportDayFragment extends BaseFragment {
      * */
     private void updataDate(){
         if (app.getReportDate() == app.getTodayTime()){
-            reportTimeTv.setText(mActivity.getString(R.string.today));
+            reportTimeTv.setText("Sleep Score");
         }else if (app.getTodayTime()-app.getReportDate() == 1){
-            reportTimeTv.setText(mActivity.getString(R.string.yesterday));
+            reportTimeTv.setText("Sleep Score");
         }else {
             reportTimeTv.setText(DateUtil.getDateToString(app.getReportDate()));
         }

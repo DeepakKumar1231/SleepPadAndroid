@@ -182,7 +182,7 @@ public class ReportWeekFragment extends BaseFragment {
     private void initView() {
 
         hintLl = getView().findViewById(R.id.hintLl);
-        hintLl.setVisibility(View.VISIBLE);
+        hintLl.setVisibility(View.GONE);
 
         reportTimeTv = getView().findViewById(R.id.reportTimeTv);
 
@@ -279,7 +279,7 @@ public class ReportWeekFragment extends BaseFragment {
      */
     private void updataDate() {
         mondayDate = app.getReportDate() - DateUtil.getWeek(app.getReportDate());
-        reportTimeTv.setText(DateUtil.getDateToStringWithoutYear(mondayDate) + " - " + DateUtil.getDateToStringWithoutYear(mondayDate + 6));
+        reportTimeTv.setText("Sleep Score");
     }
 
     /**

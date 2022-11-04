@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
 
     <android.support.v7.widget.Toolbar
@@ -17,9 +18,12 @@
         app:title="Home"
         app:titleTextColor="@color/white" />
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,39 +78,68 @@
             app:layout_constraintTop_toBottomOf="@id/improve"
             app:layout_constraintVertical_chainStyle="packed" />
 
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/setUpAlarmBtn"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@color/yellow"
+                android:backgroundTint="@color/yellow"
+                android:text="Setup an Alarm"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/startmonitoringBtn"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/startmonitoring" />
+
+            <Button
+                android:id="@+id/startmonitoringBtn"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1"
+                android:background="@color/yellow"
+                android:text="Start Monitoring"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/yellow"
+                app:layout_constraintBottom_toBottomOf="@id/setUpAlarmBtn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/setUpAlarmBtn"
+                app:layout_constraintTop_toBottomOf="@id/startmonitoring" />
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
         <Button
-            android:id="@+id/setUpAlarmBtn"
-            android:layout_width="0dp"
+            android:id="@+id/demo"
+            android:layout_width="wrap_content"
             android:layout_height="45dp"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="20dp"
-            android:layout_marginRight="5dp"
+            android:layout_marginRight="15dp"
+
             android:background="@color/yellow"
             android:backgroundTint="@color/yellow"
-            android:text="Setup an Alarm"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+
+            android:text="Watch Demo"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/startmonitoringBtn"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/startmonitoring" />
-
-        <Button
-            android:id="@+id/startmonitoringBtn"
-            android:layout_width="0dp"
-            android:layout_height="45dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="15dp"
-            android:background="@color/yellow"
-            android:text="Start Monitoring"
-            android:textColor="@color/white"
-            app:backgroundTint="@color/yellow"
-            app:layout_constraintBottom_toBottomOf="@id/setUpAlarmBtn"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/setUpAlarmBtn"
-            app:layout_constraintTop_toBottomOf="@id/startmonitoring" />
-
-    </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.LinearLayoutCompat>
 
 
-</android.support.constraint.ConstraintLayout>
+</android.support.v7.widget.LinearLayoutCompat>

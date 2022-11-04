@@ -4,6 +4,8 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
@@ -17,12 +19,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jonas.jgraph.graph.JcoolGraph;
+import com.jonas.jgraph.inter.BaseGraph;
+import com.jonas.jgraph.models.Jchart;
+import com.jonas.jgraph.utils.MathHelper;
 import com.szip.smartdream.Bean.DeviceClockIsUpdataBean;
 import com.szip.smartdream.Bean.HealthBean;
 import com.szip.smartdream.Controller.RealTimeActivity;
+import com.szip.smartdream.DB.DBModel.SleepInDayData;
+import com.szip.smartdream.DB.LoadDataUtil;
 import com.szip.smartdream.MyApplication;
 import com.szip.smartdream.R;
 import com.szip.smartdream.Service.BleService;
+import com.szip.smartdream.Util.DateUtil;
 import com.szip.smartdream.Util.MathUitl;
 import com.szip.smartdream.View.intro.HeartRate;
 import com.szip.smartdream.View.intro.Respiration;
@@ -32,6 +41,9 @@ import com.zhuoting.health.write.ProtocolWriter;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import antonkozyriatskyi.circularprogressindicator.CircularProgressIndicator;
 
@@ -50,6 +62,16 @@ public class SleepFragment extends BaseFragment {
     SleepScore sleepFragment = SleepScore.newInstance("","");
     private FragmentManager fm;
     private FragmentTransaction transaction;
+
+    //---------
+    private JcoolGraph mLineChar;
+    private List<Jchart> lines1 = new ArrayList<>();
+    private List<Jchart> lines2 = new ArrayList<>();
+    private List<Jchart> lines3 = new ArrayList<>();
+    private List<Jchart> lines4 = new ArrayList<>();
+    private int monthSize;
+    private int monthDate;
+    //---------
     /**
      * 开始睡眠/闹钟控件
      */
@@ -84,6 +106,22 @@ public class SleepFragment extends BaseFragment {
     /**
      * 事件监听
      */
+
+
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case 100:
+                    if (lines1.size()!=0&&lines2.size()!=0&&lines3.size()!=0&&lines4.size()!=0){
+                        mLineChar.aniChangeData(lines1);
+                    }
+                    break;
+            }
+        }
+    };
+
     private View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -207,7 +245,17 @@ public class SleepFragment extends BaseFragment {
     /**
      * 初始化界面
      */
+
+    private void updataDate() {
+        int []date;
+        date = DateUtil.getMonth(app.getReportDate());
+        monthDate = app.getReportDate()-date[0];
+        monthSize = date[1];
+    }
+
     private void initView() {
+        updataDate();
+
         respirationRateIv = getView().findViewById(R.id.respirationRateIv);
         circular_progressCurrentDay = getView().findViewById(R.id.circular_progressCurrentDay);
         clockTv = getView().findViewById(R.id.clockTv);
@@ -221,6 +269,37 @@ public class SleepFragment extends BaseFragment {
         heartTv = getView().findViewById(R.id.heartTv);
         menuIv = getView().findViewById(R.id.menuIv);
         menuIv.setClickable(true);
+
+
+
+        //----------
+
+        List<SleepInDayData> sleepInDayDataArrayList = LoadDataUtil.newInstance().loadSleepStateListInMonth(monthDate,monthSize);
+        for (int i = 0; i < sleepInDayDataArrayList.size(); i++) {
+            /**
+             * 拿周睡眠数据
+             * */
+            lines1.add(new Jchart(sleepInDayDataArrayList.get(i).getAllTime(), String.format("%d", i + 1),
+                    (float) sleepInDayDataArrayList.get(i).deepSleepInDay / (float) sleepInDayDataArrayList.get(i).getAllTime(),
+                    (float) (sleepInDayDataArrayList.get(i).deepSleepInDay + sleepInDayDataArrayList.get(i).middleSleepInDay) / (float)
+                            sleepInDayDataArrayList.get(i).getAllTime(),
+                    (float) (sleepInDayDataArrayList.get(i).deepSleepInDay + sleepInDayDataArrayList.get(i).middleSleepInDay +
+                            sleepInDayDataArrayList.get(i).lightSleepInDay) / (float) sleepInDayDataArrayList.get(i).getAllTime()));
+
+
+        }
+
+        mLineChar = getView().findViewById(R.id.sug_recode_line);
+        mLineChar.setSleepFlag(1);
+        mLineChar.setInterval(MathHelper.dip2px(getActivity(),20));
+        mLineChar.setXvelue(4,monthSize);
+        mLineChar.setInterval(4);
+        mLineChar.setYaxisValues(0,600,6);
+        mLineChar.setGraphStyle(BaseGraph.BAR);
+        mLineChar.setLinePointRadio((int)mLineChar.getLineWidth());
+        if (!mLineChar.isDetachFlag())
+            mLineChar.feedData(lines1);
+        //----------
 
 //        animatorIv1 = getView().findViewById(R.id.animIv1);
 //        animatorIv2 = getView().findViewById(R.id.animIv2);

@@ -4,8 +4,8 @@
 4
 5    <uses-sdk
 6        android:minSdkVersion="15"
-6-->C:\Users\amolc\StudioProjects\SleepPadAndroidNew\oldninedroid_library\src\main\AndroidManifest.xml
+6-->/Users/sanjay/Desktop/code/Dmedhya/Sleepy/SleepPadAndroidDeepakMerge/oldninedroid_library/src/main/AndroidManifest.xml
 7        android:targetSdkVersion="27" />
-7-->C:\Users\amolc\StudioProjects\SleepPadAndroidNew\oldninedroid_library\src\main\AndroidManifest.xml
+7-->/Users/sanjay/Desktop/code/Dmedhya/Sleepy/SleepPadAndroidDeepakMerge/oldninedroid_library/src/main/AndroidManifest.xml
 8
 9</manifest>

@@ -1,5 +1,7 @@
 package com.szip.smartdream.View;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -26,21 +28,17 @@ import com.zhuoting.health.write.ProtocolWriter;
  */
 public class NewHome extends Fragment implements View.OnClickListener {
 
-    private MyApplication app;
-    private FragmentManager fm;
-    private FragmentTransaction transaction;
-
-
-    AlarmClockFragment alarmClockFragment = AlarmClockFragment.newInstance("");
-    SleepFragment sleepFragment = SleepFragment.newInstance("");
-
-
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    AlarmClockFragment alarmClockFragment = AlarmClockFragment.newInstance("");
+    SleepFragment sleepFragment = SleepFragment.newInstance("");
+    private MyApplication app;
+    private FragmentManager fm;
+    private FragmentTransaction transaction;
     private Button setUpAlarmBtn;
+    private Button demo;
     private Button startmonitoringBtn;
 
     // TODO: Rename and change types of parameters
@@ -93,9 +91,9 @@ public class NewHome extends Fragment implements View.OnClickListener {
     }
 
     private void checkForMonitoring() {
-        if(app.isStartSleep()){
+        if (app.isStartSleep()) {
             startmonitoringBtn.setText(getString(R.string.stopSleep));
-        }else{
+        } else {
             startmonitoringBtn.setText(getString(R.string.startSleep));
         }
     }
@@ -103,16 +101,24 @@ public class NewHome extends Fragment implements View.OnClickListener {
     private void initAllComponents(View view) {
         app = (MyApplication) getActivity().getApplicationContext();
 
-        setUpAlarmBtn=view.findViewById(R.id.setUpAlarmBtn);
-        startmonitoringBtn=view.findViewById(R.id.startmonitoringBtn);
+        setUpAlarmBtn = view.findViewById(R.id.setUpAlarmBtn);
+        startmonitoringBtn = view.findViewById(R.id.startmonitoringBtn);
+        demo = view.findViewById(R.id.demo);
 
         setUpAlarmBtn.setOnClickListener(this);
         startmonitoringBtn.setOnClickListener(this);
+        demo.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.demo:
+                String url = "https://youtu.be/MRUqScOHbH4";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                requireContext().startActivity(i);
+                break;
             case R.id.setUpAlarmBtn:
 //                alarmClockFragment
                 fm = requireFragmentManager();
@@ -124,21 +130,21 @@ public class NewHome extends Fragment implements View.OnClickListener {
                 break;
 
             case R.id.startmonitoringBtn:
-                if (BleService.getInstance().getConnectState()==2){//蓝牙连接着
-                    if (startmonitoringBtn.getText().toString().equals(getString(R.string.startSleep))){
+                if (BleService.getInstance().getConnectState() == 2) {//蓝牙连接着
+                    if (startmonitoringBtn.getText().toString().equals(getString(R.string.startSleep))) {
                         startmonitoringBtn.setText(getString(R.string.stopSleep));
 
                         app.setStartSleep(true);
                         BleService.getInstance().write(ProtocolWriter.writeForReadHealth((byte) 0x01));
 
 
-                    }else {
+                    } else {
                         startmonitoringBtn.setText(getString(R.string.startSleep));
                         app.setStartSleep(false);
                         BleService.getInstance().write(ProtocolWriter.writeForReadHealth((byte) 0x00));
 
                     }
-                }else {
+                } else {
                     Toast.makeText(requireContext(), getString(R.string.lineError), Toast.LENGTH_SHORT).show();
                 }
                 break;
