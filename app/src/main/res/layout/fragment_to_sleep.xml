@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <ScrollView
@@ -14,11 +15,13 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/advise4"
-                android:layout_marginLeft="10dp"
+            <android.support.v7.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/purple"
+                app:titleTextColor="@color/white"
+                app:titleMarginStart="60dp"
+                app:title="@string/advise4"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="12dp"
@@ -30,11 +33,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:textColor="@color/black1"
+                android:textColor="@color/white"
                 android:text="@string/toSleep1"/>
 
             <TextView
@@ -45,17 +48,17 @@
                 android:textSize="13sp"
                 android:textStyle="italic"
                 android:text="@string/toSleep1Info"
-                android:textColor="@color/black1"/>
+                android:textColor="@color/white"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="14dp"
-                android:textColor="@color/black1"
+                android:textColor="@color/white"
                 android:text="@string/toSleep2"/>
 
             <TextView
@@ -66,17 +69,17 @@
                 android:textSize="13sp"
                 android:textStyle="italic"
                 android:text="@string/toSleep2Info"
-                android:textColor="@color/black1"/>
+                android:textColor="@color/white"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:textColor="@color/black1"
+                android:textColor="@color/white"
                 android:text="@string/toSleep3"/>
 
             <TextView
@@ -87,17 +90,17 @@
                 android:textSize="13sp"
                 android:textStyle="italic"
                 android:text="@string/toSleep3Info"
-                android:textColor="@color/black1"/>
+                android:textColor="@color/white"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:textColor="@color/black1"
+                android:textColor="@color/white"
                 android:text="@string/toSleep4"/>
 
             <TextView
@@ -108,17 +111,17 @@
                 android:textSize="13sp"
                 android:textStyle="italic"
                 android:text="@string/toSleep4Info"
-                android:textColor="@color/black1"/>
+                android:textColor="@color/white"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:textColor="@color/black1"
+                android:textColor="@color/white"
                 android:text="@string/toSleep5"/>
 
             <TextView
@@ -130,7 +133,7 @@
                 android:textSize="13sp"
                 android:textStyle="italic"
                 android:text="@string/toSleep5Info"
-                android:textColor="@color/black1"/>
+                android:textColor="@color/white"/>
         </LinearLayout>
 
     </ScrollView>

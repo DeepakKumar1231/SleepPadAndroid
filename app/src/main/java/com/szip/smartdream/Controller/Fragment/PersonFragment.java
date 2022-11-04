@@ -1,12 +1,18 @@
 package com.szip.smartdream.Controller.Fragment;
 
+
+
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.szip.smartdream.Controller.AboutActivity;
 import com.szip.smartdream.Controller.FeedbackActivity;
@@ -38,6 +44,8 @@ public class PersonFragment extends BaseFragment {
     private TextView adviseLl;
     private TextView feedbackLl;
     private TextView aboutLl;
+    private Switch permissionSwitch , locationSwitch;
+
 
 
     /**
@@ -82,6 +90,8 @@ public class PersonFragment extends BaseFragment {
         adviseLl = getView().findViewById(R.id.adviseLl);
         //feedbackLl = getView().findViewById(R.id.feedbackLl);
         aboutLl = getView().findViewById(R.id.aboutLl);
+        permissionSwitch = getView().findViewById(R.id.permissionSwitch);
+        locationSwitch = getView().findViewById(R.id.locationSwitch);
     }
 
     private void initEvent() {
@@ -93,6 +103,8 @@ public class PersonFragment extends BaseFragment {
         adviseLl.setOnClickListener(onClickListener);
         //feedbackLl.setOnClickListener(onClickListener);
         aboutLl.setOnClickListener(onClickListener);
+        permissionSwitch.setOnClickListener(onClickListener);
+        locationSwitch.setOnClickListener(onClickListener);
     }
 
     private View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -148,7 +160,26 @@ public class PersonFragment extends BaseFragment {
                     startActivity(new Intent(getActivity(), AboutActivity.class));
                 }
                 break;
+
+                case R.id.permissionSwitch:
+                    final Intent i = new Intent();
+                    i.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                    i.addCategory(Intent.CATEGORY_DEFAULT);
+                    i.setData(Uri.parse("package:" + requireContext().getPackageName()));
+                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    i.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                    i.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+                    requireContext().startActivity(i);
+                    break;
+
+                case R.id.locationSwitch:
+                    Uri gmmIntentUri = Uri.parse("geo:0,0?q=");
+                    Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                    mapIntent.setPackage("com.google.android.apps.maps");
+                    startActivity(mapIntent);
+
+
             }
-       }
-     };
+            }
+    };
 }

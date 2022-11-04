@@ -18,6 +18,17 @@
         app:title="Home"
         app:titleTextColor="@color/white" />
 
+    <ImageView
+        android:id="@+id/refreshBtn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="end"
+        android:paddingEnd="10dp"
+        android:tint="@color/purple"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/refresh_svgrepo_com"/>
+
+
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -28,6 +39,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+
 
 
         <TextView

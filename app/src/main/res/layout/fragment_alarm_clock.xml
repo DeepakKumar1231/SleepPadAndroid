@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@color/white"
     android:layout_width="match_parent"
+    android:paddingTop="20dp"
     android:layout_height="match_parent">
 
     <com.roamer.slidelistview.SlideListView

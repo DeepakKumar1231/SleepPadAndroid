@@ -3,6 +3,7 @@ package com.szip.smartdream.View;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,10 +13,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.szip.smartdream.Controller.Fragment.AlarmClockFragment;
 import com.szip.smartdream.Controller.Fragment.SleepFragment;
+import com.szip.smartdream.Controller.MainActivity;
+import com.szip.smartdream.Model.ProgressHudModel;
 import com.szip.smartdream.MyApplication;
 import com.szip.smartdream.R;
 import com.szip.smartdream.Service.BleService;
@@ -40,6 +44,9 @@ public class NewHome extends Fragment implements View.OnClickListener {
     private Button setUpAlarmBtn;
     private Button demo;
     private Button startmonitoringBtn;
+    private ImageView refeshBtn;
+
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -104,10 +111,12 @@ public class NewHome extends Fragment implements View.OnClickListener {
         setUpAlarmBtn = view.findViewById(R.id.setUpAlarmBtn);
         startmonitoringBtn = view.findViewById(R.id.startmonitoringBtn);
         demo = view.findViewById(R.id.demo);
+        refeshBtn = view.findViewById(R.id.refreshBtn);
 
         setUpAlarmBtn.setOnClickListener(this);
         startmonitoringBtn.setOnClickListener(this);
         demo.setOnClickListener(this);
+        refeshBtn.setOnClickListener(this);
     }
 
     @Override
@@ -138,16 +147,30 @@ public class NewHome extends Fragment implements View.OnClickListener {
                         BleService.getInstance().write(ProtocolWriter.writeForReadHealth((byte) 0x01));
 
 
+
                     } else {
                         startmonitoringBtn.setText(getString(R.string.startSleep));
                         app.setStartSleep(false);
                         BleService.getInstance().write(ProtocolWriter.writeForReadHealth((byte) 0x00));
+                        refeshBtn.performClick();
 
                     }
                 } else {
                     Toast.makeText(requireContext(), getString(R.string.lineError), Toast.LENGTH_SHORT).show();
                 }
                 break;
+
+            case R.id.refreshBtn:
+                ((MyApplication) app.getApplicationContext()).setUpdating(true);
+                ProgressHudModel.newInstance().show(requireActivity(), getString(R.string.syncing)
+                        , null, 10000);
+                BleService.getInstance().write(ProtocolWriter.writeForReadSleepState());
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        app.setUpdating(false);
+                    }
+                }, 15000);
         }
     }
 

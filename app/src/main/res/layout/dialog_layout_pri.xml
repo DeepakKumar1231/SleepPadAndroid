@@ -101,7 +101,7 @@
                 android:layout_weight="1"
                 android:background="#00000000"
                 android:text="@string/confirm"
-                android:textColor="@color/MainColor"
+                android:textColor="@color/purple"
                 android:textSize="15sp"
                 android:textAllCaps="false"/>
         </LinearLayout>

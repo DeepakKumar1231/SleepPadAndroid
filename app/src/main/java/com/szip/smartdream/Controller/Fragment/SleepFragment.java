@@ -2,6 +2,7 @@ package com.szip.smartdream.Controller.Fragment;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,7 +13,9 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
@@ -25,6 +28,8 @@ import com.jonas.jgraph.models.Jchart;
 import com.jonas.jgraph.utils.MathHelper;
 import com.szip.smartdream.Bean.DeviceClockIsUpdataBean;
 import com.szip.smartdream.Bean.HealthBean;
+import com.szip.smartdream.Bean.UpdataReportBean;
+import com.szip.smartdream.Controller.MainActivity;
 import com.szip.smartdream.Controller.RealTimeActivity;
 import com.szip.smartdream.DB.DBModel.SleepInDayData;
 import com.szip.smartdream.DB.LoadDataUtil;
@@ -33,6 +38,7 @@ import com.szip.smartdream.R;
 import com.szip.smartdream.Service.BleService;
 import com.szip.smartdream.Util.DateUtil;
 import com.szip.smartdream.Util.MathUitl;
+import com.szip.smartdream.View.DateSelectView;
 import com.szip.smartdream.View.intro.HeartRate;
 import com.szip.smartdream.View.intro.Respiration;
 import com.szip.smartdream.View.intro.SleepScore;
@@ -46,6 +52,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import antonkozyriatskyi.circularprogressindicator.CircularProgressIndicator;
+import cn.aigestudio.datepicker.cons.DPMode;
+import cn.aigestudio.datepicker.views.DatePicker;
 
 /**
  * Created by Administrator on 2019/1/23.
@@ -62,6 +70,7 @@ public class SleepFragment extends BaseFragment {
     SleepScore sleepFragment = SleepScore.newInstance("","");
     private FragmentManager fm;
     private FragmentTransaction transaction;
+    private DateSelectView dateSelectView;
 
     //---------
     private JcoolGraph mLineChar;
@@ -94,6 +103,7 @@ public class SleepFragment extends BaseFragment {
     private ImageView menuIv;
     private ImageView heartBeatIv;
     private ImageView respirationRateIv;
+    private ImageView calenderIv;
 
 
     /**
@@ -174,6 +184,40 @@ public class SleepFragment extends BaseFragment {
                         showToast(getString(R.string.lineError));
                     }
                     break;
+
+                case R.id.calenderIv:
+
+                String date = DateUtil.getDateToString(app.getReportDate());
+                //TODO 选择时间
+                final AlertDialog dialog = new AlertDialog.Builder(requireActivity()).create();
+                dialog.show();
+                final DatePicker picker = new DatePicker(requireActivity());
+                picker.setDate(Integer.valueOf(date.substring(0,4)), Integer.valueOf(date.substring(5,7)),Integer.valueOf(date.substring(8,10)));
+                picker.setMode(DPMode.SINGLE);
+                picker.setFestivalDisplay(false);
+                picker.setHolidayDisplay(false);
+                picker.setTodayDisplay(true);
+                picker.setOnDatePickedListener(new DatePicker.OnDatePickedListener() {
+                    @Override
+                    public void onDatePicked(String date) {
+                        if (LoadDataUtil.newInstance().dataCanGet(date)){
+                            app.setReportDate(DateUtil.getStringToDate(date));
+                            EventBus.getDefault().post(new UpdataReportBean(true));
+                            dialog.dismiss();
+                        }else {
+                            showToast(getString(R.string.future));
+                        }
+                    }
+                });
+                ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                dialog.getWindow().setContentView(picker, params);
+                dialog.getWindow().setGravity(Gravity.CENTER);
+                break;
+
+                case R.id.backView:
+//                    startSector(false);
+                    break;
             }
         }
     };
@@ -240,6 +284,7 @@ public class SleepFragment extends BaseFragment {
         EventBus.getDefault().unregister(this);
         if (app.isStartSleep())
             BleService.getInstance().write(ProtocolWriter.writeForReadHealth((byte) 0x00));
+
     }
 
     /**
@@ -268,6 +313,7 @@ public class SleepFragment extends BaseFragment {
         breathTv = getView().findViewById(R.id.breathTv);
         heartTv = getView().findViewById(R.id.heartTv);
         menuIv = getView().findViewById(R.id.menuIv);
+        calenderIv = getView().findViewById(R.id.calenderIv);
         menuIv.setClickable(true);
 
 
@@ -320,6 +366,7 @@ public class SleepFragment extends BaseFragment {
         heartLl.setOnClickListener(onClickListener);
         heartBeatIv.setOnClickListener(onClickListener);
         circular_progressCurrentDay.setOnClickListener(onClickListener);
+        calenderIv.setOnClickListener(onClickListener);
 
     }
 
@@ -400,4 +447,5 @@ public class SleepFragment extends BaseFragment {
         else
             clockTv.setText("");
     }
+
 }
