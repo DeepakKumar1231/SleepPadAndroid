@@ -186,15 +186,18 @@
         android:id="@+id/logoutLl"
         android:layout_width="wrap_content"
         android:layout_height="55dp"
-        android:text="Sign Out"
-        android:textSize="16sp"
-        android:textColor="@color/white"
-        android:paddingHorizontal="20dp"
-        android:gravity="center"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_margin="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/rectangle_bg"
         android:backgroundTint="@color/purple"
-        android:layout_alignParentBottom="true"/>
+        android:gravity="center"
+        android:paddingHorizontal="20dp"
+        android:text="Sign Out"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
 
 </RelativeLayout>

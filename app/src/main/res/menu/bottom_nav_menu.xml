@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
 
     <item android:title="HOME"
         android:id="@+id/home"
         android:enabled="true"
         android:iconTint="@color/white"
-        android:icon="@drawable/ic_baseline_home_24"/>
+        android:icon="@drawable/ic_baseline_home_24"
+        app:showAsAction="always|withText" />
 
     <item android:title="JOURNAL"
         android:id="@+id/journal"
         android:enabled="true"
         android:iconTint="@color/white"
+        app:showAsAction="always|withText"
         android:icon="@drawable/ic_baseline_favorite_24"/>
 
 
     <item android:title="DASHBOARD"
         android:id="@+id/dashboard"
         android:enabled="true"
+        app:showAsAction="always|withText"
         android:icon="@drawable/ic_baseline_build_24"
         android:iconTint="@color/white"
         />
@@ -27,6 +31,7 @@
         android:icon="@drawable/ic_baseline_settings_24"
         android:id="@+id/settings"
         android:enabled="true"
+        app:showAsAction="always|withText"
         android:iconTint="@color/white"
       />
 

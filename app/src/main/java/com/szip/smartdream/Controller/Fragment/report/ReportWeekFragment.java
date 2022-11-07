@@ -104,11 +104,12 @@ public class ReportWeekFragment extends BaseFragment {
 
     /**
      * 周日所在的日期
-     */
+     **/
     private int mondayDate;
 
 
     private Handler handler = new Handler() {
+        @SuppressLint("HandlerLeak")
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
@@ -320,7 +321,6 @@ public class ReportWeekFragment extends BaseFragment {
                             sleepInDayDataArrayList.get(i).getAllTime(),
                     (float) (sleepInDayDataArrayList.get(i).deepSleepInDay + sleepInDayDataArrayList.get(i).middleSleepInDay +
                             sleepInDayDataArrayList.get(i).lightSleepInDay) / (float) sleepInDayDataArrayList.get(i).getAllTime()));
-
 
             /**
              * 拿周心率数据

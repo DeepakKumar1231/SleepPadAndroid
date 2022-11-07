@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.szip.smartdream.View.MyScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/myScollView"
@@ -562,12 +563,12 @@
                 android:layout_gravity="center_vertical"/>
             <ImageView
                 android:layout_width="50dp"
-                android:tint="@color/white"
                 android:layout_height="50dp"
                 android:src="@drawable/respiratory_system"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="15dp"
-                android:layout_marginRight="@dimen/report_icon_right"/>
+                android:layout_marginRight="@dimen/report_icon_right"
+                app:tint="@color/white" />
 
         </LinearLayout>
 
@@ -646,10 +647,9 @@
                 android:layout_height="50dp"
                 android:src="@drawable/ic_clock_24"
                 android:layout_gravity="center_vertical"
-                android:tint="@color/white"
-
                 android:layout_marginLeft="15dp"
-                android:layout_marginRight="@dimen/report_icon_right"/>
+                android:layout_marginRight="@dimen/report_icon_right"
+                app:tint="@color/white" />
         </LinearLayout>
 
         <RelativeLayout

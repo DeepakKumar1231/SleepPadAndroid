@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background">
+
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -64,15 +65,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/calenderIv" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
-                android:text="DDth Month-DDth Month"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="@id/calenderIv"
-                app:layout_constraintEnd_toStartOf="@id/calenderIv" />
+<!--            <TextView-->
+<!--                android:id="@+id/dateTv"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginRight="20dp"-->
+<!--                android:text="DDth Month-DDth Month"-->
+<!--                android:textAppearance="@style/TextAppearance.AppCompat.Body2"-->
+<!--                android:textColor="@color/white"-->
+<!--                app:layout_constraintBottom_toBottomOf="@id/calenderIv"-->
+<!--                app:layout_constraintEnd_toStartOf="@id/calenderIv" />-->
 
             <ImageView
                 android:id="@+id/calenderIv"
@@ -114,6 +116,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:progressBackgroundColor="@color/white"
                     app:progressCap="round"
+                    app:progressStrokeWidth="5dp"
                     app:progressColor="@color/purple"
                     app:textColor="@color/white"
                     app:textSize="0sp" />
@@ -154,6 +157,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:progressBackgroundColor="@color/white"
                     app:progressCap="round"
+                    app:progressStrokeWidth="5dp"
                     app:progressColor="@color/purple"
                     app:textColor="@color/white"
                     app:textSize="0sp" />
@@ -194,6 +198,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:progressBackgroundColor="@color/white"
                     app:progressCap="round"
+                    app:progressStrokeWidth="5dp"
                     app:progressColor="@color/purple"
                     app:textColor="@color/white"
                     app:textSize="0sp" />
@@ -234,6 +239,7 @@
                     app:progressBackgroundColor="@color/white"
                     app:progressCap="round"
                     app:progressColor="@color/purple"
+                    app:progressStrokeWidth="5dp"
                     app:textColor="@color/white"
                     app:textSize="0sp" />
 
@@ -273,6 +279,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:progressBackgroundColor="@color/white"
                     app:progressCap="round"
+                    app:progressStrokeWidth="5dp"
                     app:progressColor="@color/purple"
                     app:textColor="@color/white"
                     app:textSize="0sp" />
@@ -313,6 +320,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:progressBackgroundColor="@color/white"
                     app:progressCap="round"
+                    app:progressStrokeWidth="5dp"
                     app:progressColor="@color/purple"
                     app:textColor="@color/white"
                     app:textSize="0sp" />
@@ -354,6 +362,7 @@
                     app:progressBackgroundColor="@color/white"
                     app:progressCap="round"
                     app:progressColor="@color/purple"
+                    app:progressStrokeWidth="5dp"
                     app:textColor="@color/white"
                     app:textSize="0sp" />
 
@@ -407,7 +416,7 @@
                 app:progressBackgroundColor="@color/white"
                 app:progressCap="round"
                 app:progressColor="@color/purple"
-                app:progressStrokeWidth="14dp"
+                app:progressStrokeWidth="10dp"
                 app:textColor="@color/white"
                 app:textSize="15sp" />
 
@@ -661,7 +670,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-
                 android:layout_marginTop="30dp"
                 android:gravity="end"
                 android:orientation="vertical"
@@ -994,9 +1002,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
 
     </LinearLayout>
 
-</FrameLayout>
+
+</android.support.constraint.ConstraintLayout>

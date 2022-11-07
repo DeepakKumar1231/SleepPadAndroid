@@ -7,25 +7,17 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.szip.smartdream.Controller.AboutActivity;
-import com.szip.smartdream.Controller.FeedbackActivity;
 import com.szip.smartdream.Controller.HelpCentreActivity;
 import com.szip.smartdream.Controller.MyDeviceActivity;
 import com.szip.smartdream.Controller.PersonInfoActivity;
 import com.szip.smartdream.Controller.UserInfoActivity;
-import com.szip.smartdream.Model.ProgressHudModel;
-import com.szip.smartdream.MyApplication;
 import com.szip.smartdream.R;
-import com.szip.smartdream.Util.HttpMessgeUtil;
 
-import java.io.IOException;
 
 /**
  * Created by Administrator on 2019/1/23.
@@ -44,7 +36,7 @@ public class PersonFragment extends BaseFragment {
     private TextView adviseLl;
     private TextView feedbackLl;
     private TextView aboutLl;
-    private Switch permissionSwitch , locationSwitch;
+    private Switch permissionSwitch , locationSwitch , soundSwitch;
 
 
 
@@ -92,6 +84,7 @@ public class PersonFragment extends BaseFragment {
         aboutLl = getView().findViewById(R.id.aboutLl);
         permissionSwitch = getView().findViewById(R.id.permissionSwitch);
         locationSwitch = getView().findViewById(R.id.locationSwitch);
+        soundSwitch = getView().findViewById(R.id.soundSwitch);
     }
 
     private void initEvent() {
@@ -105,6 +98,7 @@ public class PersonFragment extends BaseFragment {
         aboutLl.setOnClickListener(onClickListener);
         permissionSwitch.setOnClickListener(onClickListener);
         locationSwitch.setOnClickListener(onClickListener);
+        soundSwitch.setOnClickListener(onClickListener);
     }
 
     private View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -177,7 +171,11 @@ public class PersonFragment extends BaseFragment {
                     Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
                     mapIntent.setPackage("com.google.android.apps.maps");
                     startActivity(mapIntent);
+                    break;
 
+                case R.id.soundSwitch:
+                    Intent aa = new Intent(android.provider.Settings.ACTION_SOUND_SETTINGS);
+                    startActivityForResult(aa,0);
 
             }
             }

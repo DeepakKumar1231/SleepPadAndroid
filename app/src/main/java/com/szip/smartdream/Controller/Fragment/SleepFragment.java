@@ -4,6 +4,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -31,7 +32,10 @@ import com.szip.smartdream.Bean.HealthBean;
 import com.szip.smartdream.Bean.UpdataReportBean;
 import com.szip.smartdream.Controller.MainActivity;
 import com.szip.smartdream.Controller.RealTimeActivity;
+import com.szip.smartdream.DB.DBModel.BreathInDayData;
+import com.szip.smartdream.DB.DBModel.HeartInDayData;
 import com.szip.smartdream.DB.DBModel.SleepInDayData;
+import com.szip.smartdream.DB.DBModel.TurnOverInDayData;
 import com.szip.smartdream.DB.LoadDataUtil;
 import com.szip.smartdream.MyApplication;
 import com.szip.smartdream.R;
@@ -48,6 +52,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,8 +66,6 @@ import cn.aigestudio.datepicker.views.DatePicker;
 
 public class SleepFragment extends BaseFragment {
 
-    private ObjectAnimator anim1, anim2, anim3;
-    //private ImageView animatorIv1,animatorIv2,animatorIv3;
     private AnimatorSet set = new AnimatorSet();
 
     Respiration respiration = Respiration.newInstance("","");
@@ -78,6 +81,7 @@ public class SleepFragment extends BaseFragment {
     private List<Jchart> lines2 = new ArrayList<>();
     private List<Jchart> lines3 = new ArrayList<>();
     private List<Jchart> lines4 = new ArrayList<>();
+    private int mondayDate;
     private int monthSize;
     private int monthDate;
     //---------
@@ -87,13 +91,13 @@ public class SleepFragment extends BaseFragment {
     private ConstraintLayout sleepRl;
     private TextView sleepTv;
     private ConstraintLayout clockRl;
-    private TextView clockTv;
+    private TextView clockTv , dayTv;
     private CircularProgressIndicator circular_progressCurrentDay;
     /**
      * 实时健康数据以及连接状态
      */
-    private ConstraintLayout breathLl, heartLl;
-    private TextView heartTv;
+    private ConstraintLayout breathLl, heartLl,clockLl;
+    private TextView heartTv ;
     private TextView breathTv;
 
     private MyApplication app;
@@ -218,6 +222,15 @@ public class SleepFragment extends BaseFragment {
                 case R.id.backView:
 //                    startSector(false);
                     break;
+
+                case R.id.clockRl:
+//                    fm = requireFragmentManager();
+//                    transaction = fm.beginTransaction();
+//
+//                    transaction.replace(R.id.fragment, );
+//                    transaction.addToBackStack("SANJAY");
+//                    transaction.commit();
+//                    break;
             }
         }
     };
@@ -296,6 +309,8 @@ public class SleepFragment extends BaseFragment {
         date = DateUtil.getMonth(app.getReportDate());
         monthDate = app.getReportDate()-date[0];
         monthSize = date[1];
+
+        mondayDate = app.getReportDate() - DateUtil.getWeek(app.getReportDate());
     }
 
     private void initView() {
@@ -313,14 +328,41 @@ public class SleepFragment extends BaseFragment {
         breathTv = getView().findViewById(R.id.breathTv);
         heartTv = getView().findViewById(R.id.heartTv);
         menuIv = getView().findViewById(R.id.menuIv);
+        dayTv = getView().findViewById(R.id.dayTv);
         calenderIv = getView().findViewById(R.id.calenderIv);
         menuIv.setClickable(true);
 
 
 
+        mLineChar = getView().findViewById(R.id.sug_recode_line);
+        mLineChar.setSleepFlag(1);
+        mLineChar.setInterval(MathHelper.dip2px(getActivity(),20));
+        mLineChar.setXvelue(7,7);
+        mLineChar.setYaxisValues(0,600,6);
+        mLineChar.setGraphStyle(0);
+        mLineChar.setLinePointRadio((int)mLineChar.getLineWidth());
+        if (!mLineChar.isDetachFlag())
+            mLineChar.feedData(lines1);
+
+
+
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            dayTv.setText(LocalDate.now().getDayOfWeek().name());
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            dayTv.setText(LocalDate.now().getDayOfWeek().name());
+        }
+
+
         //----------
 
-        List<SleepInDayData> sleepInDayDataArrayList = LoadDataUtil.newInstance().loadSleepStateListInMonth(monthDate,monthSize);
+        List<SleepInDayData> sleepInDayDataArrayList = LoadDataUtil.newInstance().loadSleepStateListInWeek(mondayDate);
+
+
+
         for (int i = 0; i < sleepInDayDataArrayList.size(); i++) {
             /**
              * 拿周睡眠数据
@@ -333,25 +375,50 @@ public class SleepFragment extends BaseFragment {
                             sleepInDayDataArrayList.get(i).lightSleepInDay) / (float) sleepInDayDataArrayList.get(i).getAllTime()));
 
 
+
         }
 
-        mLineChar = getView().findViewById(R.id.sug_recode_line);
-        mLineChar.setSleepFlag(1);
-        mLineChar.setInterval(MathHelper.dip2px(getActivity(),20));
-        mLineChar.setXvelue(4,monthSize);
-        mLineChar.setInterval(4);
-        mLineChar.setYaxisValues(0,600,6);
-        mLineChar.setGraphStyle(BaseGraph.BAR);
-        mLineChar.setLinePointRadio((int)mLineChar.getLineWidth());
-        if (!mLineChar.isDetachFlag())
-            mLineChar.feedData(lines1);
+        getAverageData(sleepInDayDataArrayList);
+
+
+        }
+
+
+    /**
+     * 获取周平均数据
+     */
+    private void getAverageData(List<SleepInDayData> sleepInDayDataList) {
+        int allSum = 0;
+        int deepSum = 0;
+        int midSum = 0;
+        int lightSum = 0;
+        int awakeSum = 0;
+        int heartSum = 0;
+        int breathSum = 0;
+        int turnSum = 0;
+        int size = 0;
+
+        for (int i = 0; i < sleepInDayDataList.size(); i++) {
+            if (sleepInDayDataList.get(i).getAllTime() != 0) {
+                allSum += sleepInDayDataList.get(i).getAllTime();
+                deepSum += sleepInDayDataList.get(i).deepSleepInDay;
+                midSum += sleepInDayDataList.get(i).middleSleepInDay;
+                lightSum += sleepInDayDataList.get(i).lightSleepInDay;
+                awakeSum += sleepInDayDataList.get(i).wakeSleepInDay;
+                size++;
+            }
+
+        }
+
+
+    }
+
         //----------
 
 //        animatorIv1 = getView().findViewById(R.id.animIv1);
 //        animatorIv2 = getView().findViewById(R.id.animIv2);
 //        animatorIv3 = getView().findViewById(R.id.animIv3);
 
-    }
 
     /**
      * 初始化事件监听
@@ -365,6 +432,7 @@ public class SleepFragment extends BaseFragment {
         breathLl.setOnClickListener(onClickListener);
         heartLl.setOnClickListener(onClickListener);
         heartBeatIv.setOnClickListener(onClickListener);
+       // clockLl.setOnClickListener(onClickListener);
         circular_progressCurrentDay.setOnClickListener(onClickListener);
         calenderIv.setOnClickListener(onClickListener);
 
