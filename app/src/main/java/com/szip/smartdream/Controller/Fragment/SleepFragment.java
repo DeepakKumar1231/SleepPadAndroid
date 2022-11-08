@@ -1,7 +1,6 @@
 package com.szip.smartdream.Controller.Fragment;
 
 import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Build;
@@ -21,8 +20,8 @@ import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.jonas.jgraph.graph.JcoolGraph;
 import com.jonas.jgraph.inter.BaseGraph;
 import com.jonas.jgraph.models.Jchart;
@@ -30,12 +29,9 @@ import com.jonas.jgraph.utils.MathHelper;
 import com.szip.smartdream.Bean.DeviceClockIsUpdataBean;
 import com.szip.smartdream.Bean.HealthBean;
 import com.szip.smartdream.Bean.UpdataReportBean;
-import com.szip.smartdream.Controller.MainActivity;
+import com.szip.smartdream.BuildConfig;
 import com.szip.smartdream.Controller.RealTimeActivity;
-import com.szip.smartdream.DB.DBModel.BreathInDayData;
-import com.szip.smartdream.DB.DBModel.HeartInDayData;
 import com.szip.smartdream.DB.DBModel.SleepInDayData;
-import com.szip.smartdream.DB.DBModel.TurnOverInDayData;
 import com.szip.smartdream.DB.LoadDataUtil;
 import com.szip.smartdream.MyApplication;
 import com.szip.smartdream.R;
@@ -66,21 +62,20 @@ import cn.aigestudio.datepicker.views.DatePicker;
 
 public class SleepFragment extends BaseFragment {
 
-    private AnimatorSet set = new AnimatorSet();
-
-    Respiration respiration = Respiration.newInstance("","");
-    HeartRate heartRate = HeartRate.newInstance("","");
-    SleepScore sleepFragment = SleepScore.newInstance("","");
+    Respiration respiration = Respiration.newInstance("", "");
+    HeartRate heartRate = HeartRate.newInstance("", "");
+    SleepScore sleepFragment = SleepScore.newInstance("", "");
+    private final AnimatorSet set = new AnimatorSet();
     private FragmentManager fm;
     private FragmentTransaction transaction;
     private DateSelectView dateSelectView;
 
     //---------
     private JcoolGraph mLineChar;
-    private List<Jchart> lines1 = new ArrayList<>();
-    private List<Jchart> lines2 = new ArrayList<>();
-    private List<Jchart> lines3 = new ArrayList<>();
-    private List<Jchart> lines4 = new ArrayList<>();
+    private final List<Jchart> lines1 = new ArrayList<>();
+    private final List<Jchart> lines2 = new ArrayList<>();
+    private final List<Jchart> lines3 = new ArrayList<>();
+    private final List<Jchart> lines4 = new ArrayList<>();
     private int mondayDate;
     private int monthSize;
     private int monthDate;
@@ -91,13 +86,13 @@ public class SleepFragment extends BaseFragment {
     private ConstraintLayout sleepRl;
     private TextView sleepTv;
     private ConstraintLayout clockRl;
-    private TextView clockTv , dayTv;
-    private CircularProgressIndicator circular_progressCurrentDay;
+    private TextView clockTv, dayTv;
+    private CircularProgressIndicator circular_progressCurrentDay, mondayProgressBar, tuesdayProgressBar, wednesdayProgressBar, thursdayProgressBar, fridayProgressBar, saturdayProgressBar, sundayProgressBar;
     /**
      * 实时健康数据以及连接状态
      */
-    private ConstraintLayout breathLl, heartLl,clockLl;
-    private TextView heartTv ;
+    private ConstraintLayout breathLl, heartLl, clockLl;
+    private TextView heartTv;
     private TextView breathTv;
 
     private MyApplication app;
@@ -113,22 +108,22 @@ public class SleepFragment extends BaseFragment {
     /**
      * 按钮出现的动画
      */
-    private ScaleAnimation scaleAnimation = new ScaleAnimation(1f, 1f, 0f,
+    private final ScaleAnimation scaleAnimation = new ScaleAnimation(1f, 1f, 0f,
             1f, Animation.RELATIVE_TO_PARENT, 0.5f, Animation.RELATIVE_TO_PARENT, 1f);
-    private ScaleAnimation scaleAnimation1 = new ScaleAnimation(1f, 1f, 0f,
+    private final ScaleAnimation scaleAnimation1 = new ScaleAnimation(1f, 1f, 0f,
             1f, Animation.RELATIVE_TO_PARENT, 0.5f, Animation.RELATIVE_TO_PARENT, 1f);
     /**
      * 事件监听
      */
 
 
-    private Handler handler = new Handler() {
+    private final Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             switch (msg.what) {
                 case 100:
-                    if (lines1.size()!=0&&lines2.size()!=0&&lines3.size()!=0&&lines4.size()!=0){
+                    if (lines1.size() != 0 && lines2.size() != 0 && lines3.size() != 0 && lines4.size() != 0) {
                         mLineChar.aniChangeData(lines1);
                     }
                     break;
@@ -136,7 +131,7 @@ public class SleepFragment extends BaseFragment {
         }
     };
 
-    private View.OnClickListener onClickListener = new View.OnClickListener() {
+    private final View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
@@ -191,33 +186,33 @@ public class SleepFragment extends BaseFragment {
 
                 case R.id.calenderIv:
 
-                String date = DateUtil.getDateToString(app.getReportDate());
-                //TODO 选择时间
-                final AlertDialog dialog = new AlertDialog.Builder(requireActivity()).create();
-                dialog.show();
-                final DatePicker picker = new DatePicker(requireActivity());
-                picker.setDate(Integer.valueOf(date.substring(0,4)), Integer.valueOf(date.substring(5,7)),Integer.valueOf(date.substring(8,10)));
-                picker.setMode(DPMode.SINGLE);
-                picker.setFestivalDisplay(false);
-                picker.setHolidayDisplay(false);
-                picker.setTodayDisplay(true);
-                picker.setOnDatePickedListener(new DatePicker.OnDatePickedListener() {
-                    @Override
-                    public void onDatePicked(String date) {
-                        if (LoadDataUtil.newInstance().dataCanGet(date)){
-                            app.setReportDate(DateUtil.getStringToDate(date));
-                            EventBus.getDefault().post(new UpdataReportBean(true));
-                            dialog.dismiss();
-                        }else {
-                            showToast(getString(R.string.future));
+                    String date = DateUtil.getDateToString(app.getReportDate());
+                    //TODO 选择时间
+                    final AlertDialog dialog = new AlertDialog.Builder(requireActivity()).create();
+                    dialog.show();
+                    final DatePicker picker = new DatePicker(requireActivity());
+                    picker.setDate(Integer.valueOf(date.substring(0, 4)), Integer.valueOf(date.substring(5, 7)), Integer.valueOf(date.substring(8, 10)));
+                    picker.setMode(DPMode.SINGLE);
+                    picker.setFestivalDisplay(false);
+                    picker.setHolidayDisplay(false);
+                    picker.setTodayDisplay(true);
+                    picker.setOnDatePickedListener(new DatePicker.OnDatePickedListener() {
+                        @Override
+                        public void onDatePicked(String date) {
+                            if (LoadDataUtil.newInstance().dataCanGet(date)) {
+                                app.setReportDate(DateUtil.getStringToDate(date));
+                                EventBus.getDefault().post(new UpdataReportBean(true));
+                                dialog.dismiss();
+                            } else {
+                                showToast(getString(R.string.future));
+                            }
                         }
-                    }
-                });
-                ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(
-                        ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                dialog.getWindow().setContentView(picker, params);
-                dialog.getWindow().setGravity(Gravity.CENTER);
-                break;
+                    });
+                    ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(
+                            ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    dialog.getWindow().setContentView(picker, params);
+                    dialog.getWindow().setGravity(Gravity.CENTER);
+                    break;
 
                 case R.id.backView:
 //                    startSector(false);
@@ -305,10 +300,10 @@ public class SleepFragment extends BaseFragment {
      */
 
     private void updataDate() {
-        int []date;
-        date = DateUtil.getMonth(app.getReportDate());
-        monthDate = app.getReportDate()-date[0];
-        monthSize = date[1];
+//        int []date;
+//        date = DateUtil.getMonth(app.getReportDate());
+//        monthDate = app.getReportDate()-date[0];
+//        monthSize = date[1];
 
         mondayDate = app.getReportDate() - DateUtil.getWeek(app.getReportDate());
     }
@@ -318,6 +313,13 @@ public class SleepFragment extends BaseFragment {
 
         respirationRateIv = getView().findViewById(R.id.respirationRateIv);
         circular_progressCurrentDay = getView().findViewById(R.id.circular_progressCurrentDay);
+        mondayProgressBar = getView().findViewById(R.id.circular_progressMonday);
+        tuesdayProgressBar = getView().findViewById(R.id.circular_progressTuesday);
+        wednesdayProgressBar = getView().findViewById(R.id.circular_progressWednesday);
+        thursdayProgressBar = getView().findViewById(R.id.circular_progressThursday);
+        fridayProgressBar = getView().findViewById(R.id.circular_progressFriday);
+        saturdayProgressBar = getView().findViewById(R.id.circular_progressSaturday);
+        sundayProgressBar = getView().findViewById(R.id.circular_progressSunday);
         clockTv = getView().findViewById(R.id.clockTv);
         heartBeatIv = getView().findViewById(R.id.heartBeatIv);
         clockRl = getView().findViewById(R.id.clockRl);
@@ -333,19 +335,37 @@ public class SleepFragment extends BaseFragment {
         menuIv.setClickable(true);
 
 
+        //Enter progress bar Static Values
+        tuesdayProgressBar.setMaxProgress(480f);
+        tuesdayProgressBar.setCurrentProgress(210D);
+
+        wednesdayProgressBar.setMaxProgress(480f);
+        wednesdayProgressBar.setCurrentProgress(280D);
+
+        thursdayProgressBar.setMaxProgress(480f);
+        thursdayProgressBar.setCurrentProgress(310D);
+
+        fridayProgressBar.setMaxProgress(480f);
+        fridayProgressBar.setCurrentProgress(390D);
+
+        saturdayProgressBar.setMaxProgress(480f);
+        saturdayProgressBar.setCurrentProgress(200D);
+
+        sundayProgressBar.setMaxProgress(480f);
+        sundayProgressBar.setCurrentProgress(110D);
+
+
+
 
         mLineChar = getView().findViewById(R.id.sug_recode_line);
         mLineChar.setSleepFlag(1);
-        mLineChar.setInterval(MathHelper.dip2px(getActivity(),20));
-        mLineChar.setXvelue(7,7);
-        mLineChar.setYaxisValues(0,600,6);
-        mLineChar.setGraphStyle(0);
-        mLineChar.setLinePointRadio((int)mLineChar.getLineWidth());
+        mLineChar.setInterval(MathHelper.dip2px(getActivity(), 0));
+        mLineChar.setXvelue(7, 7);
+        mLineChar.setYaxisValues(0, 480, 1);
+        mLineChar.setGraphStyle(BaseGraph.BAR);
+        mLineChar.setLinePointRadio((int) mLineChar.getLineWidth());
         if (!mLineChar.isDetachFlag())
             mLineChar.feedData(lines1);
-
-
-
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -360,7 +380,7 @@ public class SleepFragment extends BaseFragment {
         //----------
 
         List<SleepInDayData> sleepInDayDataArrayList = LoadDataUtil.newInstance().loadSleepStateListInWeek(mondayDate);
-
+//        List<SleepInDayData> sleepInLastDayArrayList = LoadDataUtil.newInstance().loadSleepStateListInDayLast()
 
 
         for (int i = 0; i < sleepInDayDataArrayList.size(); i++) {
@@ -375,13 +395,12 @@ public class SleepFragment extends BaseFragment {
                             sleepInDayDataArrayList.get(i).lightSleepInDay) / (float) sleepInDayDataArrayList.get(i).getAllTime()));
 
 
-
         }
 
         getAverageData(sleepInDayDataArrayList);
 
 
-        }
+    }
 
 
     /**
@@ -401,11 +420,19 @@ public class SleepFragment extends BaseFragment {
         for (int i = 0; i < sleepInDayDataList.size(); i++) {
             if (sleepInDayDataList.get(i).getAllTime() != 0) {
                 allSum += sleepInDayDataList.get(i).getAllTime();
-                deepSum += sleepInDayDataList.get(i).deepSleepInDay;
-                midSum += sleepInDayDataList.get(i).middleSleepInDay;
-                lightSum += sleepInDayDataList.get(i).lightSleepInDay;
-                awakeSum += sleepInDayDataList.get(i).wakeSleepInDay;
+//                deepSum += sleepInDayDataList.get(i).deepSleepInDay;
+//                midSum += sleepInDayDataList.get(i).middleSleepInDay;
+//                lightSum += sleepInDayDataList.get(i).lightSleepInDay;
+//                awakeSum += sleepInDayDataList.get(i).wakeSleepInDay;
                 size++;
+
+
+                circular_progressCurrentDay.setMaxProgress(480);
+                circular_progressCurrentDay.setCurrentProgress(allSum += sleepInDayDataList.get(i).getAllTime());
+
+                mondayProgressBar.setMaxProgress(480);
+                mondayProgressBar.setCurrentProgress(allSum += sleepInDayDataList.get(i).getAllTime());
+
             }
 
         }
@@ -413,7 +440,7 @@ public class SleepFragment extends BaseFragment {
 
     }
 
-        //----------
+    //----------
 
 //        animatorIv1 = getView().findViewById(R.id.animIv1);
 //        animatorIv2 = getView().findViewById(R.id.animIv2);
@@ -432,7 +459,7 @@ public class SleepFragment extends BaseFragment {
         breathLl.setOnClickListener(onClickListener);
         heartLl.setOnClickListener(onClickListener);
         heartBeatIv.setOnClickListener(onClickListener);
-       // clockLl.setOnClickListener(onClickListener);
+        // clockLl.setOnClickListener(onClickListener);
         circular_progressCurrentDay.setOnClickListener(onClickListener);
         calenderIv.setOnClickListener(onClickListener);
 
@@ -442,6 +469,14 @@ public class SleepFragment extends BaseFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         // menuIv.setOnClickListener(functionOne());
+
+        if (BuildConfig.DEBUG) {
+            // do something for a debug build
+            List<SleepInDayData> sleepInDayDataArrayList = LoadDataUtil.newInstance().loadSleepStateListInWeek(mondayDate);
+            Log.i("currentDayData", new Gson().toJson(sleepInDayDataArrayList));
+
+
+        }
     }
 
     /**

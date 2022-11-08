@@ -65,8 +65,7 @@
         <activity
             android:name=".Controller.MainActivity"
             android:theme="@style/AppTheme"
-            android:configChanges="locale|layoutDirection"
-            android:screenOrientation="portrait" />
+            android:configChanges="locale|layoutDirection" />
         <activity
             android:name=".Controller.WelcomeActivity"
             android:configChanges="locale|layoutDirection"
