@@ -33,7 +33,6 @@
         app:tabTextAppearance="@style/CustomTabTextAppearanceStyle"
         app:tabIndicatorColor="@color/white"
         app:tabIndicatorHeight="0dp"
-
         app:tabTextColor="@color/reportUnSelect"
         app:tabSelectedTextColor="@color/white"
         app:tabMode="fixed">

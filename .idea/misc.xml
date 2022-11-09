@@ -44,6 +44,9 @@
         <entry key="..\:/Users/agrah/AndroidStudioProjects/SleepeeClone/app/src/main/res/layout/activity_welcome.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/agrah/AndroidStudioProjects/SleepeeClone/app/src/main/res/layout/fragment_login_for_mail.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/agrah/AndroidStudioProjects/SleepeeClone/app/src/main/res/layout/fragment_login_for_phone.xml" value="0.25416666666666665" />
+        <entry key="app/src/main/res/layout/fragment_report.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/fragment_report_data.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/fragment_sleep.xml" value="0.23958333333333334" />
       </map>
     </option>
   </component>

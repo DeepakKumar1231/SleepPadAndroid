@@ -185,7 +185,6 @@ public class SleepFragment extends BaseFragment {
                     break;
 
                 case R.id.calenderIv:
-
                     String date = DateUtil.getDateToString(app.getReportDate());
                     //TODO 选择时间
                     final AlertDialog dialog = new AlertDialog.Builder(requireActivity()).create();
@@ -222,7 +221,7 @@ public class SleepFragment extends BaseFragment {
 //                    fm = requireFragmentManager();
 //                    transaction = fm.beginTransaction();
 //
-//                    transaction.replace(R.id.fragment, );
+//                    transaction.replace(R.id.fragment, AlarmClockFragment );
 //                    transaction.addToBackStack("SANJAY");
 //                    transaction.commit();
 //                    break;
@@ -359,7 +358,7 @@ public class SleepFragment extends BaseFragment {
 
         mLineChar = getView().findViewById(R.id.sug_recode_line);
         mLineChar.setSleepFlag(1);
-        mLineChar.setInterval(MathHelper.dip2px(getActivity(), 0));
+        mLineChar.setInterval(MathHelper.dip2px(getActivity(), 1));
         mLineChar.setXvelue(7, 7);
         mLineChar.setYaxisValues(0, 480, 1);
         mLineChar.setGraphStyle(BaseGraph.BAR);
