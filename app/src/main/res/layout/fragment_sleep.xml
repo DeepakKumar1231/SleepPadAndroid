@@ -65,16 +65,28 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/calenderIv" />
 
-<!--            <TextView-->
-<!--                android:id="@+id/dateTv"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginRight="20dp"-->
-<!--                android:text="DDth Month-DDth Month"-->
-<!--                android:textAppearance="@style/TextAppearance.AppCompat.Body2"-->
-<!--                android:textColor="@color/white"-->
-<!--                app:layout_constraintBottom_toBottomOf="@id/calenderIv"-->
-<!--                app:layout_constraintEnd_toStartOf="@id/calenderIv" />-->
+            <TextView
+                android:id="@+id/dateTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:text="Today"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@id/calenderIv"
+                app:layout_constraintEnd_toStartOf="@id/calenderIv" />
+
+            <TextView
+                android:id="@+id/dateByCalenderTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:text=""
+                android:visibility="gone"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@id/calenderIv"
+                app:layout_constraintEnd_toStartOf="@id/calenderIv" />
 
             <ImageView
                 android:id="@+id/calenderIv"
@@ -507,7 +519,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:text="-/- B/Min"
+                    android:text=" B/Min"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     app:layout_constraintStart_toEndOf="@id/heartBeatIv"
@@ -552,7 +564,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:text="-/- Br/Min"
+                    android:text=" Br/Min"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     app:layout_constraintStart_toEndOf="@id/respirationRateIv"

@@ -77,20 +77,20 @@ public class WelcomeActivity extends BaseActivity implements Runnable{
 
     }
 
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-//        if (requestCode == SleepEECode){
-//            int code = grantResults[0];
-//            int code1 = grantResults[1];
-//            int code2 = grantResults[2];
-//            if (code == PackageManager.PERMISSION_GRANTED&&code1 == PackageManager.PERMISSION_GRANTED&&code2 == PackageManager.PERMISSION_GRANTED){
-//                initData();
-//            }else {
-//                WelcomeActivity.this.finish();
-//            }
-//        }
-//    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == SleepEECode){
+            int code = grantResults[0];
+            int code1 = grantResults[1];
+            int code2 = grantResults[2];
+            if (code == PackageManager.PERMISSION_GRANTED&&code1 == PackageManager.PERMISSION_GRANTED&&code2 == PackageManager.PERMISSION_GRANTED){
+                initData();
+            }else {
+                WelcomeActivity.this.finish();
+            }
+        }
+    }
 
     private void initData() {
         thread = new Thread(this);

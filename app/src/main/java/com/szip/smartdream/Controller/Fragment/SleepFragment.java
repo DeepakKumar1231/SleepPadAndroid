@@ -9,18 +9,19 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.google.gson.Gson;
 import com.jonas.jgraph.graph.JcoolGraph;
 import com.jonas.jgraph.inter.BaseGraph;
@@ -29,7 +30,6 @@ import com.jonas.jgraph.utils.MathHelper;
 import com.szip.smartdream.Bean.DeviceClockIsUpdataBean;
 import com.szip.smartdream.Bean.HealthBean;
 import com.szip.smartdream.Bean.UpdataReportBean;
-import com.szip.smartdream.BuildConfig;
 import com.szip.smartdream.Controller.RealTimeActivity;
 import com.szip.smartdream.DB.DBModel.SleepInDayData;
 import com.szip.smartdream.DB.LoadDataUtil;
@@ -43,15 +43,15 @@ import com.szip.smartdream.View.intro.HeartRate;
 import com.szip.smartdream.View.intro.Respiration;
 import com.szip.smartdream.View.intro.SleepScore;
 import com.zhuoting.health.write.ProtocolWriter;
-
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
-
+import antonkozyriatskyi.circularprogressindicator.BuildConfig;
 import antonkozyriatskyi.circularprogressindicator.CircularProgressIndicator;
 import cn.aigestudio.datepicker.cons.DPMode;
 import cn.aigestudio.datepicker.views.DatePicker;
@@ -69,6 +69,7 @@ public class SleepFragment extends BaseFragment {
     private FragmentManager fm;
     private FragmentTransaction transaction;
     private DateSelectView dateSelectView;
+    private String getTime;
 
     //---------
     private JcoolGraph mLineChar;
@@ -92,7 +93,7 @@ public class SleepFragment extends BaseFragment {
      * 实时健康数据以及连接状态
      */
     private ConstraintLayout breathLl, heartLl, clockLl;
-    private TextView heartTv;
+    private TextView heartTv , dateTv , dateByCalender;
     private TextView breathTv;
 
     private MyApplication app;
@@ -195,9 +196,19 @@ public class SleepFragment extends BaseFragment {
                     picker.setFestivalDisplay(false);
                     picker.setHolidayDisplay(false);
                     picker.setTodayDisplay(true);
+
+
                     picker.setOnDatePickedListener(new DatePicker.OnDatePickedListener() {
+                        @RequiresApi(api = Build.VERSION_CODES.O)
                         @Override
                         public void onDatePicked(String date) {
+
+                            if (date!=null){
+                                dateTv.setVisibility(View.GONE);
+                                dateByCalender.setVisibility(View.VISIBLE);
+                                dateByCalender.setText(date);
+                            }
+
                             if (LoadDataUtil.newInstance().dataCanGet(date)) {
                                 app.setReportDate(DateUtil.getStringToDate(date));
                                 EventBus.getDefault().post(new UpdataReportBean(true));
@@ -246,6 +257,14 @@ public class SleepFragment extends BaseFragment {
 //        return view;
 //    }
 
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return super.onCreateView(inflater, container, savedInstanceState);
+
+    }
+
     private void checkForMonitoring() {
         if (app.isStartSleep()) {
             sleepTv.setText(getString(R.string.stopSleep));
@@ -259,6 +278,7 @@ public class SleepFragment extends BaseFragment {
         return R.layout.fragment_sleep;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void afterOnCreated(Bundle savedInstanceState) {
         app = (MyApplication) getActivity().getApplicationContext();
@@ -266,6 +286,13 @@ public class SleepFragment extends BaseFragment {
         initEvent();
         initAnimator();
         checkForMonitoring();
+
+
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+        String formatted = format1.format(cal.getTime());
+        dateTv.setText(formatted.toString());
+
     }
 
     @Override
@@ -328,6 +355,8 @@ public class SleepFragment extends BaseFragment {
         heartLl = getView().findViewById(R.id.heartLl);
         breathTv = getView().findViewById(R.id.breathTv);
         heartTv = getView().findViewById(R.id.heartTv);
+        dateTv = getView().findViewById(R.id.dateTv);
+        dateByCalender = getView().findViewById(R.id.dateByCalenderTv);
         menuIv = getView().findViewById(R.id.menuIv);
         dayTv = getView().findViewById(R.id.dayTv);
         calenderIv = getView().findViewById(R.id.calenderIv);
@@ -454,6 +483,7 @@ public class SleepFragment extends BaseFragment {
 
 
     private void initEvent() {
+
         sleepRl.setOnClickListener(onClickListener);
         breathLl.setOnClickListener(onClickListener);
         heartLl.setOnClickListener(onClickListener);

@@ -44,9 +44,76 @@
         <entry key="..\:/Users/agrah/AndroidStudioProjects/SleepeeClone/app/src/main/res/layout/activity_welcome.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/agrah/AndroidStudioProjects/SleepeeClone/app/src/main/res/layout/fragment_login_for_mail.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/agrah/AndroidStudioProjects/SleepeeClone/app/src/main/res/layout/fragment_login_for_phone.xml" value="0.25416666666666665" />
+        <entry key="app/src/main/res/drawable/bg_corcer_help.xml" value="0.1795" />
+        <entry key="app/src/main/res/drawable/bg_corcer_help_text.xml" value="0.1795" />
+        <entry key="app/src/main/res/layout/activity_about.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/activity_bind_phone_or_mail.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/activity_clock_running.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/activity_clock_setting.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/activity_faq.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/activity_feedback.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/activity_find_device.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/activity_forget_password.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/activity_height_weight.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/activity_help_centre.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/activity_introduction.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/activity_journal.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/activity_my_device.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/activity_notification.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/activity_person_info.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/activity_privicy.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/activity_real_time.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/activity_set_password.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/activity_sleep_report_in_day.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/activity_updata_firmware.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/activity_user_info.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/activity_watch_video.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/adapter_alarm_clock.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/body_movement.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/circle_menu_item.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/date_select_view.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/dialog_bottom.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/dialog_layout.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/dialog_layout_edit.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/dialog_layout_pri.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/dialog_wheelview_item.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/fragment_advise.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/fragment_advise_sleep_state.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/fragment_alarm_clock.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/fragment_breath.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/fragment_help.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/fragment_login_for_mail.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/fragment_login_for_mail_two.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/fragment_login_for_phone.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/fragment_person.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/fragment_pro1.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/fragment_pro2.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/fragment_register_for_mail.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/fragment_register_for_phone.xml" value="0.23958333333333334" />
         <entry key="app/src/main/res/layout/fragment_report.xml" value="0.23958333333333334" />
         <entry key="app/src/main/res/layout/fragment_report_data.xml" value="0.23958333333333334" />
         <entry key="app/src/main/res/layout/fragment_sleep.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/fragment_sleep_time_advise_en.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/fragment_to_sleep.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/heart_rate.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/introduction_xml.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/j_picker_dialog.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/leftdelect.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/main_top_layout.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/menu_adapter.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/new_home.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/otp_screen.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/popwindow_layout2.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/respiration.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/select_time_layout.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/sleep_score.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/title.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/title1.xml" value="0.23958333333333334" />
       </map>
     </option>
   </component>

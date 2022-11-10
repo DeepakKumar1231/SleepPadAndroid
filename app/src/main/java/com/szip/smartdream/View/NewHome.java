@@ -1,5 +1,7 @@
 package com.szip.smartdream.View;
 
+import static org.greenrobot.eventbus.EventBus.TAG;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,6 +11,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,12 +21,20 @@ import android.widget.Toast;
 
 import com.szip.smartdream.Controller.Fragment.AlarmClockFragment;
 import com.szip.smartdream.Controller.Fragment.SleepFragment;
-import com.szip.smartdream.Controller.MainActivity;
 import com.szip.smartdream.Model.ProgressHudModel;
 import com.szip.smartdream.MyApplication;
 import com.szip.smartdream.R;
 import com.szip.smartdream.Service.BleService;
 import com.zhuoting.health.write.ProtocolWriter;
+import static com.szip.smartdream.View.NewHome.*;
+import org.w3c.dom.Text;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.Clock;
+import java.time.Instant;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -45,6 +56,8 @@ public class NewHome extends Fragment implements View.OnClickListener {
     private Button demo;
     private Button startmonitoringBtn;
     private ImageView refeshBtn;
+     public static String getStartMonitoringTime  ;
+
 
 
 
@@ -143,6 +156,12 @@ public class NewHome extends Fragment implements View.OnClickListener {
                     if (startmonitoringBtn.getText().toString().equals(getString(R.string.startSleep))) {
                         startmonitoringBtn.setText(getString(R.string.stopSleep));
 
+
+                        String timeStamp = new SimpleDateFormat("HH::mm").format(Calendar.getInstance().getTime());
+                        Log.e(TAG, "time right nowww"+timeStamp );
+                        getStartMonitoringTime = timeStamp ;
+
+
                         app.setStartSleep(true);
                         BleService.getInstance().write(ProtocolWriter.writeForReadHealth((byte) 0x01));
 
@@ -164,6 +183,7 @@ public class NewHome extends Fragment implements View.OnClickListener {
                 ((MyApplication) app.getApplicationContext()).setUpdating(true);
                 ProgressHudModel.newInstance().show(requireActivity(), getString(R.string.syncing)
                         , null, 10000);
+
                 BleService.getInstance().write(ProtocolWriter.writeForReadSleepState());
                 new Handler().postDelayed(new Runnable() {
                     @Override

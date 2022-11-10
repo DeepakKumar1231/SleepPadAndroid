@@ -23,7 +23,7 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="14dp"
-                android:textColor="@color/black1"/>
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/answerTv"
@@ -33,9 +33,8 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
                 android:textSize="13sp"
-                android:textStyle="italic"
                 android:text="xxx"
-                android:textColor="@color/black1"/>
+                android:textColor="@color/black"/>
         </LinearLayout>
 
     </ScrollView>

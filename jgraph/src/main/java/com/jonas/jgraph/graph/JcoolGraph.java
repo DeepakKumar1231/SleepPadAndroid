@@ -1013,6 +1013,8 @@ public class JcoolGraph extends BaseGraph {
         return false;
     }
 
+
+
 //    /**
 //     * 以动画方式 切换数据
 //     *

@@ -116,7 +116,7 @@ public class ReportWeekFragment extends BaseFragment {
             switch (msg.what) {
                 case 100:
                     if (lines1.size()!=0&&lines2.size()!=0&&lines3.size()!=0&&lines4.size()!=0){
-                        mLineChar.aniChangeData(lines1);
+                        //mLineChar.aniChangeData(lines1);
                         mLineCharforHeart.aniChangeData(lines2);
                         mLineCharforBreath.aniChangeData(lines3);
                         mLineCharforThird.aniChangeData(lines4);
@@ -174,6 +174,12 @@ public class ReportWeekFragment extends BaseFragment {
         lines3.add(new Jchart(0, "", 1));
         lines4.add(new Jchart(0, "", 1));
         initView();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mLineChar.setVisibility(View.GONE);
     }
 
     /**

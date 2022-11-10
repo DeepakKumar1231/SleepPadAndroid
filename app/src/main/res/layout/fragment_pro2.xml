@@ -64,14 +64,15 @@
                     android:paddingRight="8dp"
                     android:paddingBottom="5dp"
                     android:paddingTop="5dp"
+                    android:textColor="@color/white"
                     android:layout_marginBottom="5dp"
                     android:gravity="center"/>
 
                 <ImageView
                     android:id="@+id/iamge1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/me_operationguide_one_stept1"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    android:src="@drawable/bed"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginBottom="5dp"/>
 
@@ -106,6 +107,7 @@
                     android:paddingRight="8dp"
                     android:paddingBottom="5dp"
                     android:paddingTop="5dp"
+                    android:textColor="@color/white"
                     android:layout_marginBottom="5dp"
                     android:textSize="@dimen/helpInfo"
                     android:gravity="center"/>
@@ -149,6 +151,7 @@
                     android:paddingRight="8dp"
                     android:paddingBottom="5dp"
                     android:paddingTop="5dp"
+                    android:textColor="@color/white"
                     android:layout_marginBottom="5dp"
                     android:textSize="@dimen/helpInfo"
                     android:gravity="center"/>
@@ -192,6 +195,7 @@
                     android:paddingRight="8dp"
                     android:paddingBottom="5dp"
                     android:paddingTop="5dp"
+                    android:textColor="@color/white"
                     android:layout_marginBottom="5dp"
                     android:textSize="@dimen/helpInfo"
                     android:gravity="center"/>
@@ -254,6 +258,7 @@
                     android:paddingRight="8dp"
                     android:paddingBottom="5dp"
                     android:paddingTop="5dp"
+                    android:textColor="@color/white"
                     android:layout_marginBottom="5dp"
                     android:background="@drawable/bg_corcer_help_text"
                     android:textSize="@dimen/helpInfo"
@@ -298,6 +303,7 @@
                     android:paddingRight="8dp"
                     android:paddingBottom="5dp"
                     android:paddingTop="5dp"
+                    android:textColor="@color/white"
                     android:layout_marginBottom="5dp"
                     android:textSize="@dimen/helpInfo"
                     android:gravity="center"/>

@@ -180,7 +180,7 @@ public class LoginActivity extends BaseActivity implements HttpCallbackWithLogin
 
         mTab = findViewById(R.id.tabLayout);
         //checkBox = findViewById(R.id.checkbox);
-        privacyTv = findViewById(R.id.privacyTv);
+        privacyTv = findViewById(R.id.nextBtn);
         mPager = findViewById(R.id.loginViewPager);
         //registerTv = findViewById(R.id.registerTv);
     }

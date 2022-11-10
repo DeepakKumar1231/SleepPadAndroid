@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Controller.Introduction">
+
+
+    <TextView
+        android:id="@+id/in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Introducing SLEEP PAD - India.s First Non Intrusive Sleep Tracking Device which helps your improve sleep by monitering your sleep patterns"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="20dp"
+        android:paddingHorizontal="20dp"
+        android:textSize="18sp"
+        android:textColor="@color/purple"
+        android:gravity="center"/>
+
+
+    <TextView
+        android:id="@+id/providesTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="The SLEEP PAD App provides you with your own personalised Sleep Dashboard and a Sleep Score"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/in"
+        android:padding="20dp"
+        android:textSize="18sp"
+        android:textColor="@color/purple"
+        android:gravity="center"/>
+
+    <ImageView
+        android:id="@+id/sleepingIv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/bed"
+        android:adjustViewBounds="true"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/nextBtn"
+        app:layout_constraintTop_toBottomOf="@id/providesTv"/>
+
+    <Button
+        android:id="@+id/nextBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="NEXT"
+        android:textSize="16sp"
+        android:paddingHorizontal="40dp"
+        android:layout_margin="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/rectangle_bg"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/navy_blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sleepingIv"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</android.support.constraint.ConstraintLayout>
