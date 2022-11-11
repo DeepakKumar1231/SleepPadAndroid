@@ -38,6 +38,7 @@
         android:backgroundTint="@color/purple"
         android:paddingVertical="10dp"
         android:paddingHorizontal="15dp"
+        android:visibility="gone"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="80dp"

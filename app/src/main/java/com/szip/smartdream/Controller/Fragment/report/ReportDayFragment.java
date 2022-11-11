@@ -68,6 +68,7 @@ public class ReportDayFragment extends BaseFragment {
     private ProgressBar dreamTimePb;
     private ProgressBar averageHeartPb;
     private ProgressBar averageBreathPb;
+    private TextView sleepingMonitor;
 
 
     /**
@@ -268,6 +269,9 @@ public class ReportDayFragment extends BaseFragment {
         heartForTableTv = getView().findViewById(R.id.heartForTableTv);
         breathForTableTv = getView().findViewById(R.id.breathForTableTv);
         awakaTimesForTableTv = getView().findViewById(R.id.thirdForTableTv);
+
+        sleepingMonitor = getView().findViewById(R.id.sleepingmonitor);
+        sleepingMonitor.setVisibility(View.GONE);
 
         mLineChar = getView().findViewById(R.id.sug_recode_line);
         mLineChar.setXvelue(5,0,1560);

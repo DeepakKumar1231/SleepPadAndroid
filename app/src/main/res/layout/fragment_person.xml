@@ -120,6 +120,20 @@
             app:layout_constraintTop_toBottomOf="@id/locationTv"/>
 
 
+        <TextView
+            android:id="@+id/alarmTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alarms"
+            android:textSize="18sp"
+            android:textColor="#A4000000"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="sans-serif-medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/soundTv"/>
+
+
         <Switch
             android:id="@+id/soundSwitch"
             android:layout_width="wrap_content"
@@ -143,7 +157,7 @@
             android:layout_marginTop="10dp"
             android:fontFamily="sans-serif-medium"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/soundTv"/>
+            app:layout_constraintTop_toBottomOf="@id/alarmTv"/>
 
         <TextView
             android:id="@+id/personInfoLl"

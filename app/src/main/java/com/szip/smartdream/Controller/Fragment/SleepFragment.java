@@ -3,10 +3,12 @@ package com.szip.smartdream.Controller.Fragment;
 import android.animation.AnimatorSet;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
@@ -38,7 +40,9 @@ import com.szip.smartdream.R;
 import com.szip.smartdream.Service.BleService;
 import com.szip.smartdream.Util.DateUtil;
 import com.szip.smartdream.Util.MathUitl;
+import com.szip.smartdream.Util.SharedPrefUtility;
 import com.szip.smartdream.View.DateSelectView;
+import com.szip.smartdream.View.NewHome;
 import com.szip.smartdream.View.intro.HeartRate;
 import com.szip.smartdream.View.intro.Respiration;
 import com.szip.smartdream.View.intro.SleepScore;
@@ -47,9 +51,11 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import antonkozyriatskyi.circularprogressindicator.BuildConfig;
 import antonkozyriatskyi.circularprogressindicator.CircularProgressIndicator;
@@ -62,6 +68,8 @@ import cn.aigestudio.datepicker.views.DatePicker;
 
 public class SleepFragment extends BaseFragment {
 
+
+    private static final String TAG = "";
     Respiration respiration = Respiration.newInstance("", "");
     HeartRate heartRate = HeartRate.newInstance("", "");
     SleepScore sleepFragment = SleepScore.newInstance("", "");
@@ -70,6 +78,9 @@ public class SleepFragment extends BaseFragment {
     private FragmentTransaction transaction;
     private DateSelectView dateSelectView;
     private String getTime;
+    private SharedPrefUtility mSharedPref;
+    private String mTimeStat = "";
+    private String mTimeStop ="";
 
     //---------
     private JcoolGraph mLineChar;
@@ -87,7 +98,7 @@ public class SleepFragment extends BaseFragment {
     private ConstraintLayout sleepRl;
     private TextView sleepTv;
     private ConstraintLayout clockRl;
-    private TextView clockTv, dayTv;
+    private TextView clockTv, dayTv , timeTv , timeStopTv , timeinBedTv;
     private CircularProgressIndicator circular_progressCurrentDay, mondayProgressBar, tuesdayProgressBar, wednesdayProgressBar, thursdayProgressBar, fridayProgressBar, saturdayProgressBar, sundayProgressBar;
     /**
      * 实时健康数据以及连接状态
@@ -262,8 +273,8 @@ public class SleepFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return super.onCreateView(inflater, container, savedInstanceState);
-
     }
+
 
     private void checkForMonitoring() {
         if (app.isStartSleep()) {
@@ -306,7 +317,7 @@ public class SleepFragment extends BaseFragment {
         startAnimator();
         if (app.getClockList() != null && app.getClockList().size() != 0) {
             Log.d("CLOCK******", "update clock = " + MathUitl.getNearClock(app.getClockList()));
-            clockTv.setText(MathUitl.getNearClock(app.getClockList()));
+           // clockTv.setText(MathUitl.getNearClock(app.getClockList()));
         } else {
             clockTv.setText("");
         }
@@ -337,6 +348,13 @@ public class SleepFragment extends BaseFragment {
     private void initView() {
         updataDate();
 
+        mSharedPref =  new SharedPrefUtility(requireContext());
+        mTimeStat =  mSharedPref.getStringData("timeStat", "");
+        mTimeStop = mSharedPref.getStringData("timeStop" , "");
+
+
+       // mSharedPref.setStringData("timeStat", "");
+
         respirationRateIv = getView().findViewById(R.id.respirationRateIv);
         circular_progressCurrentDay = getView().findViewById(R.id.circular_progressCurrentDay);
         mondayProgressBar = getView().findViewById(R.id.circular_progressMonday);
@@ -346,7 +364,7 @@ public class SleepFragment extends BaseFragment {
         fridayProgressBar = getView().findViewById(R.id.circular_progressFriday);
         saturdayProgressBar = getView().findViewById(R.id.circular_progressSaturday);
         sundayProgressBar = getView().findViewById(R.id.circular_progressSunday);
-        clockTv = getView().findViewById(R.id.clockTv);
+       // clockTv = getView().findViewById(R.id.clockTv);
         heartBeatIv = getView().findViewById(R.id.heartBeatIv);
         clockRl = getView().findViewById(R.id.clockRl);
         sleepRl = getView().findViewById(R.id.sleepRl);
@@ -359,8 +377,18 @@ public class SleepFragment extends BaseFragment {
         dateByCalender = getView().findViewById(R.id.dateByCalenderTv);
         menuIv = getView().findViewById(R.id.menuIv);
         dayTv = getView().findViewById(R.id.dayTv);
+        timeTv = getView().findViewById(R.id.timeTv);
+        timeStopTv = getView().findViewById(R.id.clockTv);
         calenderIv = getView().findViewById(R.id.calenderIv);
+        timeinBedTv = getView().findViewById(R.id.timeinBedTv);
+
         menuIv.setClickable(true);
+
+        timeTv.setText(mTimeStat);
+        timeStopTv.setText(mTimeStop);
+
+        //Function to calculate thime for sleeping
+        sleepingTime();
 
 
         //Enter progress bar Static Values
@@ -430,6 +458,11 @@ public class SleepFragment extends BaseFragment {
 
     }
 
+    private void sleepingTime() {
+
+    }
+
+
 
     /**
      * 获取周平均数据
@@ -498,6 +531,10 @@ public class SleepFragment extends BaseFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         // menuIv.setOnClickListener(functionOne());
+
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(requireContext());
+        String startTime = pref.getString("timeStat" ,"");
+        Log.e(TAG, "onViewCreated: "+startTime );
 
         if (BuildConfig.DEBUG) {
             // do something for a debug build

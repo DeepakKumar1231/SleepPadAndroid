@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Switch;
@@ -33,9 +35,12 @@ public class PersonFragment extends BaseFragment {
     private TextView userInfoLl;
     private TextView personInfoLl;
     private TextView helpLl;
+    private FragmentManager fm;
+    AlarmClockFragment alarmClockFragment = AlarmClockFragment.newInstance("");
+    private FragmentTransaction transaction;
     private TextView adviseLl;
     private TextView feedbackLl;
-    private TextView aboutLl;
+    private TextView aboutLl , alarmTv;
     private Switch permissionSwitch , locationSwitch , soundSwitch;
 
 
@@ -82,6 +87,7 @@ public class PersonFragment extends BaseFragment {
         adviseLl = getView().findViewById(R.id.adviseLl);
         //feedbackLl = getView().findViewById(R.id.feedbackLl);
         aboutLl = getView().findViewById(R.id.aboutLl);
+        alarmTv = getView().findViewById(R.id.alarmTv);
         permissionSwitch = getView().findViewById(R.id.permissionSwitch);
         locationSwitch = getView().findViewById(R.id.locationSwitch);
         soundSwitch = getView().findViewById(R.id.soundSwitch);
@@ -99,6 +105,7 @@ public class PersonFragment extends BaseFragment {
         permissionSwitch.setOnClickListener(onClickListener);
         locationSwitch.setOnClickListener(onClickListener);
         soundSwitch.setOnClickListener(onClickListener);
+        alarmTv.setOnClickListener(onClickListener);
     }
 
     private View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -176,6 +183,18 @@ public class PersonFragment extends BaseFragment {
                 case R.id.soundSwitch:
                     Intent aa = new Intent(android.provider.Settings.ACTION_SOUND_SETTINGS);
                     startActivityForResult(aa,0);
+                    break;
+
+                case R.id.alarmTv:
+
+                fm = requireFragmentManager();
+                transaction = fm.beginTransaction();
+
+                transaction.replace(R.id.fragment, alarmClockFragment);
+                transaction.addToBackStack("SANJAY");
+                transaction.commit();
+                break;
+
 
             }
             }

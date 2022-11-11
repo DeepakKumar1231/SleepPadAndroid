@@ -2,10 +2,13 @@ package com.szip.smartdream.View;
 
 import static org.greenrobot.eventbus.EventBus.TAG;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -19,12 +22,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.szip.smartdream.Controller.ClockSettingActivity;
 import com.szip.smartdream.Controller.Fragment.AlarmClockFragment;
 import com.szip.smartdream.Controller.Fragment.SleepFragment;
 import com.szip.smartdream.Model.ProgressHudModel;
 import com.szip.smartdream.MyApplication;
 import com.szip.smartdream.R;
 import com.szip.smartdream.Service.BleService;
+import com.szip.smartdream.Util.SharedPrefUtility;
 import com.zhuoting.health.write.ProtocolWriter;
 import static com.szip.smartdream.View.NewHome.*;
 import org.w3c.dom.Text;
@@ -48,6 +53,7 @@ public class NewHome extends Fragment implements View.OnClickListener {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     AlarmClockFragment alarmClockFragment = AlarmClockFragment.newInstance("");
+
     SleepFragment sleepFragment = SleepFragment.newInstance("");
     private MyApplication app;
     private FragmentManager fm;
@@ -56,7 +62,7 @@ public class NewHome extends Fragment implements View.OnClickListener {
     private Button demo;
     private Button startmonitoringBtn;
     private ImageView refeshBtn;
-     public static String getStartMonitoringTime  ;
+    public static String getStartMonitoringTime = "" ;
 
 
 
@@ -108,11 +114,18 @@ public class NewHome extends Fragment implements View.OnClickListener {
         super.onViewCreated(view, savedInstanceState);
         initAllComponents(view);
         checkForMonitoring();
+
+
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(requireContext());
+        String startTime = pref.getString("timeStat" ,"");
+
+        Log.e(TAG, "onViewCreated: "+startTime );
     }
 
     private void checkForMonitoring() {
         if (app.isStartSleep()) {
             startmonitoringBtn.setText(getString(R.string.stopSleep));
+
         } else {
             startmonitoringBtn.setText(getString(R.string.startSleep));
         }
@@ -143,33 +156,44 @@ public class NewHome extends Fragment implements View.OnClickListener {
                 break;
             case R.id.setUpAlarmBtn:
 //                alarmClockFragment
-                fm = requireFragmentManager();
-                transaction = fm.beginTransaction();
 
-                transaction.replace(R.id.fragment, alarmClockFragment);
-                transaction.addToBackStack("SANJAY");
-                transaction.commit();
+
+                Intent intent = new Intent();
+                intent.setClass(requireContext(),ClockSettingActivity.class);
+                intent.putExtra("add",true);
+                startActivity(intent);
                 break;
+
+//                fm = requireFragmentManager();
+//                transaction = fm.beginTransaction();
+//
+//                transaction.replace(R.id.fragment, alarmClockFragment);
+//                transaction.addToBackStack("SANJAY");
+//                transaction.commit();
+//                break;
 
             case R.id.startmonitoringBtn:
                 if (BleService.getInstance().getConnectState() == 2) {//蓝牙连接着
                     if (startmonitoringBtn.getText().toString().equals(getString(R.string.startSleep))) {
                         startmonitoringBtn.setText(getString(R.string.stopSleep));
 
-
-                        String timeStamp = new SimpleDateFormat("HH::mm").format(Calendar.getInstance().getTime());
-                        Log.e(TAG, "time right nowww"+timeStamp );
-                        getStartMonitoringTime = timeStamp ;
-
+                        String timeStamp = new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime());
+                        SharedPrefUtility pref = new SharedPrefUtility(requireContext());
+                        pref.setStringData("timeStat", timeStamp);
+                        Log.e(TAG, "time right nowww"+pref);
 
                         app.setStartSleep(true);
                         BleService.getInstance().write(ProtocolWriter.writeForReadHealth((byte) 0x01));
 
-
-
                     } else {
                         startmonitoringBtn.setText(getString(R.string.startSleep));
                         app.setStartSleep(false);
+
+                        String timeStop = new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime());
+                        SharedPrefUtility pref = new SharedPrefUtility(requireContext());
+                        pref.setStringData("timeStop", timeStop);
+                        Log.e(TAG, "time stop nowww"+pref);
+
                         BleService.getInstance().write(ProtocolWriter.writeForReadHealth((byte) 0x00));
                         refeshBtn.performClick();
 
