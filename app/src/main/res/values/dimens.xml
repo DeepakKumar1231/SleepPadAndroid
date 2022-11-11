@@ -21,5 +21,6 @@
     <dimen name="ListMargin">30dp</dimen>
 
     <dimen name="imageAndText">15dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 
 </resources>

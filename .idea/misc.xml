@@ -57,6 +57,7 @@
         <entry key="app/src/main/res/layout/activity_forget_password.xml" value="0.23958333333333334" />
         <entry key="app/src/main/res/layout/activity_height_weight.xml" value="0.23958333333333334" />
         <entry key="app/src/main/res/layout/activity_help_centre.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/activity_intro.xml" value="0.11510416666666666" />
         <entry key="app/src/main/res/layout/activity_introduction.xml" value="0.23958333333333334" />
         <entry key="app/src/main/res/layout/activity_journal.xml" value="0.23958333333333334" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.23958333333333334" />
@@ -97,6 +98,7 @@
         <entry key="app/src/main/res/layout/fragment_register_for_phone.xml" value="0.23958333333333334" />
         <entry key="app/src/main/res/layout/fragment_report.xml" value="0.23958333333333334" />
         <entry key="app/src/main/res/layout/fragment_report_data.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/fragment_second2.xml" value="0.22870370370370371" />
         <entry key="app/src/main/res/layout/fragment_sleep.xml" value="0.23958333333333334" />
         <entry key="app/src/main/res/layout/fragment_sleep_time_advise_en.xml" value="0.23958333333333334" />
         <entry key="app/src/main/res/layout/fragment_to_sleep.xml" value="0.23958333333333334" />

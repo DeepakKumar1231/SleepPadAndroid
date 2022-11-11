@@ -1,14 +1,19 @@
 package com.szip.smartdream.Controller;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.os.Bundle;
+import android.util.AttributeSet;
+import android.view.View;
 import android.view.WindowManager;
 
+import com.szip.smartdream.Intro;
 import com.szip.smartdream.MyApplication;
 import com.szip.smartdream.R;
 import com.szip.smartdream.Service.BleService;
@@ -17,18 +22,18 @@ import com.szip.smartdream.View.MyAlerDialog;
 
 import static com.szip.smartdream.MyApplication.FILE;
 
-public class WelcomeActivity extends BaseActivity implements Runnable{
+public class WelcomeActivity extends BaseActivity implements Runnable {
 
     /**
      * 延时线程
-     * */
+     */
     private Thread thread;
     private int time = 3;
     private int SleepEECode = 100;
 
     /**
      * 轻量级文件
-     * */
+     */
     private SharedPreferences sharedPreferencesp;
 
     private boolean isFirst;
@@ -39,6 +44,20 @@ public class WelcomeActivity extends BaseActivity implements Runnable{
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_welcome);
+
+        new Handler().postDelayed(new Runnable() {
+
+
+            @Override
+            public void run() {
+                // This method will be executed once the timer is over
+                Intent i = new Intent(WelcomeActivity.this, Intro.class);
+                startActivity(i);
+                finish();
+            }
+        }, 5000);
+
+
         app = (MyApplication)getApplicationContext();
         if(sharedPreferencesp == null){
             sharedPreferencesp = getSharedPreferences(FILE,MODE_PRIVATE);
@@ -46,7 +65,6 @@ public class WelcomeActivity extends BaseActivity implements Runnable{
 
         isFirst = sharedPreferencesp.getBoolean("isFirst",true);
         app.setUserInfo(MathUitl.loadInfoData(sharedPreferencesp));
-
 
         if(isFirst){
             MyAlerDialog.getSingle().showAlerDialogWithPrivacy(getString(R.string.privacy1),getString(R.string.privacyTip),
@@ -74,6 +92,16 @@ public class WelcomeActivity extends BaseActivity implements Runnable{
         }else {
             initData();
         }
+ }
+
+
+
+
+    @Override
+    public View onCreateView(String name, Context context, AttributeSet attrs) {
+        return super.onCreateView(name, context, attrs);
+
+
 
     }
 
@@ -97,8 +125,7 @@ public class WelcomeActivity extends BaseActivity implements Runnable{
         thread.start();
     }
 
-    @Override
-    public void run() {
+        public void run() {
         try {
             while (time != 0){
                 Thread.sleep(1000);
