@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Controller.ClockRunningActivity"
-    android:background="@mipmap/launch">
+    android:background="@drawable/gradient_background">
 
     <com.szip.smartdream.View.PulldownUpdateView
         android:id="@+id/pullView"

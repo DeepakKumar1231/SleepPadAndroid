@@ -45,17 +45,6 @@ public class WelcomeActivity extends BaseActivity implements Runnable {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_welcome);
 
-        new Handler().postDelayed(new Runnable() {
-
-
-            @Override
-            public void run() {
-                // This method will be executed once the timer is over
-                Intent i = new Intent(WelcomeActivity.this, Intro.class);
-                startActivity(i);
-                finish();
-            }
-        }, 5000);
 
 
         app = (MyApplication)getApplicationContext();
