@@ -5,6 +5,7 @@ import static org.greenrobot.eventbus.EventBus.TAG;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ParseException;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -67,6 +68,8 @@ public class NewHome extends Fragment implements View.OnClickListener {
 
 
 
+
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -114,18 +117,14 @@ public class NewHome extends Fragment implements View.OnClickListener {
         super.onViewCreated(view, savedInstanceState);
         initAllComponents(view);
         checkForMonitoring();
-
-
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(requireContext());
         String startTime = pref.getString("timeStat" ,"");
-
         Log.e(TAG, "onViewCreated: "+startTime );
     }
 
     private void checkForMonitoring() {
         if (app.isStartSleep()) {
             startmonitoringBtn.setText(getString(R.string.stopSleep));
-
         } else {
             startmonitoringBtn.setText(getString(R.string.startSleep));
         }
@@ -133,12 +132,10 @@ public class NewHome extends Fragment implements View.OnClickListener {
 
     private void initAllComponents(View view) {
         app = (MyApplication) getActivity().getApplicationContext();
-
         setUpAlarmBtn = view.findViewById(R.id.setUpAlarmBtn);
         startmonitoringBtn = view.findViewById(R.id.startmonitoringBtn);
         demo = view.findViewById(R.id.demo);
         refeshBtn = view.findViewById(R.id.refreshBtn);
-
         setUpAlarmBtn.setOnClickListener(this);
         startmonitoringBtn.setOnClickListener(this);
         demo.setOnClickListener(this);
@@ -156,44 +153,35 @@ public class NewHome extends Fragment implements View.OnClickListener {
                 break;
             case R.id.setUpAlarmBtn:
 //                alarmClockFragment
-
-
                 Intent intent = new Intent();
                 intent.setClass(requireContext(),ClockSettingActivity.class);
                 intent.putExtra("add",true);
                 startActivity(intent);
                 break;
-
 //                fm = requireFragmentManager();
 //                transaction = fm.beginTransaction();
-//
 //                transaction.replace(R.id.fragment, alarmClockFragment);
 //                transaction.addToBackStack("SANJAY");
 //                transaction.commit();
 //                break;
-
             case R.id.startmonitoringBtn:
                 if (BleService.getInstance().getConnectState() == 2) {//蓝牙连接着
                     if (startmonitoringBtn.getText().toString().equals(getString(R.string.startSleep))) {
                         startmonitoringBtn.setText(getString(R.string.stopSleep));
-
-                        String timeStamp = new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime());
+                        Date startDate = java.util.Calendar.getInstance().getTime();
                         SharedPrefUtility pref = new SharedPrefUtility(requireContext());
-                        pref.setStringData("timeStat", timeStamp);
+                        pref.setStringData("timeStat", startDate.toString());
                         Log.e(TAG, "time right nowww"+pref);
-
                         app.setStartSleep(true);
                         BleService.getInstance().write(ProtocolWriter.writeForReadHealth((byte) 0x01));
 
                     } else {
                         startmonitoringBtn.setText(getString(R.string.startSleep));
                         app.setStartSleep(false);
-
-                        String timeStop = new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime());
+                        Date stopDate = java.util.Calendar.getInstance().getTime();
                         SharedPrefUtility pref = new SharedPrefUtility(requireContext());
-                        pref.setStringData("timeStop", timeStop);
+                        pref.setStringData("timeStop", stopDate.toString());
                         Log.e(TAG, "time stop nowww"+pref);
-
                         BleService.getInstance().write(ProtocolWriter.writeForReadHealth((byte) 0x00));
                         refeshBtn.performClick();
 
@@ -201,6 +189,7 @@ public class NewHome extends Fragment implements View.OnClickListener {
                 } else {
                     Toast.makeText(requireContext(), getString(R.string.lineError), Toast.LENGTH_SHORT).show();
                 }
+
                 break;
 
             case R.id.refreshBtn:

@@ -189,7 +189,6 @@ public class PersonFragment extends BaseFragment {
 
                 fm = requireFragmentManager();
                 transaction = fm.beginTransaction();
-
                 transaction.replace(R.id.fragment, alarmClockFragment);
                 transaction.addToBackStack("SANJAY");
                 transaction.commit();

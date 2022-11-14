@@ -1,9 +1,12 @@
 package com.szip.smartdream.Controller.Fragment;
 
+import static com.jonas.jgraph.graph.JcoolGraph.LINE_DASH_0;
+
 import android.animation.AnimatorSet;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -26,9 +29,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.google.gson.Gson;
 import com.jonas.jgraph.graph.JcoolGraph;
-import com.jonas.jgraph.inter.BaseGraph;
 import com.jonas.jgraph.models.Jchart;
-import com.jonas.jgraph.utils.MathHelper;
 import com.szip.smartdream.Bean.DeviceClockIsUpdataBean;
 import com.szip.smartdream.Bean.HealthBean;
 import com.szip.smartdream.Bean.UpdataReportBean;
@@ -42,7 +43,6 @@ import com.szip.smartdream.Util.DateUtil;
 import com.szip.smartdream.Util.MathUitl;
 import com.szip.smartdream.Util.SharedPrefUtility;
 import com.szip.smartdream.View.DateSelectView;
-import com.szip.smartdream.View.NewHome;
 import com.szip.smartdream.View.intro.HeartRate;
 import com.szip.smartdream.View.intro.Respiration;
 import com.szip.smartdream.View.intro.SleepScore;
@@ -51,11 +51,9 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 import java.text.SimpleDateFormat;
-import java.time.Duration;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import antonkozyriatskyi.circularprogressindicator.BuildConfig;
 import antonkozyriatskyi.circularprogressindicator.CircularProgressIndicator;
@@ -273,6 +271,7 @@ public class SleepFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return super.onCreateView(inflater, container, savedInstanceState);
+
     }
 
 
@@ -319,7 +318,7 @@ public class SleepFragment extends BaseFragment {
             Log.d("CLOCK******", "update clock = " + MathUitl.getNearClock(app.getClockList()));
            // clockTv.setText(MathUitl.getNearClock(app.getClockList()));
         } else {
-            clockTv.setText("");
+            //clockTv.setText("");
         }
     }
 
@@ -350,6 +349,7 @@ public class SleepFragment extends BaseFragment {
 
         mSharedPref =  new SharedPrefUtility(requireContext());
         mTimeStat =  mSharedPref.getStringData("timeStat", "");
+
         mTimeStop = mSharedPref.getStringData("timeStop" , "");
 
 
@@ -384,8 +384,11 @@ public class SleepFragment extends BaseFragment {
 
         menuIv.setClickable(true);
 
+
+
         timeTv.setText(mTimeStat);
         timeStopTv.setText(mTimeStop);
+
 
         //Function to calculate thime for sleeping
         sleepingTime();
@@ -414,12 +417,17 @@ public class SleepFragment extends BaseFragment {
 
 
         mLineChar = getView().findViewById(R.id.sug_recode_line);
-        mLineChar.setSleepFlag(1);
-        mLineChar.setInterval(MathHelper.dip2px(getActivity(), 1));
-        mLineChar.setXvelue(7, 7);
-        mLineChar.setYaxisValues(0, 480, 1);
-        mLineChar.setGraphStyle(BaseGraph.BAR);
-        mLineChar.setLinePointRadio((int) mLineChar.getLineWidth());
+        mLineChar.setXvelue(5,0,1560);
+        mLineChar.setGraphStyle(1);
+        mLineChar.setLineStyle(1);
+        mLineChar.setLineMode(LINE_DASH_0);
+        mLineChar.setSleepFlag(2);
+        mLineChar.drawPoint(true);
+        mLineChar.setYaxisValues(0,255,5);
+        mLineChar.setShaderAreaColors(Color.parseColor("#bb21a0bf"), Color.TRANSPARENT);
+        mLineChar.setLinePointRadio((int)mLineChar.getLineWidth());
+        mLineChar.setNormalColor(Color.parseColor("#21a0bf"));
+       // mLineChar.setOnTouchListener(onTouchListener);
         if (!mLineChar.isDetachFlag())
             mLineChar.feedData(lines1);
 
@@ -449,19 +457,15 @@ public class SleepFragment extends BaseFragment {
                             sleepInDayDataArrayList.get(i).getAllTime(),
                     (float) (sleepInDayDataArrayList.get(i).deepSleepInDay + sleepInDayDataArrayList.get(i).middleSleepInDay +
                             sleepInDayDataArrayList.get(i).lightSleepInDay) / (float) sleepInDayDataArrayList.get(i).getAllTime()));
-
-
         }
-
         getAverageData(sleepInDayDataArrayList);
-
-
     }
 
     private void sleepingTime() {
 
-    }
 
+
+    }
 
 
     /**
@@ -616,5 +620,4 @@ public class SleepFragment extends BaseFragment {
         else
             clockTv.setText("");
     }
-
 }

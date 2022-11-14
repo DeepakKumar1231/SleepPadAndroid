@@ -31,7 +31,6 @@
                 android:layout_marginLeft="12dp"
                 android:layout_marginRight="10dp"
                 android:textSize="13sp"
-                android:textStyle="italic"
                 android:text="@string/sleepState"
                 android:textColor="@color/white"/>
 
@@ -52,7 +51,6 @@
                 android:layout_marginLeft="12dp"
                 android:layout_marginRight="10dp"
                 android:textSize="13sp"
-                android:textStyle="italic"
                 android:text="@string/state1Info"
                 android:textColor="@color/white"/>
 
@@ -73,7 +71,6 @@
                 android:layout_marginLeft="12dp"
                 android:layout_marginRight="10dp"
                 android:textSize="13sp"
-                android:textStyle="italic"
                 android:text="@string/state2Info"
                 android:textColor="@color/white"/>
 
@@ -94,7 +91,6 @@
                 android:layout_marginLeft="12dp"
                 android:layout_marginRight="10dp"
                 android:textSize="13sp"
-                android:textStyle="italic"
                 android:text="@string/state3Info"
                 android:textColor="@color/white"/>
 
@@ -116,7 +112,6 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
                 android:textSize="13sp"
-                android:textStyle="italic"
                 android:text="@string/state4Info"
                 android:textColor="@color/white"/>
         </LinearLayout>

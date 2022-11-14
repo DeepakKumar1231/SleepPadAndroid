@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Controller.PrivacyActivity"
     android:orientation="vertical">
-
     <include layout="@layout/title1"/>
 
 

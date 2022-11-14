@@ -129,7 +129,7 @@ public class ReportDayFragment extends BaseFragment {
             switch (msg.what) {
                 case 100:
                     if(lines1.size()!=0&&lines2.size()!=0&&lines3.size()!=0&&lines4.size()!=0){
-                        //mLineChar.aniChangeData(lines1);
+                       // mLineChar.aniChangeData(lines1);
                         mLineCharforHeart.aniChangeData(lines2);
                         mLineCharforBreath.aniChangeData(lines3);
                         mLineCharforThird.aniChangeData(lines4);
@@ -279,7 +279,7 @@ public class ReportDayFragment extends BaseFragment {
         mLineChar.setLineStyle(1);
         mLineChar.setLineMode(LINE_DASH_0);
         mLineChar.setSleepFlag(2);
-//        mLineChar.drawPoint(true);
+       // mLineChar.drawPoint(true);
         mLineChar.setYaxisValues(0,255,5);
         mLineChar.setShaderAreaColors(Color.parseColor("#bb21a0bf"), Color.TRANSPARENT);
         mLineChar.setLinePointRadio((int)mLineChar.getLineWidth());

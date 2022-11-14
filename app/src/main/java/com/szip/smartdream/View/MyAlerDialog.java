@@ -34,6 +34,10 @@ public class MyAlerDialog {
         return dialogUtil;
     }
 
+
+
+
+
     public AlertDialog showAlerDialog(String title, String msg, String positive, String negative, boolean cancelable,
                                       final AlerDialogOnclickListener onclickListener, Context context){
 
@@ -123,24 +127,47 @@ public class MyAlerDialog {
 
     }
 
-    public android.app.AlertDialog showAlerDialogWithPrivacy(String title, String msg, String positive, String negative, boolean cancelable,
+    public android.app.AlertDialog showAlerDialogWithPrivacy( boolean cancelable,
                                                              final AlerDialogOnclickListener onclickListener, final Context context){
 
-        final android.app.AlertDialog alertDialog = new android.app.AlertDialog.Builder(context)
+        final android.app.AlertDialog alertDialog = new android.app.AlertDialog.Builder(context,android.R.style.Theme_Black_NoTitleBar_Fullscreen)
                 .setCancelable(true)
                 .create();
         alertDialog.show();
         Window window = alertDialog.getWindow();
-        window.setContentView(R.layout.dialog_layout_pri);
+        window.setContentView(R.layout.introduction_xml);
         TextView tv_title = window.findViewById(R.id.dialogTitle);
-        tv_title.setText(title);
-        TextView tv_message =  window.findViewById(R.id.msgTv);
-        tv_message.setText(msg);
+//        tv_title.setText(title);
+//        TextView tv_message =  window.findViewById(R.id.msgTv);
+//        tv_message.setText(msg);
         alertDialog.setCancelable(cancelable);
 
-        Button cancel = window.findViewById(R.id.btn_cancel);
-        if (negative!=null)
-            cancel.setText(negative);
+//        Button cancel = window.findViewById(R.id.btn_cancel);
+//        if (negative!=null)
+//            cancel.setText(negative);
+//        cancel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (onclickListener!=null){
+//                    onclickListener.onDialogTouch(false);
+//                    alertDialog.dismiss();
+//                }
+//            }
+//        });//取消按钮
+        Button confirm = window.findViewById(R.id.nextBtn);
+        Button cancel = window.findViewById(R.id.cancelBtn);
+//        if (positive!=null)
+//            confirm.setText(positive);
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onclickListener!=null){
+                    onclickListener.onDialogTouch(true);
+                    //alertDialog.dismiss();
+                }
+            }
+        });//确定按钮
+
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -149,25 +176,7 @@ public class MyAlerDialog {
                     alertDialog.dismiss();
                 }
             }
-        });//取消按钮
-        Button confirm = window.findViewById(R.id.btn_comfirm);
-        if (positive!=null)
-            confirm.setText(positive);
-        confirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (onclickListener!=null){
-                    onclickListener.onDialogTouch(true);
-                    alertDialog.dismiss();
-                }
-            }
-        });//确定按钮
-        window.findViewById(R.id.privacyTv).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                context.startActivity(new Intent(context, PrivacyActivity.class));
-            }
-        });
+        });//确定按
 
         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
@@ -240,5 +249,7 @@ public class MyAlerDialog {
         void onDialogEditTouch(String edit1);
         void onDialogEditWithRadioTouch(String edit1, int flag, int position);
     }
+
+
 
 }

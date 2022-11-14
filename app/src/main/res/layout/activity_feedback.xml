@@ -15,24 +15,24 @@
         android:layout_width="match_parent"
         android:layout_height="160dp"
         android:layout_marginLeft="30dp"
+        android:layout_marginTop="80dp"
         android:layout_marginRight="30dp"
-        android:background="@drawable/bg_corner_feedback"
-        android:layout_marginTop="80dp">
+        android:backgroundTint="#168905AD"
+        android:background="@drawable/rectangle_bg">
 
 
         <EditText
             android:id="@+id/feedbackEt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@null"
-            android:textSize="13sp"
-            android:textColorHint="@color/black2"
-            android:hint="@string/your_feedback"
-            android:layout_marginBottom="25dp"
-            android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            />
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="25dp"
+            android:background="@null"
+            android:hint="@string/your_feedback"
+            android:textColorHint="@color/black"
+            android:textSize="13sp" />
 
 
         <TextView
@@ -40,12 +40,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
             android:layout_alignParentBottom="true"
+            android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
-            android:textSize="13sp"
-            android:textColor="@color/black2"
-            android:text="0/120"/>
+            android:text="0/120"
+            android:textColor="@color/black"
+            android:textSize="13sp" />
     </RelativeLayout>
 
 
