@@ -105,6 +105,9 @@ public class BleService extends Service {
     }
 
     public static BleService getInstance(){
+        if(myBleService == null){
+            Log.i("SANJAY", "getInstance: NUL:LL");
+        }
         return myBleService ;
     }
 

@@ -310,7 +310,7 @@ public class MainActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         updataBleStateImage();
-        startTheService();
+        //startTheService();
     }
 
     private void startTheService() {
