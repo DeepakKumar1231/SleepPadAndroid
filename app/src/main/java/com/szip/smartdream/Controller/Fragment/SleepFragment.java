@@ -330,9 +330,9 @@ public class SleepFragment extends BaseFragment {
         long one =Date.parse(mTimeStat);
         long two =Date.parse(mTimeStat);
 
-        //long startTime = Date.parse(mTimeStat);
+        long startTime = Date.parse(mTimeStat);
 
-        //Log.e(TAG, "startTime"+startTime );
+        Log.e(TAG, "startTime"+startTime );
 
         mLog("-----------------------");
         mLog(mTimeStat);

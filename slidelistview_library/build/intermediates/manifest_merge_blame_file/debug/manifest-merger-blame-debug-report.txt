@@ -6,8 +6,8 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="15"
-8-->/Users/sanjay/Desktop/code/Dmedhya/Sleepy/SleepPadOur/slidelistview_library/src/main/AndroidManifest.xml
+8-->/Users/vishal/Desktop/SuperZop_Projects/SleepPadAndroid/slidelistview_library/src/main/AndroidManifest.xml
 9        android:targetSdkVersion="27" />
-9-->/Users/sanjay/Desktop/code/Dmedhya/Sleepy/SleepPadOur/slidelistview_library/src/main/AndroidManifest.xml
+9-->/Users/vishal/Desktop/SuperZop_Projects/SleepPadAndroid/slidelistview_library/src/main/AndroidManifest.xml
 10
 11</manifest>
