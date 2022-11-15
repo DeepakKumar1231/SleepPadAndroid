@@ -16,6 +16,8 @@ public class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState, persistentState);
     }
 
+    //dbfjad
+
     protected void showToast(String msg){
         Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
     }
