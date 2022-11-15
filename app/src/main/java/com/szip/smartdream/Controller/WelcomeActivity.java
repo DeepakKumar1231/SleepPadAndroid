@@ -96,10 +96,9 @@ public class WelcomeActivity extends BaseActivity  {
             int code2 = grantResults[2];
             if (code == PackageManager.PERMISSION_GRANTED && code1 == PackageManager.PERMISSION_GRANTED && code2 == PackageManager.PERMISSION_GRANTED) {
                 //initData();
-                init();
+                //init();
             } else {
                 // WelcomeActivity.this.finish();
-
                 //When user Deny the Permissions User Send to the Settings And Permission Ui of Mobile
 
                 startActivity(

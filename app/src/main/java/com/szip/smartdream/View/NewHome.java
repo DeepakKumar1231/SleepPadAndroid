@@ -66,10 +66,6 @@ public class NewHome extends Fragment implements View.OnClickListener {
     public static String getStartMonitoringTime = "" ;
 
 
-
-
-
-
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -140,6 +136,7 @@ public class NewHome extends Fragment implements View.OnClickListener {
         startmonitoringBtn.setOnClickListener(this);
         demo.setOnClickListener(this);
         refeshBtn.setOnClickListener(this);
+
     }
 
     @Override
@@ -184,12 +181,10 @@ public class NewHome extends Fragment implements View.OnClickListener {
                         Log.e(TAG, "time stop nowww"+pref);
                         BleService.getInstance().write(ProtocolWriter.writeForReadHealth((byte) 0x00));
                         refeshBtn.performClick();
-
                     }
                 } else {
                     Toast.makeText(requireContext(), getString(R.string.lineError), Toast.LENGTH_SHORT).show();
                 }
-
                 break;
 
             case R.id.refreshBtn:
@@ -207,4 +202,12 @@ public class NewHome extends Fragment implements View.OnClickListener {
         }
     }
 
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+
+
+    }
 }

@@ -27,6 +27,8 @@ import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.google.gson.Gson;
 import com.jonas.jgraph.graph.JcoolGraph;
 import com.jonas.jgraph.models.Jchart;
@@ -54,6 +56,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import antonkozyriatskyi.circularprogressindicator.BuildConfig;
 import antonkozyriatskyi.circularprogressindicator.CircularProgressIndicator;
@@ -96,7 +99,7 @@ public class SleepFragment extends BaseFragment {
     private ConstraintLayout sleepRl;
     private TextView sleepTv;
     private ConstraintLayout clockRl;
-    private TextView clockTv, dayTv , timeTv , timeStopTv , timeinBedTv;
+    private TextView clockTv, dayTv , timeTv , timeStopTv , timeinBedTv , timeinAsleepTv;
     private CircularProgressIndicator circular_progressCurrentDay, mondayProgressBar, tuesdayProgressBar, wednesdayProgressBar, thursdayProgressBar, fridayProgressBar, saturdayProgressBar, sundayProgressBar;
     /**
      * 实时健康数据以及连接状态
@@ -320,6 +323,19 @@ public class SleepFragment extends BaseFragment {
         } else {
             //clockTv.setText("");
         }
+
+        timeTv.setText(mTimeStat);
+        timeStopTv.setText(mTimeStop);
+
+        //long startTime = Date.parse(mTimeStat);
+
+        //Log.e(TAG, "startTime"+startTime );
+
+
+
+        timeinBedTv.setText("SleepingTimeGap");
+        timeinAsleepTv.setText("WokingTimeGap");
+
     }
 
     @Override
@@ -381,13 +397,13 @@ public class SleepFragment extends BaseFragment {
         timeStopTv = getView().findViewById(R.id.clockTv);
         calenderIv = getView().findViewById(R.id.calenderIv);
         timeinBedTv = getView().findViewById(R.id.timeinBedTv);
+        timeinAsleepTv = getView().findViewById(R.id.timeinAsleepTv);
 
         menuIv.setClickable(true);
 
 
 
-        timeTv.setText(mTimeStat);
-        timeStopTv.setText(mTimeStop);
+
 
 
         //Function to calculate thime for sleeping
