@@ -339,6 +339,8 @@ public class SleepFragment extends BaseFragment {
         mLog(mTimeStop);
         mLog("-----------------------");
 
+
+
         timeinBedTv.setText("SleepingTimeGap");
         timeinAsleepTv.setText("WokingTimeGap");
 
