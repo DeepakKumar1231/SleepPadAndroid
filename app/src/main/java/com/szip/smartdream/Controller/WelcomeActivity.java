@@ -139,11 +139,8 @@ public class WelcomeActivity extends BaseActivity  {
     }
 
     private void init() {
-
         if (app.getStartState() == 0) {//已登录
             if (app.getUserInfo().getDeviceCode() != null) {//已绑定
-                BleService.getInstance().setmMac(app.getUserInfo().getDeviceCode());
-                BleService.getInstance().startConnectDevice();
                 Intent guiIntent = new Intent();
                 guiIntent.setClass(WelcomeActivity.this, MainActivity.class);
                 startActivity(guiIntent);

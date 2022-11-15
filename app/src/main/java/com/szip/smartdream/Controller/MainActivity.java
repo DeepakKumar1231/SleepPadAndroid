@@ -310,7 +310,14 @@ public class MainActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         updataBleStateImage();
+        startTheService();
     }
+
+    private void startTheService() {
+        BleService.getInstance().setmMac(app.getUserInfo().getDeviceCode());
+        BleService.getInstance().startConnectDevice();
+    }
+
 
     @Override
     protected void onDestroy() {

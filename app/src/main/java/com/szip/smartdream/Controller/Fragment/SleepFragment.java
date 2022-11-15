@@ -1,6 +1,7 @@
 package com.szip.smartdream.Controller.Fragment;
 
 import static com.jonas.jgraph.graph.JcoolGraph.LINE_DASH_0;
+import static com.szip.smartdream.Util.mutils.mLog;
 
 import android.animation.AnimatorSet;
 import android.app.AlertDialog;
@@ -27,7 +28,6 @@ import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.jonas.jgraph.graph.JcoolGraph;
@@ -49,15 +49,18 @@ import com.szip.smartdream.View.intro.HeartRate;
 import com.szip.smartdream.View.intro.Respiration;
 import com.szip.smartdream.View.intro.SleepScore;
 import com.zhuoting.health.write.ProtocolWriter;
+
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
 import antonkozyriatskyi.circularprogressindicator.BuildConfig;
 import antonkozyriatskyi.circularprogressindicator.CircularProgressIndicator;
 import cn.aigestudio.datepicker.cons.DPMode;
@@ -71,53 +74,11 @@ public class SleepFragment extends BaseFragment {
 
 
     private static final String TAG = "";
-    Respiration respiration = Respiration.newInstance("", "");
-    HeartRate heartRate = HeartRate.newInstance("", "");
-    SleepScore sleepFragment = SleepScore.newInstance("", "");
     private final AnimatorSet set = new AnimatorSet();
-    private FragmentManager fm;
-    private FragmentTransaction transaction;
-    private DateSelectView dateSelectView;
-    private String getTime;
-    private SharedPrefUtility mSharedPref;
-    private String mTimeStat = "";
-    private String mTimeStop ="";
-
-    //---------
-    private JcoolGraph mLineChar;
     private final List<Jchart> lines1 = new ArrayList<>();
     private final List<Jchart> lines2 = new ArrayList<>();
     private final List<Jchart> lines3 = new ArrayList<>();
     private final List<Jchart> lines4 = new ArrayList<>();
-    private int mondayDate;
-    private int monthSize;
-    private int monthDate;
-    //---------
-    /**
-     * 开始睡眠/闹钟控件
-     */
-    private ConstraintLayout sleepRl;
-    private TextView sleepTv;
-    private ConstraintLayout clockRl;
-    private TextView clockTv, dayTv , timeTv , timeStopTv , timeinBedTv , timeinAsleepTv;
-    private CircularProgressIndicator circular_progressCurrentDay, mondayProgressBar, tuesdayProgressBar, wednesdayProgressBar, thursdayProgressBar, fridayProgressBar, saturdayProgressBar, sundayProgressBar;
-    /**
-     * 实时健康数据以及连接状态
-     */
-    private ConstraintLayout breathLl, heartLl, clockLl;
-    private TextView heartTv , dateTv , dateByCalender;
-    private TextView breathTv;
-
-    private MyApplication app;
-
-    private boolean isDisconnect;
-
-    private ImageView menuIv;
-    private ImageView heartBeatIv;
-    private ImageView respirationRateIv;
-    private ImageView calenderIv;
-
-
     /**
      * 按钮出现的动画
      */
@@ -125,6 +86,18 @@ public class SleepFragment extends BaseFragment {
             1f, Animation.RELATIVE_TO_PARENT, 0.5f, Animation.RELATIVE_TO_PARENT, 1f);
     private final ScaleAnimation scaleAnimation1 = new ScaleAnimation(1f, 1f, 0f,
             1f, Animation.RELATIVE_TO_PARENT, 0.5f, Animation.RELATIVE_TO_PARENT, 1f);
+    Respiration respiration = Respiration.newInstance("", "");
+    HeartRate heartRate = HeartRate.newInstance("", "");
+    SleepScore sleepFragment = SleepScore.newInstance("", "");
+    private FragmentManager fm;
+    private FragmentTransaction transaction;
+    private DateSelectView dateSelectView;
+    private String getTime;
+    private SharedPrefUtility mSharedPref;
+    private String mTimeStat = "";
+    private String mTimeStop = "";
+    //---------
+    private JcoolGraph mLineChar;
     /**
      * 事件监听
      */
@@ -143,7 +116,25 @@ public class SleepFragment extends BaseFragment {
             }
         }
     };
-
+    //---------
+    private int mondayDate;
+    private int monthSize;
+    private int monthDate;
+    /**
+     * 开始睡眠/闹钟控件
+     */
+    private ConstraintLayout sleepRl;
+    private TextView sleepTv;
+    private ConstraintLayout clockRl;
+    private TextView clockTv, dayTv, timeTv, timeStopTv, timeinBedTv, timeinAsleepTv;
+    private CircularProgressIndicator circular_progressCurrentDay, mondayProgressBar, tuesdayProgressBar, wednesdayProgressBar, thursdayProgressBar, fridayProgressBar, saturdayProgressBar, sundayProgressBar;
+    /**
+     * 实时健康数据以及连接状态
+     */
+    private ConstraintLayout breathLl, heartLl, clockLl;
+    private TextView heartTv, dateTv, dateByCalender;
+    private TextView breathTv;
+    private MyApplication app;
     private final View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -215,7 +206,7 @@ public class SleepFragment extends BaseFragment {
                         @Override
                         public void onDatePicked(String date) {
 
-                            if (date!=null){
+                            if (date != null) {
                                 dateTv.setVisibility(View.GONE);
                                 dateByCalender.setVisibility(View.VISIBLE);
                                 dateByCalender.setText(date);
@@ -251,6 +242,11 @@ public class SleepFragment extends BaseFragment {
             }
         }
     };
+    private boolean isDisconnect;
+    private ImageView menuIv;
+    private ImageView heartBeatIv;
+    private ImageView respirationRateIv;
+    private ImageView calenderIv;
 
     /**
      * 返回一个fragment实例，Activity中调用
@@ -319,19 +315,29 @@ public class SleepFragment extends BaseFragment {
         startAnimator();
         if (app.getClockList() != null && app.getClockList().size() != 0) {
             Log.d("CLOCK******", "update clock = " + MathUitl.getNearClock(app.getClockList()));
-           // clockTv.setText(MathUitl.getNearClock(app.getClockList()));
+            // clockTv.setText(MathUitl.getNearClock(app.getClockList()));
         } else {
             //clockTv.setText("");
         }
 
-        timeTv.setText(mTimeStat);
-        timeStopTv.setText(mTimeStop);
+
+        timeTv.setText(mTimeStat.substring(mTimeStat.indexOf(" ") + 1,mTimeStat.indexOf(":") + 3));
+        if(!mTimeStop.isEmpty()){
+            timeStopTv.setText(mTimeStop.substring(mTimeStop.indexOf(" ") + 1,mTimeStop.indexOf(":") + 3));
+        }
+
+
+        long one =Date.parse(mTimeStat);
+        long two =Date.parse(mTimeStat);
 
         //long startTime = Date.parse(mTimeStat);
 
         //Log.e(TAG, "startTime"+startTime );
 
-
+        mLog("-----------------------");
+        mLog(mTimeStat);
+        mLog(mTimeStop);
+        mLog("-----------------------");
 
         timeinBedTv.setText("SleepingTimeGap");
         timeinAsleepTv.setText("WokingTimeGap");
@@ -363,13 +369,13 @@ public class SleepFragment extends BaseFragment {
     private void initView() {
         updataDate();
 
-        mSharedPref =  new SharedPrefUtility(requireContext());
-        mTimeStat =  mSharedPref.getStringData("timeStat", "");
+        mSharedPref = new SharedPrefUtility(requireContext());
+        mTimeStat = mSharedPref.getStringData("timeStat", "");
 
-        mTimeStop = mSharedPref.getStringData("timeStop" , "");
+        mTimeStop = mSharedPref.getStringData("timeStop", "");
 
 
-       // mSharedPref.setStringData("timeStat", "");
+        // mSharedPref.setStringData("timeStat", "");
 
         respirationRateIv = getView().findViewById(R.id.respirationRateIv);
         circular_progressCurrentDay = getView().findViewById(R.id.circular_progressCurrentDay);
@@ -380,7 +386,7 @@ public class SleepFragment extends BaseFragment {
         fridayProgressBar = getView().findViewById(R.id.circular_progressFriday);
         saturdayProgressBar = getView().findViewById(R.id.circular_progressSaturday);
         sundayProgressBar = getView().findViewById(R.id.circular_progressSunday);
-       // clockTv = getView().findViewById(R.id.clockTv);
+        // clockTv = getView().findViewById(R.id.clockTv);
         heartBeatIv = getView().findViewById(R.id.heartBeatIv);
         clockRl = getView().findViewById(R.id.clockRl);
         sleepRl = getView().findViewById(R.id.sleepRl);
@@ -400,10 +406,6 @@ public class SleepFragment extends BaseFragment {
         timeinAsleepTv = getView().findViewById(R.id.timeinAsleepTv);
 
         menuIv.setClickable(true);
-
-
-
-
 
 
         //Function to calculate thime for sleeping
@@ -430,20 +432,18 @@ public class SleepFragment extends BaseFragment {
         sundayProgressBar.setCurrentProgress(110D);
 
 
-
-
         mLineChar = getView().findViewById(R.id.sug_recode_line);
-        mLineChar.setXvelue(5,0,1560);
+        mLineChar.setXvelue(5, 0, 1560);
         mLineChar.setGraphStyle(1);
         mLineChar.setLineStyle(1);
         mLineChar.setLineMode(LINE_DASH_0);
         mLineChar.setSleepFlag(2);
         mLineChar.drawPoint(true);
-        mLineChar.setYaxisValues(0,255,5);
+        mLineChar.setYaxisValues(0, 255, 5);
         mLineChar.setShaderAreaColors(Color.parseColor("#bb21a0bf"), Color.TRANSPARENT);
-        mLineChar.setLinePointRadio((int)mLineChar.getLineWidth());
+        mLineChar.setLinePointRadio((int) mLineChar.getLineWidth());
         mLineChar.setNormalColor(Color.parseColor("#21a0bf"));
-       // mLineChar.setOnTouchListener(onTouchListener);
+        // mLineChar.setOnTouchListener(onTouchListener);
         if (!mLineChar.isDetachFlag())
             mLineChar.feedData(lines1);
 
@@ -478,7 +478,6 @@ public class SleepFragment extends BaseFragment {
     }
 
     private void sleepingTime() {
-
 
 
     }
@@ -553,8 +552,8 @@ public class SleepFragment extends BaseFragment {
         // menuIv.setOnClickListener(functionOne());
 
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(requireContext());
-        String startTime = pref.getString("timeStat" ,"");
-        Log.e(TAG, "onViewCreated: "+startTime );
+        String startTime = pref.getString("timeStat", "");
+        Log.e(TAG, "onViewCreated: " + startTime);
 
         if (BuildConfig.DEBUG) {
             // do something for a debug build
