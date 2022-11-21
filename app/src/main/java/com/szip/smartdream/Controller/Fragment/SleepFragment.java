@@ -2,6 +2,7 @@ package com.szip.smartdream.Controller.Fragment;
 
 import static com.jonas.jgraph.graph.JcoolGraph.LINE_DASH_0;
 import static com.szip.smartdream.Util.mutils.mLog;
+import static com.szip.smartdream.Util.mutils.mToast;
 
 import android.animation.AnimatorSet;
 import android.app.AlertDialog;
@@ -31,6 +32,7 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.jonas.jgraph.graph.JcoolGraph;
+import com.jonas.jgraph.inter.BaseGraph;
 import com.jonas.jgraph.models.Jchart;
 import com.szip.smartdream.Bean.DeviceClockIsUpdataBean;
 import com.szip.smartdream.Bean.HealthBean;
@@ -190,7 +192,7 @@ public class SleepFragment extends BaseFragment {
 
                 case R.id.calenderIv:
                     String date = DateUtil.getDateToString(app.getReportDate());
-                    //TODO 选择时间
+
                     final AlertDialog dialog = new AlertDialog.Builder(requireActivity()).create();
                     dialog.show();
                     final DatePicker picker = new DatePicker(requireActivity());
@@ -436,8 +438,8 @@ public class SleepFragment extends BaseFragment {
 
         mLineChar = getView().findViewById(R.id.sug_recode_line);
         mLineChar.setXvelue(5, 0, 1560);
-        mLineChar.setGraphStyle(1);
-        mLineChar.setLineStyle(1);
+        mLineChar.setGraphStyle(BaseGraph.LINE);
+        mLineChar.setLineStyle(JcoolGraph.LINE_CURVE);
         mLineChar.setLineMode(LINE_DASH_0);
         mLineChar.setSleepFlag(2);
         mLineChar.drawPoint(true);
@@ -564,6 +566,8 @@ public class SleepFragment extends BaseFragment {
 
 
         }
+
+
     }
 
     /**

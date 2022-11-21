@@ -389,7 +389,7 @@ public class ReportDayFragment extends BaseFragment {
             handler.post(new Runnable() {
                 @Override
                 public void run() {
-                    moreTv.setVisibility(View.VISIBLE);
+                    //moreTv.setVisibility(View.VISIBLE);
                 }
             });
         }else {
